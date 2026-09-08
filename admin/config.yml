@@ -12,7 +12,7 @@ backend:
   base_url: https://sveltia-cms-auth.mattadamco.workers.dev
 
 media_folder: img
-public_folder: /img
+public_folder: img
 
 site_url: https://mattadam.art
 display_url: https://mattadam.art
@@ -60,6 +60,7 @@ collections:
                     label: Content
                     label_singular: Item
                     widget: list
+                    typeKey: kind
                     summary: '{{fields.kind}}  {{fields.heading}}'
                     types:
 
