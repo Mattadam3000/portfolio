@@ -2,7 +2,8 @@
 """
 Builds index.html from template.html + parts.html + content.json.
 
-  content.json   page ORDER (blocks[]) and beat copy (beats{})
+  content.json   the whole page: blocks[] in order, each with a body[] of
+                 beats, image groups and prose
   parts.html     per-block markup, delimited by <!--PART:id-->
   template.html  page shell, with a {{FLOW}} placeholder
 
@@ -46,7 +47,8 @@ def media(m):
         return f'    <div class="{m.get("class","stack r")}">\n{frames}\n    </div>'
     return frames.replace("      <div", "    <div", 1).replace("\n        ", "\n      ")
 
-def render(bid, b):
+def render(b, bid=None):
+    bid = bid or b.get("id", "?")
     open_at = []
     if b.get("layout"): open_at.append(f'class="{b["layout"]}"')
     if b.get("style"): open_at.append(f'style="{b["style"]}"')
@@ -136,22 +138,22 @@ def r_gallery(b):
             tiles + '\n  </div>')
 
 
-def r_body(items, beats):
+def r_body(items):
     """Ordered block body: beats, image groups, and prose, in author order."""
     out = []
     for it in items:
-        if 'beat' in it:
-            out.append(render(it['beat'], beats[it['beat']]))
-        elif 'prose' in it:
-            p = it['prose']
-            out.append(f'<div class="{p["class"]}">\n'
-                       f'    <h2 class="{p["heading_class"]}">{p["heading"]}</h2>\n'
-                       f'    <p class="fact">{p["fact"]}</p>\n  </div>')
-        elif it.get('group') == 'duo':
+        k = it.get('kind')
+        if k == 'beat':
+            out.append(render(it))
+        elif k == 'prose':
+            out.append(f'<div class="{it["class"]}">\n'
+                       f'    <h2 class="{it["heading_class"]}">{it["heading"]}</h2>\n'
+                       f'    <p class="fact">{it["fact"]}</p>\n  </div>')
+        elif k == 'duo':
             st = f' style="{it["style"]}"' if it.get('style') else ''
             inner = '\n'.join(frame(i) for i in it['images'])
             out.append(f'<div class="duo"{st}>\n{inner}\n  </div>')
-        elif it.get('group') == 'single':
+        elif k == 'single':
             im = dict(it['images'][0])
             at = [f'class="{im["frame"]}"']
             if im.get('key'): at.append(f'data-key="{im["key"]}"')
@@ -179,7 +181,7 @@ def read_parts():
     return parts
 
 
-def flow(blocks, parts, beats):
+def flow(blocks, parts):
     """Emit <section id="flow"> with one .sortable per block, in blocks[] order."""
     out = ['<section id="flow">']
     for b in blocks:
@@ -188,13 +190,11 @@ def flow(blocks, parts, beats):
         if b.get("type"):
             body = "  " + TYPES[b["type"]](b)
         elif b.get("body"):
-            body = "  " + r_body(b["body"], beats)
+            body = "  " + r_body(b["body"])
         else:
             body = parts[b["id"]]
         if b.get("chapter") and not b.get("type"):
             body = "  " + chapter(b["chapter"]) + "\n" + body
-        body = re.sub(r'\{\{BEAT:([^}]+)\}\}',
-                      lambda m: render(m.group(1), beats[m.group(1)]), body)
         out.append(f'<div {" ".join(at)}>')
         out.append(body)
         out.append('</div>')
@@ -204,10 +204,18 @@ def flow(blocks, parts, beats):
 
 # ---------- validation ----------
 
-def validate(beats):
+def validate(blocks):
     """Return a list of human-readable problems. Empty list == valid."""
     errs = []
-    for bid, b in beats.items():
+    items = []
+    for blk in blocks:
+        for i, it in enumerate(blk.get("body") or []):
+            if it.get("kind") == "beat":
+                items.append((it.get("id") or f'{blk["id"]}.body[{i}]', it))
+            elif it.get("kind") in ("duo", "single"):
+                items.append((f'{blk["id"]}.body[{i}]',
+                              {"layout": "", "media": {"type": "stack", "images": it.get("images", [])}}))
+    for bid, b in items:
         if "layout" not in b:
             errs.append(f'{bid}: missing "layout" (use "" for a bare div)')
         m = b.get("media")
@@ -242,11 +250,10 @@ def validate(beats):
 def render_page():
     content = json.load(open(P("content.json")))
     tpl = open(P("template.html")).read()
-    beats = content["beats"]
     blocks = content["blocks"]
     parts = read_parts()
 
-    errs = validate(beats)
+    errs = validate(blocks)
 
     ids = [b["id"] for b in blocks]
     dupes = {i for i in ids if ids.count(i) > 1}
@@ -269,19 +276,15 @@ def render_page():
                         f'remove the PART, it is dead markup')
 
     used = set()
-    for pid, body in parts.items():
-        for bid in re.findall(r'\{\{BEAT:([^}]+)\}\}', body):
-            used.add(bid)
-            if bid not in beats:
-                errs.append(f'PART:{pid} references unknown beat "{bid}"')
+    KINDS = {"beat", "prose", "duo", "single"}
     for b in blocks:
-        for it in b.get("body") or []:
-            if 'beat' in it:
-                used.add(it['beat'])
-                if it['beat'] not in beats:
-                    errs.append(f'block "{b["id"]}" references unknown beat "{it["beat"]}"')
-    for bid in set(beats) - used:
-        errs.append(f'beat "{bid}" is defined but never placed in parts.html')
+        for i, it in enumerate(b.get("body") or []):
+            k = it.get("kind")
+            if k not in KINDS:
+                errs.append(f'block "{b["id"]}".body[{i}]: unknown kind {k!r} '
+                            f'(known: {sorted(KINDS)})')
+            elif k == "beat":
+                used.add(it.get("id") or f'{b["id"]}[{i}]')
 
     nav_ids = re.findall(r'data-target="([^"]+)"', tpl)
     for t in nav_ids:
@@ -293,7 +296,7 @@ def render_page():
 
     if "{{FLOW}}" not in tpl:
         sys.exit("ERROR: template.html has no {{FLOW}} placeholder")
-    out = tpl.replace("{{FLOW}}", flow(blocks, parts, beats))
+    out = tpl.replace("{{FLOW}}", flow(blocks, parts))
     return out, used
 
 

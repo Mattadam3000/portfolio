@@ -28,7 +28,38 @@
       },
       "body": [
         {
-          "beat": "juice-portrait"
+          "kind": "beat",
+          "id": "juice-portrait",
+          "layout": "beat",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "Legends<br>Never Die.",
+          "role": "ALBUM COVER",
+          "fact": "<b>Juice WRLD.</b> 497,000 first week. The biggest posthumous debut since Tupac and Biggie. Matt Adam shot the portrait; the family chose it for the cover. One of the most viewed album covers of the decade.",
+          "media": {
+            "type": "stack",
+            "images": [
+              {
+                "src": "img/818a46bfed.jpg",
+                "alt": "Juice WRLD portrait on film by Matt Adam",
+                "frame": "fr",
+                "key": "juice-portrait",
+                "aspect": "1170/1738",
+                "position": "center 28%",
+                "w": 1170,
+                "h": 1738
+              },
+              {
+                "src": "img/c461fa69f1.jpg",
+                "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
+                "frame": "fr",
+                "key": "juice-cover",
+                "w": 1200,
+                "h": 1200
+              }
+            ],
+            "class": "stack r"
+          }
         }
       ]
     },
@@ -90,7 +121,27 @@
       "aria": "Future and Metro Boomin, We Don't Trust You",
       "body": [
         {
-          "beat": "wdty"
+          "kind": "beat",
+          "id": "wdty",
+          "layout": "beat flip",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "We Don't<br>Trust You.",
+          "role": "CREATIVE DIRECTION + VISUAL IDENTITY",
+          "fact": "<b>Future and Metro Boomin.</b> Two consecutive #1 albums in the same span. Matt Adam built the visual identity. Every image the world saw was his. The only photographer to shoot three covers for the biggest first-week rap sales of the decade.",
+          "media": {
+            "type": "single",
+            "images": [
+              {
+                "src": "img/cade447acb.jpg",
+                "alt": "Future and Metro Boomin We Don't Trust You album cover, visual identity by Matt Adam",
+                "frame": "fr r",
+                "key": "wdty",
+                "w": 1400,
+                "h": 1400
+              }
+            ]
+          }
         }
       ]
     },
@@ -101,7 +152,27 @@
       "aria": "Future and Metro Boomin, We Still Don't Trust You",
       "body": [
         {
-          "beat": "wsdty"
+          "kind": "beat",
+          "id": "wsdty",
+          "layout": "beat",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "We Still<br>Don't Trust You.",
+          "role": "CREATIVE DIRECTION + VISUAL IDENTITY",
+          "fact": "The sequel. Another #1, weeks later. The covers, the vinyl, the rollout. One visual world.",
+          "media": {
+            "type": "single",
+            "images": [
+              {
+                "src": "img/755ee4b88f.jpg",
+                "alt": "Future and Metro Boomin We Still Don't Trust You album cover, shot by Matt Adam",
+                "frame": "fr r",
+                "key": "wsdty",
+                "w": 1400,
+                "h": 1400
+              }
+            ]
+          }
         }
       ]
     },
@@ -112,7 +183,45 @@
       "aria": "Future, Mixtape Pluto",
       "body": [
         {
-          "beat": "pluto-billboard"
+          "kind": "beat",
+          "id": "pluto-billboard",
+          "layout": "beat flip",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "Mixtape<br>Pluto.",
+          "role": "VISUAL ROLLOUT",
+          "fact": "<b>Future.</b> Matt Adam shot every visual in the rollout: billboards, posters, press, and the visual assets used to roll out and promote the music videos.",
+          "media": {
+            "type": "stack",
+            "images": [
+              {
+                "src": "img/3c7bee3dc0.jpg",
+                "alt": "Future Mixtape Pluto billboard wrapping The Reef building in downtown Los Angeles, shot by Matt Adam",
+                "frame": "fr wide",
+                "key": "pluto-billboard",
+                "aspect": "828/620",
+                "w": 828,
+                "h": 620
+              },
+              {
+                "src": "img/6e0fb6ab6d.jpg",
+                "alt": "Future Mixtape Pluto OUT NOW posters wheatpasted on the street, shot by Matt Adam",
+                "frame": "fr wide",
+                "key": "pluto-street",
+                "w": 720,
+                "h": 900
+              },
+              {
+                "src": "img/f3735fc527.jpg",
+                "alt": "Future Mixtape Pluto polaroid shot by Matt Adam",
+                "frame": "fr",
+                "key": "pluto",
+                "w": 1400,
+                "h": 1400
+              }
+            ],
+            "class": "stack r lead-left"
+          }
         }
       ]
     },
@@ -123,7 +232,28 @@
       "aria": "The Weeknd",
       "body": [
         {
-          "beat": "weeknd-green"
+          "kind": "beat",
+          "id": "weeknd-green",
+          "layout": "beat",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "The Weeknd.",
+          "role": "ROLLOUT VISUALS",
+          "fact": "The first images of a new era. Matt Adam shot the photographs that opened the rollout for <b>Hurry Up Tomorrow</b>, the final chapter of the trilogy that began with <i>After Hours</i>.",
+          "media": {
+            "type": "single",
+            "images": [
+              {
+                "src": "img/cd5dc90625.jpg",
+                "alt": "The Weeknd photographed by Matt Adam",
+                "frame": "fr r",
+                "key": "weeknd-green",
+                "position": "center 30%",
+                "w": 670,
+                "h": 670
+              }
+            ]
+          }
         }
       ]
     },
@@ -134,7 +264,27 @@
       "aria": "Benny Blanco",
       "body": [
         {
-          "beat": "benny"
+          "kind": "beat",
+          "id": "benny",
+          "layout": "beat flip",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "Benny<br>Blanco.",
+          "role": "CREATIVE DIRECTION + VISUAL IDENTITY + ROLLOUT",
+          "fact": "Matt Adam shaped the visual identity for Benny's transition from producer to artist, beginning with \"Eastside.\" For the albums <b>Friends Keep Secrets 1</b> and <b>Friends Keep Secrets 2</b>, he shot every visual asset across both rollouts. The campaigns ran on billboards worldwide, including a full Sunset Boulevard takeover of nine billboards at once, at a scale no one had done before.",
+          "media": {
+            "type": "single",
+            "images": [
+              {
+                "src": "img/4bcc436e68.jpg",
+                "alt": "Benny Blanco photographed by Matt Adam on a pink backdrop with dogs in wedding attire",
+                "frame": "fr r",
+                "key": "benny",
+                "w": 1400,
+                "h": 1400
+              }
+            ]
+          }
         }
       ]
     },
@@ -162,10 +312,18 @@
       },
       "body": [
         {
-          "beat": "unwrap-steal"
+          "kind": "beat",
+          "id": "unwrap-steal",
+          "layout": "",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "Unwrap<br>&amp; Steal.",
+          "role": "REAL LIFE ART HEISTS",
+          "fact": "Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated <i>Telemarketers</i>. Matt Adam wraps his artwork like gifts, hides it in public, and posts the clues. Thousands of people across countries and continents race to find it and steal the art. Ownership doesn't flow through permission or purchase. It flows through attention, speed, and the will to go get it."
         },
         {
-          "group": "single",
+          "kind": "single",
+          "style": "margin-top:6vh;margin-bottom:14px",
           "images": [
             {
               "src": "img/9803254175.jpg",
@@ -175,11 +333,11 @@
               "w": 1800,
               "h": 1159
             }
-          ],
-          "style": "margin-top:6vh;margin-bottom:14px"
+          ]
         },
         {
-          "group": "duo",
+          "kind": "duo",
+          "style": "margin-top:14px",
           "images": [
             {
               "src": "img/e1040f7064.jpg",
@@ -213,8 +371,7 @@
               "w": 1100,
               "h": 1467
             }
-          ],
-          "style": "margin-top:14px"
+          ]
         }
       ]
     },
@@ -233,10 +390,30 @@
       },
       "body": [
         {
-          "beat": "taschen"
+          "kind": "beat",
+          "id": "taschen",
+          "layout": "credit",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "Taschen —<br>Ice Cold.",
+          "role": "PUBLISHED WORKS",
+          "fact": "Taschen publishes the most serious art books on earth. <i>Ice Cold: A Hip-Hop Jewelry History</i> is the canonical record of the subject. Matt Adam's photographs of Young Thug and A$AP Rocky are printed inside it, credited by name.",
+          "media": {
+            "type": "single",
+            "images": [
+              {
+                "src": "img/081ea58315.jpg",
+                "alt": "Ice Cold: A Hip-Hop Jewelry History, Taschen, featuring Matt Adam photography",
+                "frame": "fr r tall",
+                "key": "ic-cover",
+                "w": 1100,
+                "h": 1100
+              }
+            ]
+          }
         },
         {
-          "group": "duo",
+          "kind": "duo",
           "images": [
             {
               "src": "img/f70684dad3.jpg",
@@ -265,10 +442,30 @@
       "aria": "Beyond the Streets, Dead City Punx",
       "body": [
         {
-          "beat": "dead-city-punx"
+          "kind": "beat",
+          "id": "dead-city-punx",
+          "layout": "credit flip",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "Beyond the Streets —<br>Dead City Punx.",
+          "role": "PUBLISHED WORKS + GALLERY + DOCUMENTARY",
+          "fact": "Five years photographing Dead City Punx on film in the Los Angeles underground. The work became a documentary directed by Roger Gastman, founder of Beyond the Streets, the world's most authoritative institution for graffiti, street art, and subculture, co-executive produced by Zack de la Rocha of Rage Against the Machine. Matt Adam's photographs run throughout the film, which also features footage from his own Unwrap &amp; Steal documentary. His photography fills a major portion of the \"Dead City\" book, including the cover, and hangs in the exhibition PUNX: The Art of Dead City &amp; Friends at Beyond the Streets, Los Angeles.",
+          "media": {
+            "type": "single",
+            "images": [
+              {
+                "src": "img/f2042cf4b4.jpg",
+                "alt": "Matt Adam with the Dead City Punx book at Beyond the Streets, Los Angeles",
+                "frame": "fr r tall",
+                "key": "dcp-main",
+                "w": 1050,
+                "h": 1400
+              }
+            ]
+          }
         },
         {
-          "group": "duo",
+          "kind": "duo",
           "images": [
             {
               "src": "img/5008693520.jpg",
@@ -305,21 +502,104 @@
       },
       "body": [
         {
-          "prose": {
-            "class": "series-head r",
-            "heading_class": "big",
-            "heading": "Objects.",
-            "fact": "Photographs of objects, made into zines and bandanas, built to look real. An empty bag of cocaine. A piece of raw meat. An Ozempic needle. The point isn't shock. Each one makes a hidden system visible: appetite, status, body control. <b>Jeff Koons shows you what you want. Matt Adam shows you what's controlling you.</b>"
+          "kind": "prose",
+          "class": "series-head r",
+          "heading_class": "big",
+          "heading": "Objects.",
+          "fact": "Photographs of objects, made into zines and bandanas, built to look real. An empty bag of cocaine. A piece of raw meat. An Ozempic needle. The point isn't shock. Each one makes a hidden system visible: appetite, status, body control. <b>Jeff Koons shows you what you want. Matt Adam shows you what's controlling you.</b>"
+        },
+        {
+          "kind": "beat",
+          "id": "party-straw",
+          "layout": "beat intv-beat",
+          "heading_tag": "h3",
+          "heading_class": "ser r",
+          "heading": "<span class=\"sernum\">1.</span>Party<br><span class=\"sero\">The cocaine series.</span>",
+          "fact": "An oversized dollar bill and cocaine, staged on the street. The party zine and bandana, printed to look like a real empty bag. Money as appetite, status, and the performance of excess.",
+          "media": {
+            "type": "stack",
+            "images": [
+              {
+                "src": "img/23312d3dc4.jpg",
+                "alt": "Matt Adam Party series, oversized dollar-bill straw and cocaine staged on the Hollywood Walk of Fame",
+                "frame": "fr wide",
+                "key": "party-straw",
+                "w": 1100,
+                "h": 1464
+              },
+              {
+                "src": "img/3627afb24f.jpg",
+                "alt": "Matt Adam Party series, empty baggie object printed to look real",
+                "frame": "fr wide",
+                "key": "party-bag",
+                "w": 1052,
+                "h": 1400
+              }
+            ],
+            "class": "stack r"
           }
         },
         {
-          "beat": "party-straw"
+          "kind": "beat",
+          "id": "rotten-deer",
+          "layout": "beat flip intv-beat",
+          "heading_tag": "h3",
+          "heading_class": "ser r",
+          "heading": "<span class=\"sernum\">2.</span>Rotten<br><span class=\"sero\">The raw-meat series.</span>",
+          "fact": "A deer head with blood. The rotten zine, printed, wrapped, and displayed as a cut of raw meat in a butcher’s case. Appetite stripped of the packaging that makes consumption comfortable.",
+          "media": {
+            "type": "stack",
+            "images": [
+              {
+                "src": "img/6b6ac73254.jpg",
+                "alt": "Matt Adam Rotten series, deer head intervention on a downtown Los Angeles sidewalk",
+                "frame": "fr wide",
+                "key": "rotten-deer",
+                "w": 1100,
+                "h": 1467
+              },
+              {
+                "src": "img/aea159db19.jpg",
+                "alt": "Matt Adam Rotten series, photographed meat staged in a Los Angeles butcher case",
+                "frame": "fr wide",
+                "key": "rotten-meat",
+                "w": 1100,
+                "h": 1467
+              }
+            ],
+            "class": "stack r"
+          }
         },
         {
-          "beat": "rotten-deer"
-        },
-        {
-          "beat": "skinny-doll"
+          "kind": "beat",
+          "id": "skinny-doll",
+          "layout": "beat intv-beat",
+          "heading_tag": "h3",
+          "heading_class": "ser r",
+          "heading": "<span class=\"sernum\">3.</span>Skinny<br><span class=\"sero\">The Ozempic series.</span>",
+          "fact": "A deflated doll impaled by a giant Ozempic needle on the highway to Coachella. The skinny zine and bandana. Body image, appetite, and self-optimization rendered at monumental scale.",
+          "media": {
+            "type": "stack",
+            "images": [
+              {
+                "src": "img/bbe0c95b5b.jpg",
+                "alt": "Matt Adam Skinny series, deflated doll impaled on a giant Ozempic needle mounted on a desert billboard near Coachella",
+                "frame": "fr wide",
+                "key": "skinny-doll",
+                "w": 1100,
+                "h": 1462
+              },
+              {
+                "src": "img/c66308601c.jpg",
+                "alt": "Matt Adam Skinny series, oversized Ozempic pen prop held in hand",
+                "frame": "fr wide",
+                "key": "skinny-pen",
+                "w": 1100,
+                "h": 1460
+              }
+            ],
+            "class": "stack r"
+          }
         }
       ]
     },
@@ -330,7 +610,21 @@
       "aria": "Matt Adam on NBC News",
       "body": [
         {
-          "beat": "nbcPlay"
+          "kind": "beat",
+          "id": "nbcPlay",
+          "layout": "beat flip",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "On<br>The News.",
+          "fact": "<b>Andy Warhol had soup cans. Matt Adam has the Ozempic needle.</b> Warhol was interested in what America consumed. Matt Adam is interested in what people use to control themselves. The Ozempic intervention broke past the art world and onto NBC News.",
+          "media": {
+            "type": "video",
+            "id": "nbcPlay",
+            "aria": "NBC News segment",
+            "src": "nbc.mp4",
+            "poster": "img/6f12304531.jpg",
+            "label": "NBC NEWS — TAP TO PLAY"
+          }
         }
       ]
     },
@@ -341,10 +635,32 @@
       "aria": "Nobody Came To My Art Show",
       "body": [
         {
-          "beat": "show-canvas"
+          "kind": "beat",
+          "id": "show-canvas",
+          "layout": "beat flip",
+          "style": "margin-bottom:8vh",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "Nobody Came<br>To My Art Show.",
+          "role": "ART SHOW + PERFORMANCE ART",
+          "fact": "Weeks before his first warehouse art exhibit, Matt Adam ran through Hollywood in a clown costume, spray-painting <b>\"nobody came to my art show\"</b> on a pink-wrapped canvas. Then the invitations arrived: pieces of concrete, each marked \"break.\" On the night, a 2,000-pound concrete monolith blocked the gate, the pink canvas buried inside it. The crowd had to break it themselves to get in. Inside: the paintings and more work, waiting in a room they'd already earned.",
+          "media": {
+            "type": "single",
+            "images": [
+              {
+                "src": "img/47d505d062.jpg",
+                "alt": "Matt Adam lying under a pink nobody came to my art show canvas at a Los Angeles mall",
+                "frame": "fr r tall",
+                "key": "show-canvas",
+                "w": 1050,
+                "h": 1400
+              }
+            ]
+          }
         },
         {
-          "group": "single",
+          "kind": "single",
+          "style": "margin-bottom:12vh",
           "images": [
             {
               "src": "img/1a3471a29b.jpg",
@@ -354,8 +670,7 @@
               "w": 1800,
               "h": 1219
             }
-          ],
-          "style": "margin-bottom:12vh"
+          ]
         }
       ]
     },
@@ -366,10 +681,30 @@
       "aria": "Paintings",
       "body": [
         {
-          "beat": "paint-ozempic"
+          "kind": "beat",
+          "id": "paint-ozempic",
+          "layout": "beat",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "heading": "Paintings.",
+          "fact": "The public work gets the first reaction. The paintings are where it becomes unavoidable. Screenprinting and painting over his own photographs, plus wheatpasting, printing his photographs and pasting them up in public, sometimes all of it at once. The interventions make the social system visible. The paintings make the nervous system visible, where control stops being theatrical and becomes a body under strain. <b>This is the center of everything.</b>",
+          "media": {
+            "type": "single",
+            "images": [
+              {
+                "src": "img/d6570a0e66.jpg",
+                "alt": "Matt Adam painting, Ozempic semaglutide packaging arranged as a cross, screenprinted in black on a silver field",
+                "frame": "fr r tall fit",
+                "key": "paint-ozempic",
+                "w": 1100,
+                "h": 1100
+              }
+            ]
+          }
         },
         {
-          "group": "duo",
+          "kind": "duo",
+          "style": "margin-top:6vh",
           "images": [
             {
               "src": "img/eff0bd7bcb.jpg",
@@ -387,11 +722,10 @@
               "w": 1100,
               "h": 1647
             }
-          ],
-          "style": "margin-top:6vh"
+          ]
         },
         {
-          "group": "single",
+          "kind": "single",
           "images": [
             {
               "src": "img/61bb9c8805.jpg",
@@ -404,7 +738,8 @@
           ]
         },
         {
-          "group": "duo",
+          "kind": "duo",
+          "style": "margin-top:0",
           "images": [
             {
               "src": "img/edf575549f.jpg",
@@ -438,11 +773,11 @@
               "w": 1100,
               "h": 837
             }
-          ],
-          "style": "margin-top:0"
+          ]
         },
         {
-          "group": "single",
+          "kind": "single",
+          "style": "margin-top:6vh",
           "images": [
             {
               "src": "img/04b582b3ba.jpg",
@@ -452,8 +787,7 @@
               "w": 1565,
               "h": 1037
             }
-          ],
-          "style": "margin-top:6vh"
+          ]
         }
       ]
     },
@@ -639,357 +973,5 @@
         }
       ]
     }
-  ],
-  "beats": {
-    "juice-portrait": {
-      "layout": "beat",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "Legends<br>Never Die.",
-      "role": "ALBUM COVER",
-      "fact": "<b>Juice WRLD.</b> 497,000 first week. The biggest posthumous debut since Tupac and Biggie. Matt Adam shot the portrait; the family chose it for the cover. One of the most viewed album covers of the decade.",
-      "media": {
-        "type": "stack",
-        "images": [
-          {
-            "src": "img/818a46bfed.jpg",
-            "alt": "Juice WRLD portrait on film by Matt Adam",
-            "frame": "fr",
-            "key": "juice-portrait",
-            "aspect": "1170/1738",
-            "position": "center 28%",
-            "w": 1170,
-            "h": 1738
-          },
-          {
-            "src": "img/c461fa69f1.jpg",
-            "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
-            "frame": "fr",
-            "key": "juice-cover",
-            "w": 1200,
-            "h": 1200
-          }
-        ],
-        "class": "stack r"
-      }
-    },
-    "wdty": {
-      "layout": "beat flip",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "We Don't<br>Trust You.",
-      "role": "CREATIVE DIRECTION + VISUAL IDENTITY",
-      "fact": "<b>Future and Metro Boomin.</b> Two consecutive #1 albums in the same span. Matt Adam built the visual identity. Every image the world saw was his. The only photographer to shoot three covers for the biggest first-week rap sales of the decade.",
-      "media": {
-        "type": "single",
-        "images": [
-          {
-            "src": "img/cade447acb.jpg",
-            "alt": "Future and Metro Boomin We Don't Trust You album cover, visual identity by Matt Adam",
-            "frame": "fr r",
-            "key": "wdty",
-            "w": 1400,
-            "h": 1400
-          }
-        ]
-      }
-    },
-    "wsdty": {
-      "layout": "beat",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "We Still<br>Don't Trust You.",
-      "role": "CREATIVE DIRECTION + VISUAL IDENTITY",
-      "fact": "The sequel. Another #1, weeks later. The covers, the vinyl, the rollout. One visual world.",
-      "media": {
-        "type": "single",
-        "images": [
-          {
-            "src": "img/755ee4b88f.jpg",
-            "alt": "Future and Metro Boomin We Still Don't Trust You album cover, shot by Matt Adam",
-            "frame": "fr r",
-            "key": "wsdty",
-            "w": 1400,
-            "h": 1400
-          }
-        ]
-      }
-    },
-    "pluto-billboard": {
-      "layout": "beat flip",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "Mixtape<br>Pluto.",
-      "role": "VISUAL ROLLOUT",
-      "fact": "<b>Future.</b> Matt Adam shot every visual in the rollout: billboards, posters, press, and the visual assets used to roll out and promote the music videos.",
-      "media": {
-        "type": "stack",
-        "images": [
-          {
-            "src": "img/3c7bee3dc0.jpg",
-            "alt": "Future Mixtape Pluto billboard wrapping The Reef building in downtown Los Angeles, shot by Matt Adam",
-            "frame": "fr wide",
-            "key": "pluto-billboard",
-            "aspect": "828/620",
-            "w": 828,
-            "h": 620
-          },
-          {
-            "src": "img/6e0fb6ab6d.jpg",
-            "alt": "Future Mixtape Pluto OUT NOW posters wheatpasted on the street, shot by Matt Adam",
-            "frame": "fr wide",
-            "key": "pluto-street",
-            "w": 720,
-            "h": 900
-          },
-          {
-            "src": "img/f3735fc527.jpg",
-            "alt": "Future Mixtape Pluto polaroid shot by Matt Adam",
-            "frame": "fr",
-            "key": "pluto",
-            "w": 1400,
-            "h": 1400
-          }
-        ],
-        "class": "stack r lead-left"
-      }
-    },
-    "weeknd-green": {
-      "layout": "beat",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "The Weeknd.",
-      "role": "ROLLOUT VISUALS",
-      "fact": "The first images of a new era. Matt Adam shot the photographs that opened the rollout for <b>Hurry Up Tomorrow</b>, the final chapter of the trilogy that began with <i>After Hours</i>.",
-      "media": {
-        "type": "single",
-        "images": [
-          {
-            "src": "img/cd5dc90625.jpg",
-            "alt": "The Weeknd photographed by Matt Adam",
-            "frame": "fr r",
-            "key": "weeknd-green",
-            "position": "center 30%",
-            "w": 670,
-            "h": 670
-          }
-        ]
-      }
-    },
-    "benny": {
-      "layout": "beat flip",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "Benny<br>Blanco.",
-      "role": "CREATIVE DIRECTION + VISUAL IDENTITY + ROLLOUT",
-      "fact": "Matt Adam shaped the visual identity for Benny's transition from producer to artist, beginning with \"Eastside.\" For the albums <b>Friends Keep Secrets 1</b> and <b>Friends Keep Secrets 2</b>, he shot every visual asset across both rollouts. The campaigns ran on billboards worldwide, including a full Sunset Boulevard takeover of nine billboards at once, at a scale no one had done before.",
-      "media": {
-        "type": "single",
-        "images": [
-          {
-            "src": "img/4bcc436e68.jpg",
-            "alt": "Benny Blanco photographed by Matt Adam on a pink backdrop with dogs in wedding attire",
-            "frame": "fr r",
-            "key": "benny",
-            "w": 1400,
-            "h": 1400
-          }
-        ]
-      }
-    },
-    "party-straw": {
-      "layout": "beat intv-beat",
-      "heading_tag": "h3",
-      "heading_class": "ser r",
-      "heading": "<span class=\"sernum\">1.</span>Party<br><span class=\"sero\">The cocaine series.</span>",
-      "fact": "An oversized dollar bill and cocaine, staged on the street. The party zine and bandana, printed to look like a real empty bag. Money as appetite, status, and the performance of excess.",
-      "media": {
-        "type": "stack",
-        "images": [
-          {
-            "src": "img/23312d3dc4.jpg",
-            "alt": "Matt Adam Party series, oversized dollar-bill straw and cocaine staged on the Hollywood Walk of Fame",
-            "frame": "fr wide",
-            "key": "party-straw",
-            "w": 1100,
-            "h": 1464
-          },
-          {
-            "src": "img/3627afb24f.jpg",
-            "alt": "Matt Adam Party series, empty baggie object printed to look real",
-            "frame": "fr wide",
-            "key": "party-bag",
-            "w": 1052,
-            "h": 1400
-          }
-        ],
-        "class": "stack r"
-      }
-    },
-    "rotten-deer": {
-      "layout": "beat flip intv-beat",
-      "heading_tag": "h3",
-      "heading_class": "ser r",
-      "heading": "<span class=\"sernum\">2.</span>Rotten<br><span class=\"sero\">The raw-meat series.</span>",
-      "fact": "A deer head with blood. The rotten zine, printed, wrapped, and displayed as a cut of raw meat in a butcher’s case. Appetite stripped of the packaging that makes consumption comfortable.",
-      "media": {
-        "type": "stack",
-        "images": [
-          {
-            "src": "img/6b6ac73254.jpg",
-            "alt": "Matt Adam Rotten series, deer head intervention on a downtown Los Angeles sidewalk",
-            "frame": "fr wide",
-            "key": "rotten-deer",
-            "w": 1100,
-            "h": 1467
-          },
-          {
-            "src": "img/aea159db19.jpg",
-            "alt": "Matt Adam Rotten series, photographed meat staged in a Los Angeles butcher case",
-            "frame": "fr wide",
-            "key": "rotten-meat",
-            "w": 1100,
-            "h": 1467
-          }
-        ],
-        "class": "stack r"
-      }
-    },
-    "skinny-doll": {
-      "layout": "beat intv-beat",
-      "heading_tag": "h3",
-      "heading_class": "ser r",
-      "heading": "<span class=\"sernum\">3.</span>Skinny<br><span class=\"sero\">The Ozempic series.</span>",
-      "fact": "A deflated doll impaled by a giant Ozempic needle on the highway to Coachella. The skinny zine and bandana. Body image, appetite, and self-optimization rendered at monumental scale.",
-      "media": {
-        "type": "stack",
-        "images": [
-          {
-            "src": "img/bbe0c95b5b.jpg",
-            "alt": "Matt Adam Skinny series, deflated doll impaled on a giant Ozempic needle mounted on a desert billboard near Coachella",
-            "frame": "fr wide",
-            "key": "skinny-doll",
-            "w": 1100,
-            "h": 1462
-          },
-          {
-            "src": "img/c66308601c.jpg",
-            "alt": "Matt Adam Skinny series, oversized Ozempic pen prop held in hand",
-            "frame": "fr wide",
-            "key": "skinny-pen",
-            "w": 1100,
-            "h": 1460
-          }
-        ],
-        "class": "stack r"
-      }
-    },
-    "nbcPlay": {
-      "layout": "beat flip",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "On<br>The News.",
-      "fact": "<b>Andy Warhol had soup cans. Matt Adam has the Ozempic needle.</b> Warhol was interested in what America consumed. Matt Adam is interested in what people use to control themselves. The Ozempic intervention broke past the art world and onto NBC News.",
-      "media": {
-        "type": "video",
-        "id": "nbcPlay",
-        "aria": "NBC News segment",
-        "src": "nbc.mp4",
-        "poster": "img/6f12304531.jpg",
-        "label": "NBC NEWS — TAP TO PLAY"
-      }
-    },
-    "show-canvas": {
-      "layout": "beat flip",
-      "style": "margin-bottom:8vh",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "Nobody Came<br>To My Art Show.",
-      "role": "ART SHOW + PERFORMANCE ART",
-      "fact": "Weeks before his first warehouse art exhibit, Matt Adam ran through Hollywood in a clown costume, spray-painting <b>\"nobody came to my art show\"</b> on a pink-wrapped canvas. Then the invitations arrived: pieces of concrete, each marked \"break.\" On the night, a 2,000-pound concrete monolith blocked the gate, the pink canvas buried inside it. The crowd had to break it themselves to get in. Inside: the paintings and more work, waiting in a room they'd already earned.",
-      "media": {
-        "type": "single",
-        "images": [
-          {
-            "src": "img/47d505d062.jpg",
-            "alt": "Matt Adam lying under a pink nobody came to my art show canvas at a Los Angeles mall",
-            "frame": "fr r tall",
-            "key": "show-canvas",
-            "w": 1050,
-            "h": 1400
-          }
-        ]
-      }
-    },
-    "paint-ozempic": {
-      "layout": "beat",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "Paintings.",
-      "fact": "The public work gets the first reaction. The paintings are where it becomes unavoidable. Screenprinting and painting over his own photographs, plus wheatpasting, printing his photographs and pasting them up in public, sometimes all of it at once. The interventions make the social system visible. The paintings make the nervous system visible, where control stops being theatrical and becomes a body under strain. <b>This is the center of everything.</b>",
-      "media": {
-        "type": "single",
-        "images": [
-          {
-            "src": "img/d6570a0e66.jpg",
-            "alt": "Matt Adam painting, Ozempic semaglutide packaging arranged as a cross, screenprinted in black on a silver field",
-            "frame": "fr r tall fit",
-            "key": "paint-ozempic",
-            "w": 1100,
-            "h": 1100
-          }
-        ]
-      }
-    },
-    "unwrap-steal": {
-      "layout": "",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "Unwrap<br>&amp; Steal.",
-      "role": "REAL LIFE ART HEISTS",
-      "fact": "Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated <i>Telemarketers</i>. Matt Adam wraps his artwork like gifts, hides it in public, and posts the clues. Thousands of people across countries and continents race to find it and steal the art. Ownership doesn't flow through permission or purchase. It flows through attention, speed, and the will to go get it."
-    },
-    "taschen": {
-      "layout": "credit",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "Taschen —<br>Ice Cold.",
-      "role": "PUBLISHED WORKS",
-      "fact": "Taschen publishes the most serious art books on earth. <i>Ice Cold: A Hip-Hop Jewelry History</i> is the canonical record of the subject. Matt Adam's photographs of Young Thug and A$AP Rocky are printed inside it, credited by name.",
-      "media": {
-        "type": "single",
-        "images": [
-          {
-            "src": "img/081ea58315.jpg",
-            "alt": "Ice Cold: A Hip-Hop Jewelry History, Taschen, featuring Matt Adam photography",
-            "frame": "fr r tall",
-            "key": "ic-cover",
-            "w": 1100,
-            "h": 1100
-          }
-        ]
-      }
-    },
-    "dead-city-punx": {
-      "layout": "credit flip",
-      "heading_tag": "h2",
-      "heading_class": "big r",
-      "heading": "Beyond the Streets —<br>Dead City Punx.",
-      "role": "PUBLISHED WORKS + GALLERY + DOCUMENTARY",
-      "fact": "Five years photographing Dead City Punx on film in the Los Angeles underground. The work became a documentary directed by Roger Gastman, founder of Beyond the Streets, the world's most authoritative institution for graffiti, street art, and subculture, co-executive produced by Zack de la Rocha of Rage Against the Machine. Matt Adam's photographs run throughout the film, which also features footage from his own Unwrap &amp; Steal documentary. His photography fills a major portion of the \"Dead City\" book, including the cover, and hangs in the exhibition PUNX: The Art of Dead City &amp; Friends at Beyond the Streets, Los Angeles.",
-      "media": {
-        "type": "single",
-        "images": [
-          {
-            "src": "img/f2042cf4b4.jpg",
-            "alt": "Matt Adam with the Dead City Punx book at Beyond the Streets, Los Angeles",
-            "frame": "fr r tall",
-            "key": "dcp-main",
-            "w": 1050,
-            "h": 1400
-          }
-        ]
-      }
-    }
-  }
+  ]
 }
