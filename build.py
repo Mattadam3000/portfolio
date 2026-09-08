@@ -2,12 +2,20 @@
 """
 Builds index.html from template.html + content.json.
 
+Usage:
+  python3 build.py           write index.html
+  python3 build.py --check   validate + verify index.html is up to date (no writes)
+
 Edit content.json to change wording, swap images, or add a new beat.
-Then run:  python3 build.py
+index.html is GENERATED — never edit it by hand.
 """
 import json, re, sys, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+P = lambda *a: os.path.join(ROOT, *a)
+
+
+# ---------- rendering ----------
 
 def img_tag(im):
     a = [f'src="{im["src"]}"', f'alt="{im.get("alt","")}"', 'loading="lazy"']
@@ -49,27 +57,82 @@ def render(bid, b):
             f'    <div>\n' + "\n".join(txt) + f'\n    </div>\n'
             f'{media(b["media"])}\n  </div>')
 
-def main():
-    content = json.load(open(os.path.join(ROOT, "content.json")))
-    tpl = open(os.path.join(ROOT, "template.html")).read()
+
+# ---------- validation ----------
+
+def validate(beats):
+    """Return a list of human-readable problems. Empty list == valid."""
+    errs = []
+    for bid, b in beats.items():
+        if not b.get("layout"):
+            errs.append(f'{bid}: missing "layout"')
+        m = b.get("media")
+        if not m:
+            errs.append(f'{bid}: missing "media"'); continue
+        if m.get("type") not in ("single", "stack", "video"):
+            errs.append(f'{bid}: media.type must be single|stack|video, got {m.get("type")!r}')
+        if m.get("type") == "video":
+            for k in ("id", "src", "poster"):
+                if not m.get(k): errs.append(f'{bid}: video media missing "{k}"')
+            for k in ("src", "poster"):
+                if m.get(k) and not os.path.exists(P(m[k])):
+                    errs.append(f'{bid}: video {k} not found on disk: {m[k]}')
+        else:
+            for i, im in enumerate(m.get("images", [])):
+                where = f'{bid}.images[{i}]'
+                if not im.get("src"):
+                    errs.append(f'{where}: missing "src"'); continue
+                if not os.path.exists(P(im["src"])):
+                    errs.append(f'{where}: file not found on disk: {im["src"]}')
+                if not im.get("alt"):
+                    errs.append(f'{where}: empty alt text ({im["src"]})')
+                if not (im.get("w") and im.get("h")):
+                    errs.append(f'{where}: missing width/height — causes layout shift ({im["src"]})')
+    return errs
+
+
+# ---------- pipeline ----------
+
+def render_page():
+    content = json.load(open(P("content.json")))
+    tpl = open(P("template.html")).read()
     beats = content["beats"]
+
+    errs = validate(beats)
+    if errs:
+        sys.exit("content.json validation failed:\n" + "\n".join("  - " + e for e in errs))
 
     missing = [m for m in re.findall(r'\{\{BEAT:([^}]+)\}\}', tpl) if m not in beats]
     if missing:
         sys.exit(f"ERROR: template references unknown beats: {missing}")
 
     used = set()
-    def sub(m):
-        used.add(m.group(1))
-        return render(m.group(1), beats[m.group(1)])
-    out = re.sub(r'\{\{BEAT:([^}]+)\}\}', sub, tpl)
+    out = re.sub(r'\{\{BEAT:([^}]+)\}\}',
+                 lambda m: (used.add(m.group(1)), render(m.group(1), beats[m.group(1)]))[1],
+                 tpl)
 
     orphan = set(beats) - used
     if orphan:
         print(f"WARNING: content.json has beats not placed in template: {sorted(orphan)}")
+    return out, used
 
-    open(os.path.join(ROOT, "index.html"), "w").write(out)
+
+def main():
+    check = "--check" in sys.argv
+    out, used = render_page()
+    path = P("index.html")
+
+    if check:
+        current = open(path).read() if os.path.exists(path) else None
+        if current != out:
+            sys.exit("--check FAILED: index.html is stale or hand-edited.\n"
+                     "  Run: python3 build.py")
+        print(f"--check OK  ({len(out):,} bytes, {len(used)} beats, content.json valid)")
+        return
+
+    open(path, "w").write(out)
     print(f"built index.html  ({len(out):,} bytes, {len(used)} beats)")
+
 
 if __name__ == "__main__":
     main()
