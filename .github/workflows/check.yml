@@ -17,6 +17,11 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Normalize template schema source
+        run: |
+          python3 clean_template_jsonld.py
+          python3 clean_template_jsonld.py --check
+
       - name: Render and validate homepage
         run: python3 build.py
 
