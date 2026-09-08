@@ -1,4 +1,132 @@
 {
+  "blocks": [
+    {
+      "id": "architect",
+      "label": "Visual Architect",
+      "classes": "sortable architect",
+      "aria": "Matt Adam, Visual Architect"
+    },
+    {
+      "id": "legends",
+      "label": "Legends Never Die.",
+      "classes": "sortable",
+      "aria": "Juice WRLD, Legends Never Die"
+    },
+    {
+      "id": "roster",
+      "label": "Roster",
+      "classes": "sortable roster",
+      "aria": "Artists Matt Adam has worked with"
+    },
+    {
+      "id": "wdty",
+      "label": "We Don't Trust You.",
+      "classes": "sortable",
+      "aria": "Future and Metro Boomin, We Don't Trust You"
+    },
+    {
+      "id": "wsdty",
+      "label": "We Still Don't Trust You.",
+      "classes": "sortable",
+      "aria": "Future and Metro Boomin, We Still Don't Trust You"
+    },
+    {
+      "id": "pluto",
+      "label": "Mixtape Pluto.",
+      "classes": "sortable",
+      "aria": "Future, Mixtape Pluto"
+    },
+    {
+      "id": "weeknd",
+      "label": "The Weeknd.",
+      "classes": "sortable",
+      "aria": "The Weeknd"
+    },
+    {
+      "id": "benny",
+      "label": "Benny Blanco.",
+      "classes": "sortable",
+      "aria": "Benny Blanco"
+    },
+    {
+      "id": "statement",
+      "label": "statement",
+      "classes": "sortable statement",
+      "aria": "Creating worlds, not campaigns"
+    },
+    {
+      "id": "unwrap-steal",
+      "label": "Unwrap & Steal.",
+      "classes": "sortable",
+      "aria": "Unwrap and Steal, a real life art heist"
+    },
+    {
+      "id": "taschen",
+      "label": "Taschen — Ice Cold.",
+      "classes": "sortable",
+      "aria": "Taschen, Ice Cold"
+    },
+    {
+      "id": "dead-city-punx",
+      "label": "Beyond the Streets — Dead City Punx.",
+      "classes": "sortable",
+      "aria": "Beyond the Streets, Dead City Punx"
+    },
+    {
+      "id": "objects",
+      "label": "Objects.",
+      "classes": "sortable",
+      "aria": "Objects, the practice"
+    },
+    {
+      "id": "nbc-news",
+      "label": "On The News.",
+      "classes": "sortable",
+      "aria": "Matt Adam on NBC News"
+    },
+    {
+      "id": "art-show",
+      "label": "Nobody Came To My Art Show.",
+      "classes": "sortable",
+      "aria": "Nobody Came To My Art Show"
+    },
+    {
+      "id": "paintings",
+      "label": "Paintings.",
+      "classes": "sortable",
+      "aria": "Paintings"
+    },
+    {
+      "id": "seen-in",
+      "label": "Seen In",
+      "classes": "sortable seenin",
+      "aria": "Press and publications"
+    },
+    {
+      "id": "photography",
+      "label": "Photography",
+      "classes": "sortable",
+      "aria": "Photography by Matt Adam"
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "classes": "sortable about",
+      "aria": "About Matt Adam"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "classes": "sortable door",
+      "aria": "Contact Matt Adam"
+    },
+    {
+      "id": "faq",
+      "label": "FAQ",
+      "classes": "sortable faq-section",
+      "aria": "FAQ about Matt Adam"
+    }
+  ],
   "beats": {
     "juice-portrait": {
       "layout": "beat",

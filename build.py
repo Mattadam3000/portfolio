@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """
-Builds index.html from template.html + content.json.
+Builds index.html from template.html + parts.html + content.json.
+
+  content.json   page ORDER (blocks[]) and beat copy (beats{})
+  parts.html     per-block markup, delimited by <!--PART:id-->
+  template.html  page shell, with a {{FLOW}} placeholder
 
 Usage:
   python3 build.py           write index.html
   python3 build.py --check   validate + verify index.html is up to date (no writes)
 
-Edit content.json to change wording, swap images, or add a new beat.
 index.html is GENERATED — never edit it by hand.
 """
 import json, re, sys, os
@@ -58,6 +61,33 @@ def render(bid, b):
             f'{media(b["media"])}\n  </div>')
 
 
+# ---------- flow ----------
+
+def read_parts():
+    """Parse parts.html into {id: markup}."""
+    src = open(P("parts.html")).read()
+    parts = {}
+    for m in re.finditer(r'<!--PART:([a-z0-9-]+)-->(.*?)<!--/PART:\1-->', src, re.S):
+        parts[m.group(1)] = m.group(2).strip("\n")
+    return parts
+
+
+def flow(blocks, parts, beats):
+    """Emit <section id="flow"> with one .sortable per block, in blocks[] order."""
+    out = ['<section id="flow">']
+    for b in blocks:
+        at = [f'class="{b["classes"]}"', f'id="{b["id"]}"', f'data-label="{b["id"]}"']
+        if b.get("aria"): at.append(f'aria-label="{b["aria"]}"')
+        body = parts[b["id"]]
+        body = re.sub(r'\{\{BEAT:([^}]+)\}\}',
+                      lambda m: render(m.group(1), beats[m.group(1)]), body)
+        out.append(f'<div {" ".join(at)}>')
+        out.append(body)
+        out.append('</div>')
+    out.append('</section>')
+    return "\n".join(out)
+
+
 # ---------- validation ----------
 
 def validate(beats):
@@ -97,23 +127,42 @@ def render_page():
     content = json.load(open(P("content.json")))
     tpl = open(P("template.html")).read()
     beats = content["beats"]
+    blocks = content["blocks"]
+    parts = read_parts()
 
     errs = validate(beats)
-    if errs:
-        sys.exit("content.json validation failed:\n" + "\n".join("  - " + e for e in errs))
 
-    missing = [m for m in re.findall(r'\{\{BEAT:([^}]+)\}\}', tpl) if m not in beats]
-    if missing:
-        sys.exit(f"ERROR: template references unknown beats: {missing}")
+    ids = [b["id"] for b in blocks]
+    dupes = {i for i in ids if ids.count(i) > 1}
+    if dupes:
+        errs.append(f'duplicate block ids: {sorted(dupes)}')
+    for b in blocks:
+        if b["id"] not in parts:
+            errs.append(f'block "{b["id"]}" has no <!--PART:{b["id"]}--> in parts.html')
+    for pid in parts:
+        if pid not in ids:
+            errs.append(f'parts.html has PART:{pid} but no block with that id in content.json')
 
     used = set()
-    out = re.sub(r'\{\{BEAT:([^}]+)\}\}',
-                 lambda m: (used.add(m.group(1)), render(m.group(1), beats[m.group(1)]))[1],
-                 tpl)
+    for pid, body in parts.items():
+        for bid in re.findall(r'\{\{BEAT:([^}]+)\}\}', body):
+            used.add(bid)
+            if bid not in beats:
+                errs.append(f'PART:{pid} references unknown beat "{bid}"')
+    for bid in set(beats) - used:
+        errs.append(f'beat "{bid}" is defined but never placed in parts.html')
 
-    orphan = set(beats) - used
-    if orphan:
-        print(f"WARNING: content.json has beats not placed in template: {sorted(orphan)}")
+    nav_ids = re.findall(r'data-target="([^"]+)"', tpl)
+    for t in nav_ids:
+        if t not in ids:
+            errs.append(f'nav data-target="{t}" does not match any block id')
+
+    if errs:
+        sys.exit("validation failed:\n" + "\n".join("  - " + e for e in errs))
+
+    if "{{FLOW}}" not in tpl:
+        sys.exit("ERROR: template.html has no {{FLOW}} placeholder")
+    out = tpl.replace("{{FLOW}}", flow(blocks, parts, beats))
     return out, used
 
 
@@ -127,7 +176,7 @@ def main():
         if current != out:
             sys.exit("--check FAILED: index.html is stale or hand-edited.\n"
                      "  Run: python3 build.py")
-        print(f"--check OK  ({len(out):,} bytes, {len(used)} beats, content.json valid)")
+        print(f"--check OK  ({len(out):,} bytes, {len(used)} beats, content valid)")
         return
 
     open(path, "w").write(out)
