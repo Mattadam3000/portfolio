@@ -11,14 +11,18 @@ PATCH = r'''
 <style id="homepage-vision-preview-style">
   .homepage-work-link{position:absolute;right:20px;bottom:max(22px,env(safe-area-inset-bottom));color:var(--ink);text-decoration:none;opacity:.72;z-index:5}
   .homepage-work-link:hover{opacity:1}
-  #about{padding-top:12vh}
   #contact{padding-top:14vh}
+  #about.preview-about-source{display:none!important}
   .homepage-info-link{display:inline-block;margin-top:26px;border:0;background:transparent;color:var(--muted);font:inherit;cursor:pointer;padding:0;text-transform:uppercase;letter-spacing:.14em;font-family:var(--fm);font-size:11px}
   .homepage-info-link:hover{color:var(--ink)}
   #faq.preview-info-overlay{position:fixed;inset:0;z-index:120;display:none;max-width:none;margin:0;padding:max(72px,10vh) max(20px,8vw) 10vh;background:var(--paper);color:var(--ink);overflow-y:auto;-webkit-overflow-scrolling:touch}
   #faq.preview-info-overlay.open{display:block}
   #faq.preview-info-overlay .faq{max-width:900px;margin:0 auto}
-  #faq.preview-info-overlay .preview-info-index{max-width:900px;margin:0 auto 6vh}
+  #faq.preview-info-overlay .preview-info-index{max-width:900px;margin:0 auto 8vh}
+  .preview-about-copy{max-width:900px;margin:0 auto 9vh}
+  .preview-about-copy .preview-about-label,.preview-faq-label{display:block;color:var(--muted);margin-bottom:24px}
+  .preview-about-copy .lede{margin-top:0;max-width:44em}
+  .preview-faq-label{max-width:900px;margin:0 auto 28px}
   .preview-info-close{position:fixed;right:20px;top:max(18px,env(safe-area-inset-top));z-index:121;border:0;background:transparent;color:var(--ink);cursor:pointer;font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
   body.preview-info-open{overflow:hidden}
   @media(max-width:760px){.homepage-work-link{right:18px;bottom:max(22px,env(safe-area-inset-bottom))}#faq.preview-info-overlay{padding-left:18px;padding-right:18px}.preview-info-close{right:18px}}
@@ -76,18 +80,46 @@ PATCH = r'''
       hero.appendChild(work);
     }
 
-    // Keep FAQ accessible for users and schema parity, but completely out of the normal scroll.
+    // About and FAQ remain available, but neither interrupts the main narrative.
     const faq=document.getElementById('faq');
     const aboutBlock=document.getElementById('about');
-    if(faq&&aboutBlock){
+    const contact=document.getElementById('contact');
+    if(faq&&aboutBlock&&contact){
+      const aboutLede=aboutBlock.querySelector('.lede');
+      aboutBlock.classList.add('preview-about-source');
+      aboutBlock.setAttribute('aria-hidden','true');
+
       faq.classList.add('preview-info-overlay');
       document.body.appendChild(faq);
+
       if(!faq.querySelector('.preview-info-index')){
         const idx=document.createElement('div');
         idx.className='index mono preview-info-index';
-        idx.innerHTML='<span>—</span><span>INFORMATION / FAQ</span><span class="jp">情報</span>';
+        idx.innerHTML='<span>—</span><span>INFORMATION</span><span class="jp">情報</span>';
         faq.insertBefore(idx,faq.firstChild);
       }
+
+      if(aboutLede&&!faq.querySelector('.preview-about-copy')){
+        const aboutCopy=document.createElement('div');
+        aboutCopy.className='preview-about-copy';
+        const label=document.createElement('span');
+        label.className='mono preview-about-label';
+        label.textContent='ABOUT';
+        const copy=aboutLede.cloneNode(true);
+        aboutCopy.appendChild(label);
+        aboutCopy.appendChild(copy);
+        const faqContent=faq.querySelector('.faq');
+        faq.insertBefore(aboutCopy,faqContent||null);
+      }
+
+      if(!faq.querySelector('.preview-faq-label')){
+        const faqLabel=document.createElement('span');
+        faqLabel.className='mono preview-faq-label';
+        faqLabel.textContent='FAQ';
+        const faqContent=faq.querySelector('.faq');
+        faq.insertBefore(faqLabel,faqContent||null);
+      }
+
       if(!faq.querySelector('.preview-info-close')){
         const close=document.createElement('button');
         close.type='button';
@@ -95,22 +127,24 @@ PATCH = r'''
         close.textContent='CLOSE ×';
         faq.insertBefore(close,faq.firstChild);
       }
-      if(!aboutBlock.querySelector('.homepage-info-link')){
+
+      if(!contact.querySelector('.homepage-info-link')){
         const trigger=document.createElement('button');
         trigger.type='button';
         trigger.className='homepage-info-link';
-        trigger.textContent='INFO / FAQ ↗';
-        aboutBlock.appendChild(trigger);
+        trigger.textContent='INFO ↗';
+        contact.appendChild(trigger);
         trigger.addEventListener('click',()=>{
           faq.classList.add('open');
           document.body.classList.add('preview-info-open');
           faq.querySelector('.preview-info-close')?.focus();
         });
       }
+
       faq.querySelector('.preview-info-close')?.addEventListener('click',()=>{
         faq.classList.remove('open');
         document.body.classList.remove('preview-info-open');
-        aboutBlock.querySelector('.homepage-info-link')?.focus();
+        contact.querySelector('.homepage-info-link')?.focus();
       });
       faq.addEventListener('click',e=>{
         if(e.target===faq){
@@ -122,12 +156,11 @@ PATCH = r'''
         if(e.key==='Escape'&&faq.classList.contains('open')){
           faq.classList.remove('open');
           document.body.classList.remove('preview-info-open');
-          aboutBlock.querySelector('.homepage-info-link')?.focus();
+          contact.querySelector('.homepage-info-link')?.focus();
         }
       });
     }
 
-    const contact=document.getElementById('contact');
     if(contact){
       const first=contact.querySelector('.index span');
       if(first) first.textContent='06';
