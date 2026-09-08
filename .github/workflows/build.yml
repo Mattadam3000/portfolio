@@ -1,8 +1,8 @@
 name: Build site
 
 # Rebuilds generated HTML whenever homepage or work-page content changes,
-# applies CMS-derived structured data, and commits the generated pages back.
-# Pages serves the committed files.
+# normalizes the template, applies CMS-derived structured data, and commits the
+# generated pages back. Pages serves the committed files.
 #
 # Deliberately NOT "Pages source = Actions": if this workflow ever breaks, the
 # site degrades to stale rather than to a 404. mattadam.art is an outreach
@@ -19,6 +19,7 @@ on:
       - build.py
       - build_work.py
       - structured_data.py
+      - clean_template_jsonld.py
       - 'img/**'
   workflow_dispatch:
 
@@ -39,6 +40,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Remove legacy hand-maintained JSON-LD from template
+        run: python3 clean_template_jsonld.py
+
       - name: Build homepage
         run: python3 build.py
 
@@ -50,14 +54,14 @@ jobs:
           python3 structured_data.py
           python3 structured_data.py --check
 
-      - name: Commit generated HTML if it changed
+      - name: Commit normalized template and generated HTML if changed
         run: |
-          if git diff --quiet -- index.html work/index.html; then
-            echo "generated HTML already up to date"
+          if git diff --quiet -- template.html index.html work/index.html; then
+            echo "template and generated HTML already up to date"
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html work/index.html
-          git commit -m "Rebuild generated pages [skip ci]"
+          git add template.html index.html work/index.html
+          git commit -m "Normalize template and rebuild pages [skip ci]"
           git push
