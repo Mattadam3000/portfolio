@@ -41,7 +41,7 @@
             "type": "stack",
             "images": [
               {
-                "src": "img/818a46bfed.jpg",
+                "src": "/img/818a46bfed.jpg",
                 "alt": "Juice WRLD portrait on film by Matt Adam",
                 "frame": "fr",
                 "key": "juice-portrait",
@@ -51,7 +51,7 @@
                 "h": 1738
               },
               {
-                "src": "img/c461fa69f1.jpg",
+                "src": "/img/c461fa69f1.jpg",
                 "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
                 "frame": "fr",
                 "key": "juice-cover",
@@ -135,7 +135,7 @@
             "type": "single",
             "images": [
               {
-                "src": "img/cade447acb.jpg",
+                "src": "/img/cade447acb.jpg",
                 "alt": "Future and Metro Boomin We Don't Trust You album cover, visual identity by Matt Adam",
                 "frame": "fr r",
                 "key": "wdty",
@@ -167,7 +167,7 @@
             "type": "single",
             "images": [
               {
-                "src": "img/755ee4b88f.jpg",
+                "src": "/img/755ee4b88f.jpg",
                 "alt": "Future and Metro Boomin We Still Don't Trust You album cover, shot by Matt Adam",
                 "frame": "fr r",
                 "key": "wsdty",
@@ -199,7 +199,7 @@
             "type": "stack",
             "images": [
               {
-                "src": "img/3c7bee3dc0.jpg",
+                "src": "/img/3c7bee3dc0.jpg",
                 "alt": "Future Mixtape Pluto billboard wrapping The Reef building in downtown Los Angeles, shot by Matt Adam",
                 "frame": "fr wide",
                 "key": "pluto-billboard",
@@ -208,7 +208,7 @@
                 "h": 620
               },
               {
-                "src": "img/6e0fb6ab6d.jpg",
+                "src": "/img/6e0fb6ab6d.jpg",
                 "alt": "Future Mixtape Pluto OUT NOW posters wheatpasted on the street, shot by Matt Adam",
                 "frame": "fr wide",
                 "key": "pluto-street",
@@ -216,7 +216,7 @@
                 "h": 900
               },
               {
-                "src": "img/f3735fc527.jpg",
+                "src": "/img/f3735fc527.jpg",
                 "alt": "Future Mixtape Pluto polaroid shot by Matt Adam",
                 "frame": "fr",
                 "key": "pluto",
@@ -249,7 +249,7 @@
             "type": "single",
             "images": [
               {
-                "src": "img/cd5dc90625.jpg",
+                "src": "/img/cd5dc90625.jpg",
                 "alt": "The Weeknd photographed by Matt Adam",
                 "frame": "fr r",
                 "key": "weeknd-green",
@@ -282,7 +282,7 @@
             "type": "single",
             "images": [
               {
-                "src": "img/4bcc436e68.jpg",
+                "src": "/img/4bcc436e68.jpg",
                 "alt": "Benny Blanco photographed by Matt Adam on a pink backdrop with dogs in wedding attire",
                 "frame": "fr r",
                 "key": "benny",
@@ -333,7 +333,7 @@
           "style": "margin-top:6vh;margin-bottom:14px",
           "images": [
             {
-              "src": "img/9803254175.jpg",
+              "src": "/img/9803254175.jpg",
               "alt": "Matt Adam removing an orange-wrapped Unwrap and Steal canvas from a downtown Los Angeles wall on San Pedro Street",
               "frame": "fr r wide",
               "key": "uns-lead",
@@ -347,7 +347,7 @@
           "style": "margin-top:14px",
           "images": [
             {
-              "src": "img/e1040f7064.jpg",
+              "src": "/img/e1040f7064.jpg",
               "alt": "Matt Adam installing a pink-wrapped Unwrap and Steal artwork on a Los Angeles River wall",
               "frame": "fr r tall",
               "key": "uns-1",
@@ -355,7 +355,7 @@
               "h": 1467
             },
             {
-              "src": "img/5568ae4dd9.jpg",
+              "src": "/img/5568ae4dd9.jpg",
               "alt": "Aerial view of Matt Adam placing a blue-wrapped Unwrap and Steal artwork on a concrete embankment",
               "frame": "fr r tall",
               "key": "uns-2",
@@ -363,7 +363,7 @@
               "h": 1467
             },
             {
-              "src": "img/f45b6bdbf3.jpg",
+              "src": "/img/f45b6bdbf3.jpg",
               "alt": "Matt Adam hiding a wrapped Unwrap and Steal artwork from an inflatable raft on the water",
               "frame": "fr r tall",
               "key": "uns-3",
@@ -371,7 +371,7 @@
               "h": 1467
             },
             {
-              "src": "img/61033f3083.jpg",
+              "src": "/img/61033f3083.jpg",
               "alt": "Matt Adam installing an orange-wrapped Unwrap and Steal artwork on a Los Angeles street wall",
               "frame": "fr r tall",
               "key": "uns-4",
@@ -410,7 +410,7 @@
             "type": "single",
             "images": [
               {
-                "src": "img/081ea58315.jpg",
+                "src": "/img/081ea58315.jpg",
                 "alt": "Ice Cold: A Hip-Hop Jewelry History, Taschen, featuring Matt Adam photography",
                 "frame": "fr r tall",
                 "key": "ic-cover",
@@ -424,7 +424,7 @@
           "kind": "duo",
           "images": [
             {
-              "src": "img/f70684dad3.jpg",
+              "src": "/img/f70684dad3.jpg",
               "alt": "Young Thug photographed by Matt Adam, Los Angeles 2019, printed in Taschen Ice Cold",
               "frame": "fr r tall",
               "key": "ic-thug",
@@ -432,7 +432,7 @@
               "h": 1400
             },
             {
-              "src": "img/c127b280a3.jpg",
+              "src": "/img/c127b280a3.jpg",
               "alt": "A$AP Rocky photographed by Matt Adam, Toronto 2018, printed in Taschen Ice Cold",
               "frame": "fr r tall",
               "key": "ic-rocky",
@@ -463,7 +463,7 @@
             "type": "single",
             "images": [
               {
-                "src": "img/f2042cf4b4.jpg",
+                "src": "/img/f2042cf4b4.jpg",
                 "alt": "Matt Adam with the Dead City Punx book at Beyond the Streets, Los Angeles",
                 "frame": "fr r tall",
                 "key": "dcp-main",
@@ -477,7 +477,7 @@
           "kind": "duo",
           "images": [
             {
-              "src": "img/5008693520.jpg",
+              "src": "/img/5008693520.jpg",
               "alt": "Beyond the Streets Control Gallery storefront presenting Dead City Punx, Los Angeles",
               "frame": "fr r wide",
               "key": "dcp-store",
@@ -485,7 +485,7 @@
               "h": 810
             },
             {
-              "src": "img/4dd709ef90.jpg",
+              "src": "/img/4dd709ef90.jpg",
               "alt": "Dead City Punx gallery installation at Beyond the Streets, Los Angeles",
               "frame": "fr r wide",
               "key": "dcp-install",
@@ -530,7 +530,7 @@
             "type": "stack",
             "images": [
               {
-                "src": "img/23312d3dc4.jpg",
+                "src": "/img/23312d3dc4.jpg",
                 "alt": "Matt Adam Party series, oversized dollar-bill straw and cocaine staged on the Hollywood Walk of Fame",
                 "frame": "fr wide",
                 "key": "party-straw",
@@ -538,7 +538,7 @@
                 "h": 1464
               },
               {
-                "src": "img/3627afb24f.jpg",
+                "src": "/img/3627afb24f.jpg",
                 "alt": "Matt Adam Party series, empty baggie object printed to look real",
                 "frame": "fr wide",
                 "key": "party-bag",
@@ -561,7 +561,7 @@
             "type": "stack",
             "images": [
               {
-                "src": "img/6b6ac73254.jpg",
+                "src": "/img/6b6ac73254.jpg",
                 "alt": "Matt Adam Rotten series, deer head intervention on a downtown Los Angeles sidewalk",
                 "frame": "fr wide",
                 "key": "rotten-deer",
@@ -569,7 +569,7 @@
                 "h": 1467
               },
               {
-                "src": "img/aea159db19.jpg",
+                "src": "/img/aea159db19.jpg",
                 "alt": "Matt Adam Rotten series, photographed meat staged in a Los Angeles butcher case",
                 "frame": "fr wide",
                 "key": "rotten-meat",
@@ -592,7 +592,7 @@
             "type": "stack",
             "images": [
               {
-                "src": "img/bbe0c95b5b.jpg",
+                "src": "/img/bbe0c95b5b.jpg",
                 "alt": "Matt Adam Skinny series, deflated doll impaled on a giant Ozempic needle mounted on a desert billboard near Coachella",
                 "frame": "fr wide",
                 "key": "skinny-doll",
@@ -600,7 +600,7 @@
                 "h": 1462
               },
               {
-                "src": "img/c66308601c.jpg",
+                "src": "/img/c66308601c.jpg",
                 "alt": "Matt Adam Skinny series, oversized Ozempic pen prop held in hand",
                 "frame": "fr wide",
                 "key": "skinny-pen",
@@ -632,8 +632,8 @@
             "type": "video",
             "id": "nbcPlay",
             "aria": "NBC News segment",
-            "src": "nbc.mp4",
-            "poster": "img/6f12304531.jpg",
+            "src": "/nbc.mp4",
+            "poster": "/img/6f12304531.jpg",
             "label": "NBC NEWS — TAP TO PLAY"
           }
         }
@@ -660,7 +660,7 @@
             "type": "single",
             "images": [
               {
-                "src": "img/47d505d062.jpg",
+                "src": "/img/47d505d062.jpg",
                 "alt": "Matt Adam lying under a pink nobody came to my art show canvas at a Los Angeles mall",
                 "frame": "fr r tall",
                 "key": "show-canvas",
@@ -675,7 +675,7 @@
           "style": "margin-bottom:12vh",
           "images": [
             {
-              "src": "img/1a3471a29b.jpg",
+              "src": "/img/1a3471a29b.jpg",
               "alt": "Matt Adam &quot;break&quot; warehouse show, white fire-extinguisher paint marks across a black wall at night",
               "frame": "fr fit r",
               "key": "warehouse-break",
@@ -705,7 +705,7 @@
             "type": "single",
             "images": [
               {
-                "src": "img/d6570a0e66.jpg",
+                "src": "/img/d6570a0e66.jpg",
                 "alt": "Matt Adam painting, Ozempic semaglutide packaging arranged as a cross, screenprinted in black on a silver field",
                 "frame": "fr r tall fit",
                 "key": "paint-ozempic",
@@ -720,7 +720,7 @@
           "style": "margin-top:6vh",
           "images": [
             {
-              "src": "img/eff0bd7bcb.jpg",
+              "src": "/img/eff0bd7bcb.jpg",
               "alt": "Matt Adam painting, black and white photographic image overlaid with a fluorescent green square",
               "frame": "fr r tall fit",
               "key": "paint-green",
@@ -728,7 +728,7 @@
               "h": 1647
             },
             {
-              "src": "img/6ba7c91318.jpg",
+              "src": "/img/6ba7c91318.jpg",
               "alt": "Matt Adam painting, black and white photographic image overlaid with a dripping pink painted outline",
               "frame": "fr r tall fit",
               "key": "paint-pink",
@@ -741,7 +741,7 @@
           "kind": "single",
           "images": [
             {
-              "src": "img/61bb9c8805.jpg",
+              "src": "/img/61bb9c8805.jpg",
               "alt": "Matt Adam in an orange beanie standing in front of one of his large black-and-white paintings",
               "frame": "fr r fit full",
               "key": "orange-hat",
@@ -755,7 +755,7 @@
           "style": "margin-top:0",
           "images": [
             {
-              "src": "img/edf575549f.jpg",
+              "src": "/img/edf575549f.jpg",
               "alt": "Matt Adam painting, horned three-eyed figure with bombs in black on a yellow field",
               "frame": "fr r wide fit",
               "key": "paint-c2",
@@ -763,7 +763,7 @@
               "h": 837
             },
             {
-              "src": "img/1a041c5cdb.jpg",
+              "src": "/img/1a041c5cdb.jpg",
               "alt": "Matt Adam painting, black ink figure on a periwinkle field",
               "frame": "fr r wide fit",
               "key": "paint-c1",
@@ -771,7 +771,7 @@
               "h": 837
             },
             {
-              "src": "img/862b5bf443.jpg",
+              "src": "/img/862b5bf443.jpg",
               "alt": "Matt Adam painting in pink and black, tangled figures and hands",
               "frame": "fr r wide fit",
               "key": "paint-c3",
@@ -779,7 +779,7 @@
               "h": 837
             },
             {
-              "src": "img/5c6c7c7b8f.jpg",
+              "src": "/img/5c6c7c7b8f.jpg",
               "alt": "Matt Adam painting, multi-eyed creature in black line on a pink field",
               "frame": "fr r wide fit",
               "key": "paint-c4",
@@ -793,7 +793,7 @@
           "style": "margin-top:6vh",
           "images": [
             {
-              "src": "img/04b582b3ba.jpg",
+              "src": "/img/04b582b3ba.jpg",
               "alt": "Four Matt Adam Mickey Mouse paintings in black ink, with hand-lettered slogans",
               "frame": "fr r wide fit",
               "key": "mickey-paintings",
@@ -853,7 +853,7 @@
       },
       "lead": {
         "key": "photo-lead",
-        "src": "img/ba7b1aa412.jpg",
+        "src": "/img/ba7b1aa412.jpg",
         "alt": "Matt Adam photographing The Weeknd, Future, and Metro Boomin in a white studio",
         "w": 1800,
         "h": 1011
@@ -862,7 +862,7 @@
         {
           "key": "grid0",
           "aria": "Photograph 1",
-          "src": "img/8987fb7730.jpg",
+          "src": "/img/8987fb7730.jpg",
           "alt": "Matt Adam photography 1",
           "w": 1600,
           "h": 1072
@@ -870,7 +870,7 @@
         {
           "key": "grid1",
           "aria": "Photograph 2",
-          "src": "img/99cf83ca6d.jpg",
+          "src": "/img/99cf83ca6d.jpg",
           "alt": "Matt Adam photography 2",
           "w": 1600,
           "h": 1072
@@ -878,7 +878,7 @@
         {
           "key": "grid2",
           "aria": "Photograph 3",
-          "src": "img/614a480a5b.jpg",
+          "src": "/img/614a480a5b.jpg",
           "alt": "Matt Adam photography 3",
           "w": 1600,
           "h": 1072
@@ -886,7 +886,7 @@
         {
           "key": "grid3",
           "aria": "Photograph 4",
-          "src": "img/84a7a23833.jpg",
+          "src": "/img/84a7a23833.jpg",
           "alt": "Matt Adam photography 4",
           "w": 1600,
           "h": 1072
@@ -894,7 +894,7 @@
         {
           "key": "grid4",
           "aria": "Photograph 5",
-          "src": "img/377274d1e2.jpg",
+          "src": "/img/377274d1e2.jpg",
           "alt": "Matt Adam photography 5",
           "w": 1600,
           "h": 1072
@@ -902,7 +902,7 @@
         {
           "key": "grid5",
           "aria": "Photograph 6",
-          "src": "img/156e429394.jpg",
+          "src": "/img/156e429394.jpg",
           "alt": "Matt Adam photography 6",
           "w": 1600,
           "h": 1072
@@ -910,7 +910,7 @@
         {
           "key": "grid6",
           "aria": "Photograph 7",
-          "src": "img/b31a763279.jpg",
+          "src": "/img/b31a763279.jpg",
           "alt": "Matt Adam photography 7",
           "w": 1600,
           "h": 1072
@@ -918,7 +918,7 @@
         {
           "key": "grid7",
           "aria": "Photograph 8",
-          "src": "img/134f3a2dec.jpg",
+          "src": "/img/134f3a2dec.jpg",
           "alt": "Matt Adam photography 8",
           "w": 1000,
           "h": 670
@@ -926,7 +926,7 @@
         {
           "key": "grid8",
           "aria": "Photograph 9",
-          "src": "img/551b369868.jpg",
+          "src": "/img/551b369868.jpg",
           "alt": "Matt Adam photography 9",
           "w": 1600,
           "h": 1072

@@ -17,6 +17,10 @@ import json, re, sys, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 P = lambda *a: os.path.join(ROOT, *a)
+# Media paths in content.json are site-absolute ("/img/x.jpg"); strip the leading
+# slash to resolve them on disk. The leading slash is required because Decap/Sveltia
+# normalise public_folder to start with "/" and match stored paths against it.
+M = lambda p: os.path.join(ROOT, p.lstrip("/"))
 
 
 # ---------- rendering ----------
@@ -230,14 +234,14 @@ def validate(blocks):
             for k in ("id", "src", "poster"):
                 if not m.get(k): errs.append(f'{bid}: video media missing "{k}"')
             for k in ("src", "poster"):
-                if m.get(k) and not os.path.exists(P(m[k])):
+                if m.get(k) and not os.path.exists(M(m[k])):
                     errs.append(f'{bid}: video {k} not found on disk: {m[k]}')
         else:
             for i, im in enumerate(m.get("images", [])):
                 where = f'{bid}.images[{i}]'
                 if not im.get("src"):
                     errs.append(f'{where}: missing "src"'); continue
-                if not os.path.exists(P(im["src"])):
+                if not os.path.exists(M(im["src"])):
                     errs.append(f'{where}: file not found on disk: {im["src"]}')
                 if not im.get("alt"):
                     errs.append(f'{where}: empty alt text ({im["src"]})')

@@ -37,7 +37,7 @@ const done = () => {
 
   const imgs = [...d.querySelectorAll('img[src]')].filter(i => i.getAttribute('src'));
   const missing = imgs.map(i => i.getAttribute('src'))
-                      .filter(s => !/^https?:/.test(s) && !fs.existsSync(path.join(repo, s)));
+                      .filter(s => !/^https?:/.test(s) && !fs.existsSync(path.join(repo, s.replace(/^\//, ''))));
   ck(missing.length === 0, `all ${imgs.length} image files exist${missing.length ? ': missing ' + missing : ''}`);
 
   const noDim = imgs.filter(i => !i.getAttribute('width') || !i.getAttribute('height'));

@@ -11,8 +11,8 @@ backend:
   branch: main
   base_url: https://sveltia-cms-auth.mattadamco.workers.dev
 
-media_folder: img
-public_folder: img
+media_folder: /img
+public_folder: /img
 
 site_url: https://mattadam.art
 display_url: https://mattadam.art
