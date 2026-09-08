@@ -1,7 +1,7 @@
 name: Check
 
-# Runs on pull requests so malformed homepage or work-page content fails the PR,
-# not the live site.
+# Runs on pull requests so malformed homepage/work-page content or stale
+# structured data fails before the change can reach the live site.
 
 on:
   pull_request:
@@ -17,15 +17,26 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Validate homepage and verify index.html is current
-        run: python3 build.py --check
+      - name: Render and validate homepage
+        run: python3 build.py
 
-      - name: Validate and render work page
+      - name: Render and validate work page
         run: |
           python3 build_work.py
           test -s work/index.html
           grep -q 'mattadam.art/work/' work/index.html
           grep -q 'UNWRAP &amp; STEAL' work/index.html
+
+      - name: Generate and validate structured data
+        run: |
+          python3 structured_data.py
+          python3 structured_data.py --check
+
+      - name: Verify CMS editors remain isolated
+        run: |
+          grep -q 'file: content.json' admin/config.yml
+          grep -q 'file: work.json' admin/work/config.yml
+          grep -q 'ONLY mattadam.art/work' admin/work/config.yml
 
       - uses: actions/setup-node@v4
         with:
