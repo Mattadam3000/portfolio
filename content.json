@@ -2,10 +2,10 @@
   "blocks": [
     {
       "id": "architect",
+      "type": "roles",
       "label": "Visual Architect",
       "classes": "sortable architect",
       "aria": "Matt Adam, Visual Architect",
-      "type": "roles",
       "roles": [
         "Artist",
         "Creative Director",
@@ -15,6 +15,7 @@
     },
     {
       "id": "legends",
+      "type": "content",
       "label": "Legends Never Die.",
       "classes": "sortable",
       "aria": "Juice WRLD, Legends Never Die",
@@ -65,10 +66,10 @@
     },
     {
       "id": "roster",
+      "type": "roster",
       "label": "Roster",
       "classes": "sortable roster",
       "aria": "Artists Matt Adam has worked with",
-      "type": "roster",
       "chapter": {
         "vlabel": "名簿 — THE ROSTER",
         "index": [
@@ -116,6 +117,7 @@
     },
     {
       "id": "wdty",
+      "type": "content",
       "label": "We Don't Trust You.",
       "classes": "sortable",
       "aria": "Future and Metro Boomin, We Don't Trust You",
@@ -147,6 +149,7 @@
     },
     {
       "id": "wsdty",
+      "type": "content",
       "label": "We Still Don't Trust You.",
       "classes": "sortable",
       "aria": "Future and Metro Boomin, We Still Don't Trust You",
@@ -178,6 +181,7 @@
     },
     {
       "id": "pluto",
+      "type": "content",
       "label": "Mixtape Pluto.",
       "classes": "sortable",
       "aria": "Future, Mixtape Pluto",
@@ -227,6 +231,7 @@
     },
     {
       "id": "weeknd",
+      "type": "content",
       "label": "The Weeknd.",
       "classes": "sortable",
       "aria": "The Weeknd",
@@ -259,6 +264,7 @@
     },
     {
       "id": "benny",
+      "type": "content",
       "label": "Benny Blanco.",
       "classes": "sortable",
       "aria": "Benny Blanco",
@@ -290,15 +296,16 @@
     },
     {
       "id": "statement",
+      "type": "text",
       "label": "statement",
       "classes": "sortable statement",
       "aria": "Creating worlds, not campaigns",
-      "type": "text",
       "class": "stmt-head r",
       "html": "Creating worlds, not campaigns."
     },
     {
       "id": "unwrap-steal",
+      "type": "content",
       "label": "Unwrap & Steal.",
       "classes": "sortable",
       "aria": "Unwrap and Steal, a real life art heist",
@@ -377,6 +384,7 @@
     },
     {
       "id": "taschen",
+      "type": "content",
       "label": "Taschen — Ice Cold.",
       "classes": "sortable",
       "aria": "Taschen, Ice Cold",
@@ -437,6 +445,7 @@
     },
     {
       "id": "dead-city-punx",
+      "type": "content",
       "label": "Beyond the Streets — Dead City Punx.",
       "classes": "sortable",
       "aria": "Beyond the Streets, Dead City Punx",
@@ -489,6 +498,7 @@
     },
     {
       "id": "objects",
+      "type": "content",
       "label": "Objects.",
       "classes": "sortable",
       "aria": "Objects, the practice",
@@ -605,6 +615,7 @@
     },
     {
       "id": "nbc-news",
+      "type": "content",
       "label": "On The News.",
       "classes": "sortable",
       "aria": "Matt Adam on NBC News",
@@ -630,6 +641,7 @@
     },
     {
       "id": "art-show",
+      "type": "content",
       "label": "Nobody Came To My Art Show.",
       "classes": "sortable",
       "aria": "Nobody Came To My Art Show",
@@ -676,6 +688,7 @@
     },
     {
       "id": "paintings",
+      "type": "content",
       "label": "Paintings.",
       "classes": "sortable",
       "aria": "Paintings",
@@ -793,10 +806,11 @@
     },
     {
       "id": "seen-in",
-      "label": "Seen in",
+      "type": "pubs",
+      "label": "Seen In",
       "classes": "sortable seenin",
       "aria": "Press and publications",
-      "type": "pubs",
+      "lead": "Seen in",
       "names": [
         "NBC News",
         "Rolling Stone",
@@ -817,10 +831,10 @@
     },
     {
       "id": "photography",
+      "type": "gallery",
       "label": "Photography",
       "classes": "sortable",
       "aria": "Photography by Matt Adam",
-      "type": "gallery",
       "chapter": {
         "vlabel": "写真 — THE EYE",
         "index": [
@@ -921,10 +935,10 @@
     },
     {
       "id": "about",
+      "type": "about",
       "label": "About",
       "classes": "sortable about",
       "aria": "About Matt Adam",
-      "type": "about",
       "chapter": {
         "index": [
           "—",
@@ -936,6 +950,7 @@
     },
     {
       "id": "contact",
+      "type": "part",
       "label": "Contact",
       "classes": "sortable door",
       "aria": "Contact Matt Adam",
@@ -950,10 +965,10 @@
     },
     {
       "id": "faq",
+      "type": "faq",
       "label": "FAQ",
       "classes": "sortable faq-section",
       "aria": "FAQ about Matt Adam",
-      "type": "faq",
       "items": [
         {
           "q": "Who shot the Juice WRLD Legends Never Die cover?",

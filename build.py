@@ -97,7 +97,7 @@ def r_roster(b):
 
 def r_pubs(b):
     return ('<div class="pubs">\n'
-            f'    <span class="plbl mono">{b["label"]}</span>\n'
+            f'    <span class="plbl mono">{b["lead"]}</span>\n'
             f'    <div class="names">\n      {_spans(b["names"])}\n    </div>\n'
             '  </div>')
 
@@ -187,13 +187,14 @@ def flow(blocks, parts):
     for b in blocks:
         at = [f'class="{b["classes"]}"', f'id="{b["id"]}"', f'data-label="{b["id"]}"']
         if b.get("aria"): at.append(f'aria-label="{b["aria"]}"')
-        if b.get("type"):
-            body = "  " + TYPES[b["type"]](b)
-        elif b.get("body"):
+        t = b.get("type")
+        if t == "content":
             body = "  " + r_body(b["body"])
-        else:
+        elif t == "part":
             body = parts[b["id"]]
-        if b.get("chapter") and not b.get("type"):
+        else:
+            body = "  " + TYPES[t](b)
+        if b.get("chapter") and t in ("content", "part"):
             body = "  " + chapter(b["chapter"]) + "\n" + body
         out.append(f'<div {" ".join(at)}>')
         out.append(body)
@@ -259,21 +260,23 @@ def render_page():
     dupes = {i for i in ids if ids.count(i) > 1}
     if dupes:
         errs.append(f'duplicate block ids: {sorted(dupes)}')
-    typed = {b["id"] for b in blocks if b.get("type") or b.get("body")}
+    ALL_TYPES = set(TYPES) | {"content", "part"}
     for b in blocks:
-        if b.get("type"):
-            if b["type"] not in TYPES:
-                errs.append(f'block "{b["id"]}": unknown type "{b["type"]}" '
-                            f'(known: {sorted(TYPES)})')
-        elif not b.get("body") and b["id"] not in parts:
-            errs.append(f'block "{b["id"]}" has no "type", no "body", and no '
-                        f'<!--PART:{b["id"]}--> in parts.html')
+        t = b.get("type")
+        if t not in ALL_TYPES:
+            errs.append(f'block "{b["id"]}": unknown type {t!r} (known: {sorted(ALL_TYPES)})')
+        elif t == "content" and not b.get("body"):
+            errs.append(f'block "{b["id"]}" is type "content" but has an empty body[]')
+        elif t == "part" and b["id"] not in parts:
+            errs.append(f'block "{b["id"]}" is type "part" but parts.html has no '
+                        f'<!--PART:{b["id"]}-->')
     for pid in parts:
-        if pid not in ids:
-            errs.append(f'parts.html has PART:{pid} but no block with that id in content.json')
-        elif pid in typed:
-            errs.append(f'block "{pid}" has both a "type" and a <!--PART:{pid}--> — '
-                        f'remove the PART, it is dead markup')
+        blk = next((b for b in blocks if b["id"] == pid), None)
+        if not blk:
+            errs.append(f'parts.html has PART:{pid} but no block with that id')
+        elif blk.get("type") != "part":
+            errs.append(f'block "{pid}" is type "{blk.get("type")}" but parts.html still '
+                        f'has <!--PART:{pid}--> — dead markup, remove it')
 
     used = set()
     KINDS = {"beat", "prose", "duo", "single"}

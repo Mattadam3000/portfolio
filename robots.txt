@@ -3,7 +3,8 @@ Allow: /
 
 Sitemap: https://mattadam.art/sitemap.xml
 
-# Build sources — not pages
+# Editor and build sources — not pages
+Disallow: /admin/
 Disallow: /template.html
 Disallow: /parts.html
 Disallow: /content.json

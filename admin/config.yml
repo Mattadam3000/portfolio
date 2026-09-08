@@ -1,0 +1,311 @@
+# Sveltia CMS — mattadam.art
+#
+# Edits commit to content.json on main. A GitHub Action then runs build.py and
+# commits the regenerated index.html, which Pages serves.
+#
+# Block order in the Blocks list IS page order — drag to rearrange.
+
+backend:
+  name: github
+  repo: Mattadam3000/portfolio
+  branch: main
+  base_url: BASE_URL_PLACEHOLDER      # Cloudflare Worker origin, set during setup
+
+media_folder: img
+public_folder: /img
+
+site_url: https://mattadam.art
+display_url: https://mattadam.art
+
+# Every change opens a pull request instead of committing straight to main,
+# so nothing reaches the live site unreviewed.
+publish_mode: editorial_workflow
+
+collections:
+  - name: page
+    label: Page
+    files:
+      - name: content
+        label: Page content
+        file: content.json
+        description: >
+          Everything on mattadam.art. The order of Blocks below is the order of
+          the page — drag a block to move it.
+        fields:
+          - name: blocks
+            label: Blocks
+            label_singular: Block
+            widget: list
+            summary: '{{fields.label}}  ·  {{fields.type}}'
+            types:
+
+              # ---- the main editorial block: headline + copy + images ----
+              - name: content
+                label: Project / story
+                summary: '{{fields.label}}'
+                fields:
+                  - { name: id,      label: URL slug,  widget: string, hint: "Used for the #anchor link. Lowercase, hyphens. Changing it breaks existing links." }
+                  - { name: label,   label: Name,      widget: string, hint: "Shown in this list and used by nav links. Not visible on the page." }
+                  - { name: classes, label: CSS classes, widget: string, default: sortable, required: false }
+                  - { name: aria,    label: Screen-reader description, widget: string, required: false }
+                  - name: chapter
+                    label: Chapter heading
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: vlabel, label: Vertical side label, widget: string, required: false, hint: "e.g. 音楽 — THE FLAGSHIP" }
+                      - { name: index,  label: Index row, widget: list, required: false, hint: "Three cells: number, name, Japanese" }
+                  - name: body
+                    label: Content
+                    label_singular: Item
+                    widget: list
+                    summary: '{{fields.kind}}  {{fields.heading}}'
+                    types:
+
+                      - name: beat
+                        label: Headline + copy + image
+                        fields:
+                          - { name: id, label: Item id, widget: string, required: false }
+                          - name: layout
+                            label: Layout
+                            widget: select
+                            default: beat
+                            options:
+                              - { label: "Image right (default)", value: "beat" }
+                              - { label: "Image left",            value: "beat flip" }
+                              - { label: "Series — image right",  value: "beat intv-beat" }
+                              - { label: "Series — image left",   value: "beat flip intv-beat" }
+                              - { label: "Credit — image right",  value: "credit" }
+                              - { label: "Credit — image left",   value: "credit flip" }
+                              - { label: "Text only (no image)",  value: "" }
+                          - { name: heading, label: Headline, widget: string, hint: "Use <br> to break the line" }
+                          - { name: heading_tag,   label: Heading level, widget: select, default: h2, options: [h2, h3] }
+                          - { name: heading_class, label: Heading style, widget: select, default: "big r", options: ["big r", "big", "ser r"] }
+                          - { name: role, label: Role label, widget: string, required: false, hint: "Small caps line above the paragraph" }
+                          - { name: fact, label: Paragraph, widget: text, hint: "<b> and <i> are allowed" }
+                          - { name: style, label: Spacing override, widget: string, required: false, hint: "Advanced. e.g. margin-bottom:8vh" }
+                          - name: media
+                            label: Media
+                            widget: object
+                            required: false
+                            fields:
+                              - { name: type, label: Kind, widget: select, default: single, options: [single, stack, video] }
+                              - { name: class, label: Stack class, widget: string, required: false, default: "stack r" }
+                              - name: images
+                                label: Images
+                                widget: list
+                                required: false
+                                summary: '{{fields.alt}}'
+                                fields:
+                                  - { name: src, label: Image, widget: image }
+                                  - { name: alt, label: Alt text, widget: string, hint: "Describe the image. Used by screen readers and Google." }
+                                  - name: frame
+                                    label: Shape
+                                    widget: select
+                                    default: "fr r"
+                                    options:
+                                      - { label: "Square",              value: "fr r" }
+                                      - { label: "Portrait (4:5)",      value: "fr r tall" }
+                                      - { label: "Landscape (16:10)",   value: "fr r wide" }
+                                      - { label: "Uncropped",           value: "fr r fit" }
+                                      - { label: "Uncropped, wide",     value: "fr r wide fit" }
+                                      - { label: "Uncropped, tall",     value: "fr r tall fit" }
+                                      - { label: "Uncropped, full",     value: "fr r fit full" }
+                                  - { name: key,      label: Slot key, widget: string, required: false }
+                                  - { name: aspect,   label: Exact ratio, widget: string, required: false, hint: "Advanced. e.g. 1170/1738" }
+                                  - { name: position, label: Crop position, widget: string, required: false, hint: "Advanced. e.g. center 28%" }
+                                  - { name: w, label: Width (px),  widget: number, value_type: int }
+                                  - { name: h, label: Height (px), widget: number, value_type: int }
+                              # video-only fields
+                              - { name: id,     label: Video element id, widget: string, required: false }
+                              - { name: aria,   label: Video description, widget: string, required: false }
+                              - { name: src,    label: Video file, widget: file, required: false }
+                              - { name: poster, label: Poster image, widget: image, required: false }
+                              - { name: label,  label: Play label, widget: string, required: false }
+
+                      - name: prose
+                        label: Section intro
+                        fields:
+                          - { name: class, label: Style, widget: string, default: "series-head r" }
+                          - { name: heading_class, label: Heading style, widget: string, default: "big" }
+                          - { name: heading, label: Headline, widget: string }
+                          - { name: fact,    label: Paragraph, widget: text }
+
+                      - name: duo
+                        label: Two images side by side
+                        fields:
+                          - { name: style, label: Spacing override, widget: string, required: false }
+                          - name: images
+                            label: Images
+                            widget: list
+                            summary: '{{fields.alt}}'
+                            fields:
+                              - { name: src, label: Image, widget: image }
+                              - { name: alt, label: Alt text, widget: string }
+                              - { name: frame, label: Shape, widget: string, default: "fr r tall" }
+                              - { name: key, label: Slot key, widget: string, required: false }
+                              - { name: w, label: Width (px),  widget: number, value_type: int }
+                              - { name: h, label: Height (px), widget: number, value_type: int }
+
+                      - name: single
+                        label: One full-width image
+                        fields:
+                          - { name: style, label: Spacing override, widget: string, required: false }
+                          - name: images
+                            label: Image
+                            widget: list
+                            max: 1
+                            summary: '{{fields.alt}}'
+                            fields:
+                              - { name: src, label: Image, widget: image }
+                              - { name: alt, label: Alt text, widget: string }
+                              - { name: frame, label: Shape, widget: string, default: "fr r wide" }
+                              - { name: key, label: Slot key, widget: string, required: false }
+                              - { name: w, label: Width (px),  widget: number, value_type: int }
+                              - { name: h, label: Height (px), widget: number, value_type: int }
+
+              # ---- the fixed, one-off blocks ----
+              - name: gallery
+                label: Photo gallery
+                fields:
+                  - { name: id, label: URL slug, widget: string }
+                  - { name: label, label: Name, widget: string }
+                  - { name: classes, label: CSS classes, widget: string, default: sortable }
+                  - { name: aria, label: Screen-reader description, widget: string, required: false }
+                  - name: chapter
+                    label: Chapter heading
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: vlabel, label: Vertical side label, widget: string, required: false }
+                      - { name: index,  label: Index row, widget: list, required: false }
+                  - name: standing
+                    label: Standing line
+                    widget: object
+                    fields:
+                      - { name: html,  label: Text, widget: string }
+                      - { name: style, label: Spacing override, widget: string, required: false }
+                  - name: fact
+                    label: Sub-line
+                    widget: object
+                    fields:
+                      - { name: html,  label: Text, widget: string }
+                      - { name: style, label: Spacing override, widget: string, required: false }
+                  - name: lead
+                    label: Lead image
+                    widget: object
+                    fields:
+                      - { name: src, label: Image, widget: image }
+                      - { name: alt, label: Alt text, widget: string }
+                      - { name: key, label: Slot key, widget: string, required: false }
+                      - { name: w, label: Width (px),  widget: number, value_type: int }
+                      - { name: h, label: Height (px), widget: number, value_type: int }
+                  - name: tiles
+                    label: Grid images
+                    label_singular: Photo
+                    widget: list
+                    summary: '{{fields.alt}}'
+                    fields:
+                      - { name: src,  label: Image, widget: image }
+                      - { name: alt,  label: Alt text, widget: string }
+                      - { name: aria, label: Screen-reader label, widget: string, required: false }
+                      - { name: key,  label: Slot key, widget: string, required: false }
+                      - { name: w, label: Width (px),  widget: number, value_type: int }
+                      - { name: h, label: Height (px), widget: number, value_type: int }
+
+              - name: roster
+                label: Artist roster
+                fields:
+                  - { name: id, label: URL slug, widget: string }
+                  - { name: label, label: Name, widget: string }
+                  - { name: classes, label: CSS classes, widget: string, default: "sortable roster" }
+                  - { name: aria, label: Screen-reader description, widget: string, required: false }
+                  - name: chapter
+                    label: Chapter heading
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: vlabel, label: Vertical side label, widget: string, required: false }
+                      - { name: index,  label: Index row, widget: list, required: false }
+                  - { name: names, label: Artists, label_singular: Artist, widget: list }
+
+              - name: pubs
+                label: Press list
+                fields:
+                  - { name: id, label: URL slug, widget: string }
+                  - { name: label, label: Name, widget: string }
+                  - { name: classes, label: CSS classes, widget: string, default: "sortable seenin" }
+                  - { name: aria, label: Screen-reader description, widget: string, required: false }
+                  - { name: lead, label: Lead-in text, widget: string, hint: "The small line above the list" }
+                  - { name: names, label: Publications, label_singular: Publication, widget: list }
+
+              - name: faq
+                label: FAQ
+                fields:
+                  - { name: id, label: URL slug, widget: string }
+                  - { name: label, label: Name, widget: string }
+                  - { name: classes, label: CSS classes, widget: string, default: "sortable faq-section" }
+                  - { name: aria, label: Screen-reader description, widget: string, required: false }
+                  - name: items
+                    label: Questions
+                    label_singular: Question
+                    widget: list
+                    summary: '{{fields.q}}'
+                    fields:
+                      - { name: q, label: Question, widget: string }
+                      - { name: a, label: Answer, widget: text }
+
+              - name: about
+                label: About paragraph
+                fields:
+                  - { name: id, label: URL slug, widget: string }
+                  - { name: label, label: Name, widget: string }
+                  - { name: classes, label: CSS classes, widget: string, default: "sortable about" }
+                  - { name: aria, label: Screen-reader description, widget: string, required: false }
+                  - name: chapter
+                    label: Chapter heading
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: vlabel, label: Vertical side label, widget: string, required: false }
+                      - { name: index,  label: Index row, widget: list, required: false }
+                  - { name: lede, label: Bio, widget: text }
+
+              - name: text
+                label: Single statement line
+                fields:
+                  - { name: id, label: URL slug, widget: string }
+                  - { name: label, label: Name, widget: string }
+                  - { name: classes, label: CSS classes, widget: string, default: "sortable statement" }
+                  - { name: aria, label: Screen-reader description, widget: string, required: false }
+                  - { name: class, label: Style, widget: string, default: "stmt-head r" }
+                  - { name: html, label: Text, widget: string }
+
+              - name: roles
+                label: Role words
+                fields:
+                  - { name: id, label: URL slug, widget: string }
+                  - { name: label, label: Name, widget: string }
+                  - { name: classes, label: CSS classes, widget: string, default: "sortable architect" }
+                  - { name: aria, label: Screen-reader description, widget: string, required: false }
+                  - { name: roles, label: Roles, label_singular: Role, widget: list }
+
+              - name: part
+                label: "Fixed markup (contact form) — not editable here"
+                fields:
+                  - { name: id, label: URL slug, widget: string }
+                  - { name: label, label: Name, widget: string }
+                  - { name: classes, label: CSS classes, widget: string }
+                  - { name: aria, label: Screen-reader description, widget: string, required: false }
+                  - name: chapter
+                    label: Chapter heading
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { name: vlabel, label: Vertical side label, widget: string, required: false }
+                      - { name: index,  label: Index row, widget: list, required: false }
