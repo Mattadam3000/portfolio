@@ -1,7 +1,8 @@
 name: Build site
 
 # Rebuilds generated HTML whenever homepage or work-page content changes,
-# and commits it back. Pages serves the committed files.
+# applies CMS-derived structured data, and commits the generated pages back.
+# Pages serves the committed files.
 #
 # Deliberately NOT "Pages source = Actions": if this workflow ever breaks, the
 # site degrades to stale rather than to a 404. mattadam.art is an outreach
@@ -17,6 +18,7 @@ on:
       - template.html
       - build.py
       - build_work.py
+      - structured_data.py
       - 'img/**'
   workflow_dispatch:
 
@@ -42,6 +44,11 @@ jobs:
 
       - name: Build work page
         run: python3 build_work.py
+
+      - name: Generate structured data from CMS content
+        run: |
+          python3 structured_data.py
+          python3 structured_data.py --check
 
       - name: Commit generated HTML if it changed
         run: |
