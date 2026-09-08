@@ -1,20 +1,22 @@
 name: Build site
 
-# Rebuilds index.html from content.json whenever content or templates change,
-# and commits it back. Pages then serves the committed index.html.
+# Rebuilds generated HTML whenever homepage or work-page content changes,
+# and commits it back. Pages serves the committed files.
 #
 # Deliberately NOT "Pages source = Actions": if this workflow ever breaks, the
-# site degrades to stale rather than to a 404. mattadam.art is the landing page
-# for outreach email, so serving yesterday's copy beats serving nothing.
+# site degrades to stale rather than to a 404. mattadam.art is an outreach
+# landing page, so serving yesterday's copy beats serving nothing.
 
 on:
   push:
     branches: [main]
     paths:
       - content.json
+      - work.json
       - parts.html
       - template.html
       - build.py
+      - build_work.py
       - 'img/**'
   workflow_dispatch:
 
@@ -23,7 +25,7 @@ permissions:
 
 concurrency:
   group: build-site
-  cancel-in-progress: false      # serialize rapid CMS commits; never drop one
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -35,17 +37,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Build
+      - name: Build homepage
         run: python3 build.py
 
-      - name: Commit index.html if it changed
+      - name: Build work page
+        run: python3 build_work.py
+
+      - name: Commit generated HTML if it changed
         run: |
-          if git diff --quiet -- index.html; then
-            echo "index.html already up to date"
+          if git diff --quiet -- index.html work/index.html; then
+            echo "generated HTML already up to date"
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          git commit -m "Rebuild index.html [skip ci]"
+          git add index.html work/index.html
+          git commit -m "Rebuild generated pages [skip ci]"
           git push
