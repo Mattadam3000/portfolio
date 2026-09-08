@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Matt Adam Homepage Vision Preview</title>
+  <style>
+    html,body{margin:0;background:#fff;color:#0a0a0a;font-family:Helvetica Neue,Helvetica,Arial,sans-serif}
+    .loading{min-height:100vh;display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+    .error{padding:40px;max-width:720px;line-height:1.5}
+  </style>
+</head>
+<body>
+<div class="loading">Loading homepage vision preview...</div>
+<script>
+(async function(){
+  const SOURCE='https://raw.githack.com/Mattadam3000/portfolio/36cd574f0f01948ff1b3aa09e703fcddc159fc11/index.html';
+  const norm=s=>(s||'').replace(/\s+/g,' ').trim().toLowerCase();
+  try{
+    const res=await fetch(SOURCE,{cache:'no-store'});
+    if(!res.ok) throw new Error('Could not load source homepage');
+    const html=await res.text();
+    const parser=new DOMParser();
+    const doc=parser.parseFromString(html,'text/html');
+
+    // Keep preview assets and all normal site links pointed at the live site.
+    const base=doc.createElement('base');
+    base.href='https://mattadam.art/';
+    doc.head.prepend(base);
+
+    // This preview must never be indexed.
+    let robots=doc.querySelector('meta[name="robots"]');
+    if(!robots){robots=doc.createElement('meta');robots.name='robots';doc.head.appendChild(robots);}
+    robots.content='noindex,nofollow';
+    doc.title='PREVIEW | Matt Adam Homepage Vision';
+
+    // Remove schema from the preview only. Live structured data stays untouched.
+    doc.querySelectorAll('script[type="application/ld+json"]').forEach(s=>s.remove());
+
+    function setFactById(id,markup){
+      const root=doc.getElementById(id);
+      if(!root) return false;
+      const fact=root.querySelector('.fact');
+      if(!fact) return false;
+      fact.innerHTML=markup;
+      return true;
+    }
+    function setFactByHeading(text,markup){
+      const needle=norm(text);
+      const h=[...doc.querySelectorAll('h2,h3')].find(el=>norm(el.textContent).includes(needle));
+      if(!h) return false;
+      const scope=h.closest('.beat,.series-head,.sortable')||h.parentElement;
+      const fact=scope&&scope.querySelector('.fact');
+      if(!fact) return false;
+      fact.innerHTML=markup;
+      return true;
+    }
+
+    // COPY TIGHTENING. Same accomplishments, less explanation around them.
+    setFactById('legends','<b>Juice WRLD.</b> 497,000 first week. The biggest posthumous debut since Tupac and Biggie. Matt Adam shot the portrait; the family chose it for the cover.');
+    setFactById('wdty','<b>Future and Metro Boomin.</b> Two consecutive #1 albums, weeks apart. Matt Adam built the visual identity across both: covers, vinyl, billboards, and rollout.');
+    setFactById('wsdty','The second chapter, released weeks later. Another #1. One visual world.');
+    setFactById('pluto','<b>Future.</b> Matt Adam shot the rollout: billboards, posters, press, and visual assets around the music videos.');
+    setFactById('weeknd','Matt Adam shot the first images of The Weeknd\'s <b>Hurry Up Tomorrow</b> era, opening the final chapter of the trilogy that began with <i>After Hours</i>.');
+    setFactById('benny','Matt Adam shaped Benny Blanco\'s visual identity as he moved from producer to artist, beginning with "Eastside." He shot every visual across <b>Friends Keep Secrets 1</b> and <b>Friends Keep Secrets 2</b>, including a nine-billboard Sunset Boulevard takeover.');
+    setFactById('unwrap-steal','Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated <i>Telemarketers</i>. Matt Adam wraps original artworks like gifts, hides them in public, and releases clues. People race to find and steal them. Ownership moves through attention, speed, and the will to go get it.');
+    setFactByHeading('Taschen','Matt Adam\'s photographs of Young Thug and A$AP Rocky are published in <i>Taschen\'s Ice Cold: A Hip-Hop Jewelry History</i>, credited by name.');
+    setFactByHeading('Beyond the Streets','Five years photographing Dead City Punx on film in the Los Angeles underground became a documentary directed by Roger Gastman and co-executive produced by Zack de la Rocha, a book, and the exhibition <i>PUNX: The Art of Dead City & Friends</i> at Beyond the Streets, Los Angeles.');
+    setFactByHeading('Nobody Came','Weeks before his first warehouse exhibition, Matt Adam ran through Hollywood in a clown costume spray-painting <b>"nobody came to my art show"</b> on a pink-wrapped canvas. Invitations arrived as pieces of concrete marked "break." On opening night, a 2,000-pound concrete monolith blocked the gate with the canvas buried inside. The crowd had to break it open to enter.');
+    setFactByHeading('Paintings','The public work makes the social system visible. The paintings make the nervous system visible. Screenprint, paint, wheatpaste, and his own photographs. Here control stops being theatrical and becomes a body under strain. <b>This is the center of everything.</b>');
+
+    // Keep the Warhol and Koons language. It is intentionally left untouched in this preview.
+
+    // Shorter About: identity first, proof second.
+    const about=doc.querySelector('#about .lede');
+    if(about){
+      about.innerHTML='<b>Matt Adam</b> is a visual architect based in Los Angeles, from Toronto, working across photography, art, creative direction, objects, and public interventions. His work is built around control: appetite, status, self-optimization, and the systems shaping what people want. He built visual worlds for Future and Metro Boomin, Juice WRLD, The Weeknd, and Benny Blanco; created <b>Unwrap &amp; Steal</b>; and has work featured by <b>NBC News</b>, <b>Taschen</b>, and <b>Beyond the Streets</b>.';
+    }
+
+    // Make the art-world door obvious without changing the homepage's main identity.
+    const hero=doc.querySelector('.hero');
+    if(hero){
+      const work=doc.createElement('a');
+      work.href='https://mattadam.art/work';
+      work.className='mono homepage-work-link';
+      work.textContent='ART / WORK ↗';
+      work.setAttribute('aria-label','Open Matt Adam art practice');
+      hero.appendChild(work);
+    }
+
+    // FAQ remains fully visible/crawlable in the eventual live version, but no longer ruins the ending.
+    // Move it before About, then let About flow directly into Contact.
+    const flow=doc.querySelector('#flow');
+    const faq=doc.getElementById('faq');
+    const aboutBlock=doc.getElementById('about');
+    if(flow&&faq&&aboutBlock){
+      flow.insertBefore(faq,aboutBlock);
+      if(!faq.querySelector('.preview-info-index')){
+        const idx=doc.createElement('div');
+        idx.className='index mono preview-info-index';
+        idx.innerHTML='<span>—</span><span>INFORMATION</span><span class="jp">情報</span>';
+        faq.insertBefore(idx,faq.firstChild);
+      }
+    }
+
+    // Correct the chapter number.
+    const contact=doc.getElementById('contact');
+    if(contact){
+      const first=contact.querySelector('.index span');
+      if(first) first.textContent='06';
+    }
+
+    // Extra preview styling only. The actual site design language remains unchanged.
+    const style=doc.createElement('style');
+    style.textContent=`
+      .homepage-work-link{position:absolute;right:20px;bottom:max(22px,env(safe-area-inset-bottom));color:var(--ink);text-decoration:none;opacity:.72;z-index:5}
+      .homepage-work-link:hover{opacity:1}
+      #faq{padding-top:10vh;padding-bottom:10vh}
+      #faq .preview-info-index{margin-bottom:5vh}
+      #about{padding-top:12vh}
+      #contact{padding-top:14vh}
+      @media(max-width:760px){.homepage-work-link{right:18px;bottom:max(22px,env(safe-area-inset-bottom))}}
+    `;
+    doc.head.appendChild(style);
+
+    // Preview form must not send a real inquiry.
+    const guard=doc.createElement('script');
+    guard.textContent=`document.addEventListener('submit',function(e){e.preventDefault();alert('Preview only. Nothing was sent.');},true);`;
+    doc.body.appendChild(guard);
+
+    // Write the patched page so the original site's inline scripts initialize normally.
+    document.open();
+    document.write('<!doctype html>'+doc.documentElement.outerHTML);
+    document.close();
+  }catch(err){
+    document.body.innerHTML='<div class="error"><strong>Preview failed to load.</strong><br><br>'+String(err.message||err)+'</div>';
+  }
+})();
+</script>
+</body>
+</html>
