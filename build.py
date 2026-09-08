@@ -47,7 +47,8 @@ def media(m):
     return frames.replace("      <div", "    <div", 1).replace("\n        ", "\n      ")
 
 def render(bid, b):
-    open_at = [f'class="{b["layout"]}"']
+    open_at = []
+    if b.get("layout"): open_at.append(f'class="{b["layout"]}"')
     if b.get("style"): open_at.append(f'style="{b["style"]}"')
     txt = []
     if b.get("heading"):
@@ -56,7 +57,10 @@ def render(bid, b):
         txt.append(f'      <p class="role r">{b["role"]}</p>')
     if b.get("fact"):
         txt.append(f'      <p class="fact r">{b["fact"]}</p>')
-    return (f'<div {" ".join(open_at)}>\n'
+    open_tag = f'<div {" ".join(open_at)}>' if open_at else '<div>'
+    if not b.get("media"):                       # text-only block
+        return open_tag + '\n' + "\n".join(txt) + '\n  </div>'
+    return (f'{open_tag}\n'
             f'    <div>\n' + "\n".join(txt) + f'\n    </div>\n'
             f'{media(b["media"])}\n  </div>')
 
@@ -73,7 +77,7 @@ def chapter(ch):
         a, b, c = (ch['index'] + ['', '', ''])[:3]
         out.append(f'<div class="index mono"><span>{a}</span><span>{b}</span>'
                    f'<span class="jp">{c}</span></div>')
-    return '\n  '.join(out)
+    return ''.join(out)   # no inter-tag whitespace: .vlabel is absolute, .index is block
 
 
 def _spans(items):
@@ -132,6 +136,34 @@ def r_gallery(b):
             tiles + '\n  </div>')
 
 
+def r_body(items, beats):
+    """Ordered block body: beats, image groups, and prose, in author order."""
+    out = []
+    for it in items:
+        if 'beat' in it:
+            out.append(render(it['beat'], beats[it['beat']]))
+        elif 'prose' in it:
+            p = it['prose']
+            out.append(f'<div class="{p["class"]}">\n'
+                       f'    <h2 class="{p["heading_class"]}">{p["heading"]}</h2>\n'
+                       f'    <p class="fact">{p["fact"]}</p>\n  </div>')
+        elif it.get('group') == 'duo':
+            st = f' style="{it["style"]}"' if it.get('style') else ''
+            inner = '\n'.join(frame(i) for i in it['images'])
+            out.append(f'<div class="duo"{st}>\n{inner}\n  </div>')
+        elif it.get('group') == 'single':
+            im = dict(it['images'][0])
+            at = [f'class="{im["frame"]}"']
+            if im.get('key'): at.append(f'data-key="{im["key"]}"')
+            style = '; '.join(x for x in [
+                f'aspect-ratio:{im["aspect"]}' if im.get('aspect') else '',
+                it.get('style') or ''] if x)
+            if style: at.append(f'style="{style}"')
+            out.append(f'<div {" ".join(at)}><div class="veil"></div>\n'
+                       f'    {img_tag(im)}</div>')
+    return '\n  '.join(out)
+
+
 TYPES = {'roles': r_roles, 'roster': r_roster, 'pubs': r_pubs, 'text': r_text,
          'about': r_about, 'faq': r_faq, 'gallery': r_gallery}
 
@@ -155,8 +187,12 @@ def flow(blocks, parts, beats):
         if b.get("aria"): at.append(f'aria-label="{b["aria"]}"')
         if b.get("type"):
             body = "  " + TYPES[b["type"]](b)
+        elif b.get("body"):
+            body = "  " + r_body(b["body"], beats)
         else:
             body = parts[b["id"]]
+        if b.get("chapter") and not b.get("type"):
+            body = "  " + chapter(b["chapter"]) + "\n" + body
         body = re.sub(r'\{\{BEAT:([^}]+)\}\}',
                       lambda m: render(m.group(1), beats[m.group(1)]), body)
         out.append(f'<div {" ".join(at)}>')
@@ -172,11 +208,13 @@ def validate(beats):
     """Return a list of human-readable problems. Empty list == valid."""
     errs = []
     for bid, b in beats.items():
-        if not b.get("layout"):
-            errs.append(f'{bid}: missing "layout"')
+        if "layout" not in b:
+            errs.append(f'{bid}: missing "layout" (use "" for a bare div)')
         m = b.get("media")
         if not m:
-            errs.append(f'{bid}: missing "media"'); continue
+            if not (b.get("heading") or b.get("fact")):
+                errs.append(f'{bid}: has neither media nor text')
+            continue
         if m.get("type") not in ("single", "stack", "video"):
             errs.append(f'{bid}: media.type must be single|stack|video, got {m.get("type")!r}')
         if m.get("type") == "video":
@@ -214,15 +252,15 @@ def render_page():
     dupes = {i for i in ids if ids.count(i) > 1}
     if dupes:
         errs.append(f'duplicate block ids: {sorted(dupes)}')
-    typed = {b["id"] for b in blocks if b.get("type")}
+    typed = {b["id"] for b in blocks if b.get("type") or b.get("body")}
     for b in blocks:
         if b.get("type"):
             if b["type"] not in TYPES:
                 errs.append(f'block "{b["id"]}": unknown type "{b["type"]}" '
                             f'(known: {sorted(TYPES)})')
-        elif b["id"] not in parts:
-            errs.append(f'block "{b["id"]}" has no <!--PART:{b["id"]}--> in parts.html '
-                        f'and no "type"')
+        elif not b.get("body") and b["id"] not in parts:
+            errs.append(f'block "{b["id"]}" has no "type", no "body", and no '
+                        f'<!--PART:{b["id"]}--> in parts.html')
     for pid in parts:
         if pid not in ids:
             errs.append(f'parts.html has PART:{pid} but no block with that id in content.json')
@@ -236,6 +274,12 @@ def render_page():
             used.add(bid)
             if bid not in beats:
                 errs.append(f'PART:{pid} references unknown beat "{bid}"')
+    for b in blocks:
+        for it in b.get("body") or []:
+            if 'beat' in it:
+                used.add(it['beat'])
+                if it['beat'] not in beats:
+                    errs.append(f'block "{b["id"]}" references unknown beat "{it["beat"]}"')
     for bid in set(beats) - used:
         errs.append(f'beat "{bid}" is defined but never placed in parts.html')
 

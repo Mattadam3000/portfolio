@@ -17,7 +17,20 @@
       "id": "legends",
       "label": "Legends Never Die.",
       "classes": "sortable",
-      "aria": "Juice WRLD, Legends Never Die"
+      "aria": "Juice WRLD, Legends Never Die",
+      "chapter": {
+        "vlabel": "音楽 — THE FLAGSHIP",
+        "index": [
+          "01",
+          "MUSIC",
+          "音楽"
+        ]
+      },
+      "body": [
+        {
+          "beat": "juice-portrait"
+        }
+      ]
     },
     {
       "id": "roster",
@@ -74,31 +87,56 @@
       "id": "wdty",
       "label": "We Don't Trust You.",
       "classes": "sortable",
-      "aria": "Future and Metro Boomin, We Don't Trust You"
+      "aria": "Future and Metro Boomin, We Don't Trust You",
+      "body": [
+        {
+          "beat": "wdty"
+        }
+      ]
     },
     {
       "id": "wsdty",
       "label": "We Still Don't Trust You.",
       "classes": "sortable",
-      "aria": "Future and Metro Boomin, We Still Don't Trust You"
+      "aria": "Future and Metro Boomin, We Still Don't Trust You",
+      "body": [
+        {
+          "beat": "wsdty"
+        }
+      ]
     },
     {
       "id": "pluto",
       "label": "Mixtape Pluto.",
       "classes": "sortable",
-      "aria": "Future, Mixtape Pluto"
+      "aria": "Future, Mixtape Pluto",
+      "body": [
+        {
+          "beat": "pluto-billboard"
+        }
+      ]
     },
     {
       "id": "weeknd",
       "label": "The Weeknd.",
       "classes": "sortable",
-      "aria": "The Weeknd"
+      "aria": "The Weeknd",
+      "body": [
+        {
+          "beat": "weeknd-green"
+        }
+      ]
     },
     {
       "id": "benny",
       "label": "Benny Blanco.",
       "classes": "sortable",
-      "aria": "Benny Blanco"
+      "aria": "Benny Blanco",
+      "body": [
+        {
+          "beat": "benny"
+        }
+      ]
     },
     {
       "id": "statement",
@@ -113,43 +151,311 @@
       "id": "unwrap-steal",
       "label": "Unwrap & Steal.",
       "classes": "sortable",
-      "aria": "Unwrap and Steal, a real life art heist"
+      "aria": "Unwrap and Steal, a real life art heist",
+      "chapter": {
+        "vlabel": "公共芸術 — THE INSTALLATIONS",
+        "index": [
+          "02",
+          "PUBLIC ART INSTALLATIONS",
+          "公共芸術"
+        ]
+      },
+      "body": [
+        {
+          "beat": "unwrap-steal"
+        },
+        {
+          "group": "single",
+          "images": [
+            {
+              "src": "img/9803254175.jpg",
+              "alt": "Matt Adam removing an orange-wrapped Unwrap and Steal canvas from a downtown Los Angeles wall on San Pedro Street",
+              "frame": "fr r wide",
+              "key": "uns-lead",
+              "w": 1800,
+              "h": 1159
+            }
+          ],
+          "style": "margin-top:6vh;margin-bottom:14px"
+        },
+        {
+          "group": "duo",
+          "images": [
+            {
+              "src": "img/e1040f7064.jpg",
+              "alt": "Matt Adam installing a pink-wrapped Unwrap and Steal artwork on a Los Angeles River wall",
+              "frame": "fr r tall",
+              "key": "uns-1",
+              "w": 1100,
+              "h": 1467
+            },
+            {
+              "src": "img/5568ae4dd9.jpg",
+              "alt": "Aerial view of Matt Adam placing a blue-wrapped Unwrap and Steal artwork on a concrete embankment",
+              "frame": "fr r tall",
+              "key": "uns-2",
+              "w": 1100,
+              "h": 1467
+            },
+            {
+              "src": "img/f45b6bdbf3.jpg",
+              "alt": "Matt Adam hiding a wrapped Unwrap and Steal artwork from an inflatable raft on the water",
+              "frame": "fr r tall",
+              "key": "uns-3",
+              "w": 1100,
+              "h": 1467
+            },
+            {
+              "src": "img/61033f3083.jpg",
+              "alt": "Matt Adam installing an orange-wrapped Unwrap and Steal artwork on a Los Angeles street wall",
+              "frame": "fr r tall",
+              "key": "uns-4",
+              "w": 1100,
+              "h": 1467
+            }
+          ],
+          "style": "margin-top:14px"
+        }
+      ]
     },
     {
       "id": "taschen",
       "label": "Taschen — Ice Cold.",
       "classes": "sortable",
-      "aria": "Taschen, Ice Cold"
+      "aria": "Taschen, Ice Cold",
+      "chapter": {
+        "vlabel": "記録 — THE RECORD",
+        "index": [
+          "03",
+          "GALLERIES &amp; PUBLICATIONS",
+          "記録"
+        ]
+      },
+      "body": [
+        {
+          "beat": "taschen"
+        },
+        {
+          "group": "duo",
+          "images": [
+            {
+              "src": "img/f70684dad3.jpg",
+              "alt": "Young Thug photographed by Matt Adam, Los Angeles 2019, printed in Taschen Ice Cold",
+              "frame": "fr r tall",
+              "key": "ic-thug",
+              "w": 1119,
+              "h": 1400
+            },
+            {
+              "src": "img/c127b280a3.jpg",
+              "alt": "A$AP Rocky photographed by Matt Adam, Toronto 2018, printed in Taschen Ice Cold",
+              "frame": "fr r tall",
+              "key": "ic-rocky",
+              "w": 1123,
+              "h": 1400
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "dead-city-punx",
       "label": "Beyond the Streets — Dead City Punx.",
       "classes": "sortable",
-      "aria": "Beyond the Streets, Dead City Punx"
+      "aria": "Beyond the Streets, Dead City Punx",
+      "body": [
+        {
+          "beat": "dead-city-punx"
+        },
+        {
+          "group": "duo",
+          "images": [
+            {
+              "src": "img/5008693520.jpg",
+              "alt": "Beyond the Streets Control Gallery storefront presenting Dead City Punx, Los Angeles",
+              "frame": "fr r wide",
+              "key": "dcp-store",
+              "w": 1080,
+              "h": 810
+            },
+            {
+              "src": "img/4dd709ef90.jpg",
+              "alt": "Dead City Punx gallery installation at Beyond the Streets, Los Angeles",
+              "frame": "fr r wide",
+              "key": "dcp-install",
+              "w": 1080,
+              "h": 810
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "objects",
       "label": "Objects.",
       "classes": "sortable",
-      "aria": "Objects, the practice"
+      "aria": "Objects, the practice",
+      "chapter": {
+        "vlabel": "作品 — THE PRACTICE",
+        "index": [
+          "04",
+          "ART",
+          "作品"
+        ]
+      },
+      "body": [
+        {
+          "prose": {
+            "class": "series-head r",
+            "heading_class": "big",
+            "heading": "Objects.",
+            "fact": "Photographs of objects, made into zines and bandanas, built to look real. An empty bag of cocaine. A piece of raw meat. An Ozempic needle. The point isn't shock. Each one makes a hidden system visible: appetite, status, body control. <b>Jeff Koons shows you what you want. Matt Adam shows you what's controlling you.</b>"
+          }
+        },
+        {
+          "beat": "party-straw"
+        },
+        {
+          "beat": "rotten-deer"
+        },
+        {
+          "beat": "skinny-doll"
+        }
+      ]
     },
     {
       "id": "nbc-news",
       "label": "On The News.",
       "classes": "sortable",
-      "aria": "Matt Adam on NBC News"
+      "aria": "Matt Adam on NBC News",
+      "body": [
+        {
+          "beat": "nbcPlay"
+        }
+      ]
     },
     {
       "id": "art-show",
       "label": "Nobody Came To My Art Show.",
       "classes": "sortable",
-      "aria": "Nobody Came To My Art Show"
+      "aria": "Nobody Came To My Art Show",
+      "body": [
+        {
+          "beat": "show-canvas"
+        },
+        {
+          "group": "single",
+          "images": [
+            {
+              "src": "img/1a3471a29b.jpg",
+              "alt": "Matt Adam &quot;break&quot; warehouse show, white fire-extinguisher paint marks across a black wall at night",
+              "frame": "fr fit r",
+              "key": "warehouse-break",
+              "w": 1800,
+              "h": 1219
+            }
+          ],
+          "style": "margin-bottom:12vh"
+        }
+      ]
     },
     {
       "id": "paintings",
       "label": "Paintings.",
       "classes": "sortable",
-      "aria": "Paintings"
+      "aria": "Paintings",
+      "body": [
+        {
+          "beat": "paint-ozempic"
+        },
+        {
+          "group": "duo",
+          "images": [
+            {
+              "src": "img/eff0bd7bcb.jpg",
+              "alt": "Matt Adam painting, black and white photographic image overlaid with a fluorescent green square",
+              "frame": "fr r tall fit",
+              "key": "paint-green",
+              "w": 1100,
+              "h": 1647
+            },
+            {
+              "src": "img/6ba7c91318.jpg",
+              "alt": "Matt Adam painting, black and white photographic image overlaid with a dripping pink painted outline",
+              "frame": "fr r tall fit",
+              "key": "paint-pink",
+              "w": 1100,
+              "h": 1647
+            }
+          ],
+          "style": "margin-top:6vh"
+        },
+        {
+          "group": "single",
+          "images": [
+            {
+              "src": "img/61bb9c8805.jpg",
+              "alt": "Matt Adam in an orange beanie standing in front of one of his large black-and-white paintings",
+              "frame": "fr r fit full",
+              "key": "orange-hat",
+              "w": 1080,
+              "h": 924
+            }
+          ]
+        },
+        {
+          "group": "duo",
+          "images": [
+            {
+              "src": "img/edf575549f.jpg",
+              "alt": "Matt Adam painting, horned three-eyed figure with bombs in black on a yellow field",
+              "frame": "fr r wide fit",
+              "key": "paint-c2",
+              "w": 1100,
+              "h": 837
+            },
+            {
+              "src": "img/1a041c5cdb.jpg",
+              "alt": "Matt Adam painting, black ink figure on a periwinkle field",
+              "frame": "fr r wide fit",
+              "key": "paint-c1",
+              "w": 1100,
+              "h": 837
+            },
+            {
+              "src": "img/862b5bf443.jpg",
+              "alt": "Matt Adam painting in pink and black, tangled figures and hands",
+              "frame": "fr r wide fit",
+              "key": "paint-c3",
+              "w": 1100,
+              "h": 837
+            },
+            {
+              "src": "img/5c6c7c7b8f.jpg",
+              "alt": "Matt Adam painting, multi-eyed creature in black line on a pink field",
+              "frame": "fr r wide fit",
+              "key": "paint-c4",
+              "w": 1100,
+              "h": 837
+            }
+          ],
+          "style": "margin-top:0"
+        },
+        {
+          "group": "single",
+          "images": [
+            {
+              "src": "img/04b582b3ba.jpg",
+              "alt": "Four Matt Adam Mickey Mouse paintings in black ink, with hand-lettered slogans",
+              "frame": "fr r wide fit",
+              "key": "mickey-paintings",
+              "w": 1565,
+              "h": 1037
+            }
+          ],
+          "style": "margin-top:6vh"
+        }
+      ]
     },
     {
       "id": "seen-in",
@@ -298,7 +604,15 @@
       "id": "contact",
       "label": "Contact",
       "classes": "sortable door",
-      "aria": "Contact Matt Adam"
+      "aria": "Contact Matt Adam",
+      "chapter": {
+        "vlabel": "連絡 — THE DOOR",
+        "index": [
+          "05",
+          "CONTACT",
+          "連絡"
+        ]
+      }
     },
     {
       "id": "faq",
@@ -623,6 +937,56 @@
             "key": "paint-ozempic",
             "w": 1100,
             "h": 1100
+          }
+        ]
+      }
+    },
+    "unwrap-steal": {
+      "layout": "",
+      "heading_tag": "h2",
+      "heading_class": "big r",
+      "heading": "Unwrap<br>&amp; Steal.",
+      "role": "REAL LIFE ART HEISTS",
+      "fact": "Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated <i>Telemarketers</i>. Matt Adam wraps his artwork like gifts, hides it in public, and posts the clues. Thousands of people across countries and continents race to find it and steal the art. Ownership doesn't flow through permission or purchase. It flows through attention, speed, and the will to go get it."
+    },
+    "taschen": {
+      "layout": "credit",
+      "heading_tag": "h2",
+      "heading_class": "big r",
+      "heading": "Taschen —<br>Ice Cold.",
+      "role": "PUBLISHED WORKS",
+      "fact": "Taschen publishes the most serious art books on earth. <i>Ice Cold: A Hip-Hop Jewelry History</i> is the canonical record of the subject. Matt Adam's photographs of Young Thug and A$AP Rocky are printed inside it, credited by name.",
+      "media": {
+        "type": "single",
+        "images": [
+          {
+            "src": "img/081ea58315.jpg",
+            "alt": "Ice Cold: A Hip-Hop Jewelry History, Taschen, featuring Matt Adam photography",
+            "frame": "fr r tall",
+            "key": "ic-cover",
+            "w": 1100,
+            "h": 1100
+          }
+        ]
+      }
+    },
+    "dead-city-punx": {
+      "layout": "credit flip",
+      "heading_tag": "h2",
+      "heading_class": "big r",
+      "heading": "Beyond the Streets —<br>Dead City Punx.",
+      "role": "PUBLISHED WORKS + GALLERY + DOCUMENTARY",
+      "fact": "Five years photographing Dead City Punx on film in the Los Angeles underground. The work became a documentary directed by Roger Gastman, founder of Beyond the Streets, the world's most authoritative institution for graffiti, street art, and subculture, co-executive produced by Zack de la Rocha of Rage Against the Machine. Matt Adam's photographs run throughout the film, which also features footage from his own Unwrap &amp; Steal documentary. His photography fills a major portion of the \"Dead City\" book, including the cover, and hangs in the exhibition PUNX: The Art of Dead City &amp; Friends at Beyond the Streets, Los Angeles.",
+      "media": {
+        "type": "single",
+        "images": [
+          {
+            "src": "img/f2042cf4b4.jpg",
+            "alt": "Matt Adam with the Dead City Punx book at Beyond the Streets, Los Angeles",
+            "frame": "fr r tall",
+            "key": "dcp-main",
+            "w": 1050,
+            "h": 1400
           }
         ]
       }
