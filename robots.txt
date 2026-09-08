@@ -2,3 +2,10 @@ User-agent: *
 Allow: /
 
 Sitemap: https://mattadam.art/sitemap.xml
+
+# Build sources — not pages
+Disallow: /template.html
+Disallow: /parts.html
+Disallow: /content.json
+Disallow: /build.py
+Disallow: /test/
