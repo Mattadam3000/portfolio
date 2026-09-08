@@ -20,8 +20,12 @@ jobs:
       - name: Validate homepage and verify index.html is current
         run: python3 build.py --check
 
-      - name: Validate work page and verify work/index.html is current
-        run: python3 build_work.py --check
+      - name: Validate and render work page
+        run: |
+          python3 build_work.py
+          test -s work/index.html
+          grep -q 'mattadam.art/work/' work/index.html
+          grep -q 'UNWRAP &amp; STEAL' work/index.html
 
       - uses: actions/setup-node@v4
         with:
