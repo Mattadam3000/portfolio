@@ -9,7 +9,7 @@ backend:
   name: github
   repo: Mattadam3000/portfolio
   branch: main
-  base_url: BASE_URL_PLACEHOLDER      # Cloudflare Worker origin, set during setup
+  base_url: https://sveltia-cms-auth.mattadamco.workers.dev
 
 media_folder: img
 public_folder: /img
