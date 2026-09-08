@@ -1,0 +1,81 @@
+{
+  "hero": {
+    "eyebrow": "MATT ADAM / WORK",
+    "statement": "I make paintings, objects and work in public about control: what controls us, what we try to control, and who gets to decide.",
+    "video": "https://cdn.shopify.com/videos/c/vp/2d8792aa83d14101a806d0c4d9fa8a96/2d8792aa83d14101a806d0c4d9fa8a96.HD-1080p-2.5Mbps-90297882.mp4",
+    "poster": "/img/bbe0c95b5b.jpg"
+  },
+  "sections": [
+    {
+      "id": "skinny",
+      "number": "01",
+      "title": "SKINNY",
+      "label": "OZEMPIC / BODY CONTROL",
+      "intro": "Warhol used the soup can because it said something about his time. I use the Ozempic needle because I think it says something about ours.",
+      "copy": "We try to control our bodies, our appetite, how we look and how people see us. At the same time, drugs, algorithms and the world around us are constantly shaping what we want.",
+      "images": ["/img/bbe0c95b5b.jpg", "/img/c66308601c.jpg", "/img/6f12304531.jpg"]
+    },
+    {
+      "id": "paintings",
+      "number": "02",
+      "title": "PAINTINGS",
+      "label": "PAINTINGS / SCREENPRINT / PHOTOGRAPH",
+      "intro": "The public work gets the first reaction. The paintings are where the pressure stays.",
+      "copy": "Screenprinting and painting over my own photographs, then pushing the same images back into public space. Different forms, same obsession: control.",
+      "images": ["/img/d6570a0e66.jpg", "/img/eff0bd7bcb.jpg", "/img/6ba7c91318.jpg", "/img/61bb9c8805.jpg", "/img/edf575549f.jpg", "/img/1a041c5cdb.jpg", "/img/862b5bf443.jpg", "/img/5c6c7c7b8f.jpg", "/img/04b582b3ba.jpg"]
+    },
+    {
+      "id": "objects",
+      "number": "03",
+      "title": "OBJECTS",
+      "label": "APPETITE / STATUS / SELF-MANAGEMENT",
+      "intro": "Objects that make hidden systems physical.",
+      "copy": "An empty bag of cocaine. A piece of raw meat. An Ozempic needle. Zines, bandanas and sculptural publishing made to look like the things they are talking about.",
+      "projects": [
+        {
+          "title": "PARTY",
+          "copy": "An oversized dollar bill and cocaine staged on the street. Money as appetite, status and the performance of excess.",
+          "images": ["/img/23312d3dc4.jpg", "/img/3627afb24f.jpg"]
+        },
+        {
+          "title": "ROTTEN",
+          "copy": "A deer head with blood. The Rotten zine printed, wrapped and displayed like a cut of raw meat in a butcher's case.",
+          "images": ["/img/6b6ac73254.jpg", "/img/aea159db19.jpg"]
+        },
+        {
+          "title": "SKINNY",
+          "copy": "The Ozempic image moved from public intervention into printed objects, zines and bandanas.",
+          "images": ["/img/bbe0c95b5b.jpg", "/img/c66308601c.jpg"]
+        }
+      ]
+    },
+    {
+      "id": "unwrap-steal",
+      "number": "04",
+      "title": "UNWRAP & STEAL",
+      "label": "PUBLIC WORK / ACQUISITION SYSTEM",
+      "intro": "I wrap original artworks like gifts, put them up in cities around the world, release clues, and tell people they can steal them.",
+      "copy": "People hunt, race, trade information and take the work. The finding becomes part of the object's history.",
+      "stats": ["100M+ VIEWS", "3 DOCUMENTARIES"],
+      "images": ["/img/9803254175.jpg", "/img/e1040f7064.jpg", "/img/5568ae4dd9.jpg", "/img/f45b6bdbf3.jpg", "/img/61033f3083.jpg"]
+    },
+    {
+      "id": "public-work",
+      "number": "05",
+      "title": "PUBLIC WORK",
+      "label": "INTERVENTIONS / ACCESS / SPECTACLE",
+      "intro": "The conditions around the work are part of the work.",
+      "copy": "For my first warehouse exhibition, a 2,000-pound concrete monolith blocked the gate with a painting buried inside it. The audience had to break through the block to enter the show.",
+      "images": ["/img/47d505d062.jpg", "/img/1a3471a29b.jpg", "/img/bbe0c95b5b.jpg"]
+    }
+  ],
+  "record": {
+    "title": "SELECTED RECORD",
+    "items": ["NBC NEWS", "BEYOND THE STREETS", "TASCHEN", "ROLLING STONE", "BILLBOARD", "VANITY FAIR", "HYPEBEAST"]
+  },
+  "about": {
+    "title": "ABOUT",
+    "copy": "Matt Adam is an artist and visual architect based in Los Angeles. His practice moves between paintings, objects and public interventions, using control as the thread between them.",
+    "contact": "/#contact"
+  }
+}

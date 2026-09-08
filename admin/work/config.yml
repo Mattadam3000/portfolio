@@ -1,0 +1,83 @@
+# Sveltia CMS — mattadam.art/work
+# Separate editor for the art-world work page. This edits work.json only.
+
+backend:
+  name: github
+  repo: Mattadam3000/portfolio
+  branch: main
+  base_url: https://sveltia-cms-auth.mattadamco.workers.dev
+
+media_folder: /img
+public_folder: /img
+site_url: https://mattadam.art/work/
+display_url: https://mattadam.art/work/
+publish_mode: editorial_workflow
+
+collections:
+  - name: work_page
+    label: WORK PAGE
+    files:
+      - name: work
+        label: mattadam.art/work
+        file: work.json
+        description: >
+          This editor changes ONLY mattadam.art/work. It does not change the main homepage.
+        fields:
+          - name: hero
+            label: Hero
+            widget: object
+            fields:
+              - { name: eyebrow, label: Small label, widget: string }
+              - { name: statement, label: Main statement, widget: text }
+              - { name: video, label: Hero video URL, widget: string }
+              - { name: poster, label: Poster image, widget: image }
+
+          - name: sections
+            label: Work sections
+            label_singular: Section
+            widget: list
+            summary: '{{fields.number}} · {{fields.title}}'
+            fields:
+              - { name: id, label: URL anchor, widget: string }
+              - { name: number, label: Number, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: label, label: Small label, widget: string }
+              - { name: intro, label: Main statement, widget: text }
+              - { name: copy, label: Supporting copy, widget: text }
+              - name: stats
+                label: Stats
+                widget: list
+                required: false
+              - name: images
+                label: Images
+                widget: list
+                required: false
+                field: { name: image, label: Image, widget: image }
+              - name: projects
+                label: Sub-projects
+                label_singular: Project
+                widget: list
+                required: false
+                summary: '{{fields.title}}'
+                fields:
+                  - { name: title, label: Title, widget: string }
+                  - { name: copy, label: Copy, widget: text }
+                  - name: images
+                    label: Images
+                    widget: list
+                    field: { name: image, label: Image, widget: image }
+
+          - name: record
+            label: Selected record
+            widget: object
+            fields:
+              - { name: title, label: Heading, widget: string }
+              - { name: items, label: Names, widget: list }
+
+          - name: about
+            label: About
+            widget: object
+            fields:
+              - { name: title, label: Heading, widget: string }
+              - { name: copy, label: Copy, widget: text }
+              - { name: contact, label: Contact link, widget: string }

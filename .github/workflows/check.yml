@@ -1,6 +1,7 @@
 name: Check
 
-# Runs on pull requests so a malformed content.json fails the PR, not the site.
+# Runs on pull requests so malformed homepage or work-page content fails the PR,
+# not the live site.
 
 on:
   pull_request:
@@ -16,8 +17,15 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Validate content and verify index.html is current
+      - name: Validate homepage and verify index.html is current
         run: python3 build.py --check
+
+      - name: Validate and render work page
+        run: |
+          python3 build_work.py
+          test -s work/index.html
+          grep -q 'mattadam.art/work/' work/index.html
+          grep -q 'UNWRAP &amp; STEAL' work/index.html
 
       - uses: actions/setup-node@v4
         with:
@@ -27,5 +35,5 @@ jobs:
         working-directory: test
         run: npm install --no-audit --no-fund
 
-      - name: Smoke test the rendered page
+      - name: Smoke test the rendered homepage
         run: node test/smoke.js
