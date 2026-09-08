@@ -34,7 +34,7 @@ jobs:
 
       - name: Commit preview copy
         run: |
-          if git diff --quiet -- preview/index.html; then
+          if [ -z "$(git status --porcelain -- preview/index.html)" ]; then
             echo "preview already current"
             exit 0
           fi
