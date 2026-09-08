@@ -61,6 +61,81 @@ def render(bid, b):
             f'{media(b["media"])}\n  </div>')
 
 
+# ---------- typed block renderers ----------
+
+def chapter(ch):
+    """The vertical Japanese label + index row that opens a section."""
+    if not ch: return ''
+    out = []
+    if ch.get('vlabel'):
+        out.append(f'<span class="vlabel mono">{ch["vlabel"]}</span>')
+    if ch.get('index'):
+        a, b, c = (ch['index'] + ['', '', ''])[:3]
+        out.append(f'<div class="index mono"><span>{a}</span><span>{b}</span>'
+                   f'<span class="jp">{c}</span></div>')
+    return '\n  '.join(out)
+
+
+def _spans(items):
+    return ''.join(f'<span>{i}</span>' for i in items)
+
+
+def r_roles(b):
+    return f'<div class="roles r">{_spans(b["roles"])}</div>'
+
+
+def r_roster(b):
+    return (chapter(b.get('chapter')) +
+            f'\n  <div class="roster-names r">\n    {_spans(b["names"])}\n  </div>')
+
+
+def r_pubs(b):
+    return ('<div class="pubs">\n'
+            f'    <span class="plbl mono">{b["label"]}</span>\n'
+            f'    <div class="names">\n      {_spans(b["names"])}\n    </div>\n'
+            '  </div>')
+
+
+def r_text(b):
+    return f'<p class="{b.get("class","stmt-head r")}">{b["html"]}</p>'
+
+
+def r_about(b):
+    return chapter(b.get('chapter')) + f'\n  <p class="lede r">\n    {b["lede"]}\n  </p>'
+
+
+def r_faq(b):
+    rows = '\n    '.join(
+        f'<details><summary>{i["q"]}</summary>\n      <p>{i["a"]}</p></details>'
+        for i in b['items'])
+    return f'<div class="faq">\n    {rows}\n  </div>'
+
+
+def r_gallery(b):
+    def p(k):
+        d = b.get(k)
+        if not d: return ''
+        st = f' style="{d["style"]}"' if d.get('style') else ''
+        cls = 'standing r' if k == 'standing' else 'fact r'
+        return f'<p class="{cls}"{st}>{d["html"]}</p>'
+    L = b['lead']
+    lead = (f'<div class="photolead r" data-key="{L["key"]}">'
+            f'<img src="{L["src"]}" alt="{L["alt"]}" loading="lazy" '
+            f'width="{L["w"]}" height="{L["h"]}"></div>')
+    tiles = '\n    '.join(
+        f'<div class="gtile fr ph has" data-key="{t["key"]}" data-i="{i}" tabindex="0" '
+        f'aria-label="{t["aria"]}"><img src="{t["src"]}" alt="{t["alt"]}" loading="lazy" '
+        f'width="{t["w"]}" height="{t["h"]}"></div>'
+        for i, t in enumerate(b['tiles']))
+    return (chapter(b.get('chapter')) + '\n\n  ' + p('standing') + '\n  ' + p('fact') +
+            '\n\n  ' + lead + '\n\n  <div class="grid r" id="photoGrid">\n    ' +
+            tiles + '\n  </div>')
+
+
+TYPES = {'roles': r_roles, 'roster': r_roster, 'pubs': r_pubs, 'text': r_text,
+         'about': r_about, 'faq': r_faq, 'gallery': r_gallery}
+
+
 # ---------- flow ----------
 
 def read_parts():
@@ -78,7 +153,10 @@ def flow(blocks, parts, beats):
     for b in blocks:
         at = [f'class="{b["classes"]}"', f'id="{b["id"]}"', f'data-label="{b["id"]}"']
         if b.get("aria"): at.append(f'aria-label="{b["aria"]}"')
-        body = parts[b["id"]]
+        if b.get("type"):
+            body = "  " + TYPES[b["type"]](b)
+        else:
+            body = parts[b["id"]]
         body = re.sub(r'\{\{BEAT:([^}]+)\}\}',
                       lambda m: render(m.group(1), beats[m.group(1)]), body)
         out.append(f'<div {" ".join(at)}>')
@@ -136,12 +214,21 @@ def render_page():
     dupes = {i for i in ids if ids.count(i) > 1}
     if dupes:
         errs.append(f'duplicate block ids: {sorted(dupes)}')
+    typed = {b["id"] for b in blocks if b.get("type")}
     for b in blocks:
-        if b["id"] not in parts:
-            errs.append(f'block "{b["id"]}" has no <!--PART:{b["id"]}--> in parts.html')
+        if b.get("type"):
+            if b["type"] not in TYPES:
+                errs.append(f'block "{b["id"]}": unknown type "{b["type"]}" '
+                            f'(known: {sorted(TYPES)})')
+        elif b["id"] not in parts:
+            errs.append(f'block "{b["id"]}" has no <!--PART:{b["id"]}--> in parts.html '
+                        f'and no "type"')
     for pid in parts:
         if pid not in ids:
             errs.append(f'parts.html has PART:{pid} but no block with that id in content.json')
+        elif pid in typed:
+            errs.append(f'block "{pid}" has both a "type" and a <!--PART:{pid}--> — '
+                        f'remove the PART, it is dead markup')
 
     used = set()
     for pid, body in parts.items():

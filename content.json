@@ -4,7 +4,14 @@
       "id": "architect",
       "label": "Visual Architect",
       "classes": "sortable architect",
-      "aria": "Matt Adam, Visual Architect"
+      "aria": "Matt Adam, Visual Architect",
+      "type": "roles",
+      "roles": [
+        "Artist",
+        "Creative Director",
+        "Brand Designer",
+        "Photographer"
+      ]
     },
     {
       "id": "legends",
@@ -16,7 +23,52 @@
       "id": "roster",
       "label": "Roster",
       "classes": "sortable roster",
-      "aria": "Artists Matt Adam has worked with"
+      "aria": "Artists Matt Adam has worked with",
+      "type": "roster",
+      "chapter": {
+        "vlabel": "名簿 — THE ROSTER",
+        "index": [
+          "—",
+          "WORKED WITH",
+          "名簿"
+        ]
+      },
+      "names": [
+        "Juice WRLD",
+        "Future",
+        "Metro Boomin",
+        "The Weeknd",
+        "Kanye West",
+        "Travis Scott",
+        "Playboi Carti",
+        "Young Thug",
+        "21 Savage",
+        "A$AP Rocky",
+        "Nav",
+        "Benny Blanco",
+        "Tory Lanez",
+        "Justin Bieber",
+        "Halsey",
+        "Selena Gomez",
+        "BTS",
+        "Gracie Abrams",
+        "Lykke Li",
+        "Nas",
+        "James Blake",
+        "Usher",
+        "Snoop Dogg",
+        "Diplo",
+        "Marshmello",
+        "Calvin Harris",
+        "Shake Shack",
+        "Spotify",
+        "Grand Marnier",
+        "Interscope Records",
+        "Sony Music",
+        "Atlantic Records",
+        "Capitol Records",
+        "Core Response"
+      ]
     },
     {
       "id": "wdty",
@@ -52,7 +104,10 @@
       "id": "statement",
       "label": "statement",
       "classes": "sortable statement",
-      "aria": "Creating worlds, not campaigns"
+      "aria": "Creating worlds, not campaigns",
+      "type": "text",
+      "class": "stmt-head r",
+      "html": "Creating worlds, not campaigns."
     },
     {
       "id": "unwrap-steal",
@@ -98,21 +153,146 @@
     },
     {
       "id": "seen-in",
-      "label": "Seen In",
+      "label": "Seen in",
       "classes": "sortable seenin",
-      "aria": "Press and publications"
+      "aria": "Press and publications",
+      "type": "pubs",
+      "names": [
+        "NBC News",
+        "Rolling Stone",
+        "Billboard",
+        "Vanity Fair",
+        "Complex",
+        "Variety",
+        "Alternative Press",
+        "Taschen",
+        "Beyond the Streets",
+        "V Magazine",
+        "Hypebeast",
+        "The New York Times",
+        "Pitchfork",
+        "Clash",
+        "King Kong Magazine"
+      ]
     },
     {
       "id": "photography",
       "label": "Photography",
       "classes": "sortable",
-      "aria": "Photography by Matt Adam"
+      "aria": "Photography by Matt Adam",
+      "type": "gallery",
+      "chapter": {
+        "vlabel": "写真 — THE EYE",
+        "index": [
+          "05",
+          "PHOTOGRAPHY",
+          "写真"
+        ]
+      },
+      "standing": {
+        "html": "Shot on film. <span class=\"acc\">A record of time.</span>",
+        "style": "margin-bottom:16px"
+      },
+      "fact": {
+        "html": "Artists, places, and moments as they were.",
+        "style": "margin-bottom:8vh"
+      },
+      "lead": {
+        "key": "photo-lead",
+        "src": "img/ba7b1aa412.jpg",
+        "alt": "Matt Adam photographing The Weeknd, Future, and Metro Boomin in a white studio",
+        "w": 1800,
+        "h": 1011
+      },
+      "tiles": [
+        {
+          "key": "grid0",
+          "aria": "Photograph 1",
+          "src": "img/8987fb7730.jpg",
+          "alt": "Matt Adam photography 1",
+          "w": 1600,
+          "h": 1072
+        },
+        {
+          "key": "grid1",
+          "aria": "Photograph 2",
+          "src": "img/99cf83ca6d.jpg",
+          "alt": "Matt Adam photography 2",
+          "w": 1600,
+          "h": 1072
+        },
+        {
+          "key": "grid2",
+          "aria": "Photograph 3",
+          "src": "img/614a480a5b.jpg",
+          "alt": "Matt Adam photography 3",
+          "w": 1600,
+          "h": 1072
+        },
+        {
+          "key": "grid3",
+          "aria": "Photograph 4",
+          "src": "img/84a7a23833.jpg",
+          "alt": "Matt Adam photography 4",
+          "w": 1600,
+          "h": 1072
+        },
+        {
+          "key": "grid4",
+          "aria": "Photograph 5",
+          "src": "img/377274d1e2.jpg",
+          "alt": "Matt Adam photography 5",
+          "w": 1600,
+          "h": 1072
+        },
+        {
+          "key": "grid5",
+          "aria": "Photograph 6",
+          "src": "img/156e429394.jpg",
+          "alt": "Matt Adam photography 6",
+          "w": 1600,
+          "h": 1072
+        },
+        {
+          "key": "grid6",
+          "aria": "Photograph 7",
+          "src": "img/b31a763279.jpg",
+          "alt": "Matt Adam photography 7",
+          "w": 1600,
+          "h": 1072
+        },
+        {
+          "key": "grid7",
+          "aria": "Photograph 8",
+          "src": "img/134f3a2dec.jpg",
+          "alt": "Matt Adam photography 8",
+          "w": 1000,
+          "h": 670
+        },
+        {
+          "key": "grid8",
+          "aria": "Photograph 9",
+          "src": "img/551b369868.jpg",
+          "alt": "Matt Adam photography 9",
+          "w": 1600,
+          "h": 1072
+        }
+      ]
     },
     {
       "id": "about",
       "label": "About",
       "classes": "sortable about",
-      "aria": "About Matt Adam"
+      "aria": "About Matt Adam",
+      "type": "about",
+      "chapter": {
+        "index": [
+          "—",
+          "ABOUT",
+          "概要"
+        ]
+      },
+      "lede": "<b>Matt Adam</b> is a visual architect based in Los Angeles, from Toronto. He built the visual identity for Future and Metro Boomin's <b>We Don't Trust You</b> and <b>We Still Don't Trust You</b>, two consecutive #1 albums, and shot the cover of Juice WRLD's <b>Legends Never Die</b>, the biggest posthumous debut since Tupac and Biggie. He created <b>Unwrap &amp; Steal</b>, a public art project with over 100 million views and three documentaries, where he wraps his artwork like gifts and hides it in public for people to find and keep. His interventions turn hidden systems of money, appetite, and body control into street-scale art; the Ozempic piece was featured on <b>NBC News</b>. His photography appears in <b>Taschen's Ice Cold</b> and was presented by <b>Beyond the Streets</b>. He has worked with Kanye West, Travis Scott, Playboi Carti, Young Thug, 21 Savage, The Weeknd, and Benny Blanco."
     },
     {
       "id": "contact",
@@ -124,7 +304,26 @@
       "id": "faq",
       "label": "FAQ",
       "classes": "sortable faq-section",
-      "aria": "FAQ about Matt Adam"
+      "aria": "FAQ about Matt Adam",
+      "type": "faq",
+      "items": [
+        {
+          "q": "Who shot the Juice WRLD Legends Never Die cover?",
+          "a": "<b>Matt Adam</b> shot the Juice WRLD <b>Legends Never Die</b> cover. He photographed Juice WRLD in 2019; the family selected the image for the posthumous album, which debuted at #1 with 497,000 first-week units."
+        },
+        {
+          "q": "Who built the visual identity for We Don't Trust You?",
+          "a": "<b>Matt Adam</b> built the visual identity for Future and Metro Boomin's <b>We Don't Trust You</b> and <b>We Still Don't Trust You</b>, covering art, vinyl, and the full rollout. Both debuted at #1 in 2024."
+        },
+        {
+          "q": "What is Unwrap &amp; Steal?",
+          "a": "<b>Unwrap &amp; Steal</b> is a public art project by <b>Matt Adam</b> in Los Angeles. He wraps his artwork like gifts, hides it in public, and posts clues so people race to find and keep it. Over 100 million views and three documentaries, one by Emmy-nominated director Sam Lipman-Stern."
+        },
+        {
+          "q": "Who is Matt Adam?",
+          "a": "<b>Matt Adam</b> is a visual architect from Toronto, based in Los Angeles, working across photography, art, brand design, creative direction, and campaign strategy. Known for the Juice WRLD cover, Future and Metro Boomin, and Unwrap &amp; Steal. In Taschen's Ice Cold, presented by Beyond the Streets, featured on NBC News."
+        }
+      ]
     }
   ],
   "beats": {
