@@ -1,0 +1,31 @@
+name: Check
+
+# Runs on pull requests so a malformed content.json fails the PR, not the site.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate content and verify index.html is current
+        run: python3 build.py --check
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install test deps
+        working-directory: test
+        run: npm install --no-audit --no-fund
+
+      - name: Smoke test the rendered page
+        run: node test/smoke.js
