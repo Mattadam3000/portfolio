@@ -22,7 +22,11 @@
       "label": "PAINTINGS / SCREENPRINT / PHOTOGRAPH",
       "intro": "The public work gets the first reaction. The paintings are where the pressure stays.",
       "copy": "Screenprinting and painting over my own photographs, then pushing the same images back into public space. Different forms, same obsession: control.",
-      "images": ["/img/ozempic-cross-paintings-matt-adam.jpg", "/img/ozempic-paintings-matt-adam.jpg", "/img/ozempic-camo-paintings-matt-adam.jpg"]
+      "images": [
+        "/img/ozempic-cross-paintings-matt-adam.jpg",
+        "/img/ozempic-paintings-matt-adam.jpg",
+        "/img/ozempic-camo-paintings-matt-adam.jpg"
+      ]
     },
     {
       "id": "objects",
