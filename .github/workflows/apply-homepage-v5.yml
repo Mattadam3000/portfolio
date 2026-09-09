@@ -1,0 +1,72 @@
+name: Apply approved homepage V5
+
+on:
+  push:
+    branches: [homepage-v5-source]
+    paths:
+      - tools/apply_homepage_v5.py
+      - .github/workflows/apply-homepage-v5.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: homepage-v5-source-migration
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Snapshot dedicated work page
+        run: |
+          echo "WORK_HTML=$(git hash-object work/index.html)" >> "$GITHUB_ENV"
+          echo "WORK_JSON=$(git hash-object work.json)" >> "$GITHUB_ENV"
+          echo "WORK_BUILD=$(git hash-object build_work.py)" >> "$GITHUB_ENV"
+
+      - name: Bring approved preview assets into production media library
+        run: |
+          git fetch origin homepage-vision-preview
+          git show origin/homepage-vision-preview:preview/assets/future-the-real-me-times-square-matt-adam.webp > img/future-the-real-me-times-square-matt-adam.webp
+          git show origin/homepage-vision-preview:preview/assets/ozempic-paintings-matt-adam.webp > img/ozempic-paintings-matt-adam.webp
+          git show origin/homepage-vision-preview:preview/assets/ozempic-cross-camo-paintings-matt-adam.webp > img/ozempic-cross-camo-paintings-matt-adam.webp
+
+      - name: Apply V5 to real CMS/build sources
+        run: python3 tools/apply_homepage_v5.py
+
+      - name: Normalize and rebuild homepage from source
+        run: |
+          python3 clean_template_jsonld.py
+          python3 build.py
+          python3 structured_data.py
+          python3 structured_data.py --check
+          python3 build.py --check
+
+      - name: Validate homepage
+        run: node test/smoke.js
+
+      - name: Prove /work is untouched
+        run: |
+          test "$WORK_HTML" = "$(git hash-object work/index.html)"
+          test "$WORK_JSON" = "$(git hash-object work.json)"
+          test "$WORK_BUILD" = "$(git hash-object build_work.py)"
+          git diff --exit-code -- work/index.html work.json build_work.py admin/work
+
+      - name: Commit production V5 sources and generated homepage
+        run: |
+          rm -f tools/apply_homepage_v5.py .github/workflows/apply-homepage-v5.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short
+          git commit -m "Promote approved homepage V5 from CMS sources"
+          git push origin HEAD:homepage-v5-source
