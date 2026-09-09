@@ -261,7 +261,7 @@
         {
           "kind": "beat",
           "id": "weeknd-green",
-          "layout": "beat",
+          "layout": "beat flip",
           "heading_tag": "h2",
           "heading_class": "big r",
           "heading": "The Weeknd",
@@ -294,7 +294,7 @@
         {
           "kind": "beat",
           "id": "benny",
-          "layout": "beat flip",
+          "layout": "beat",
           "heading_tag": "h2",
           "heading_class": "big r",
           "heading": "Benny<br>Blanco",
