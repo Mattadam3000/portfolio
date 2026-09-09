@@ -174,6 +174,57 @@ TYPES = {'roles': r_roles, 'roster': r_roster, 'pubs': r_pubs, 'text': r_text,
          'about': r_about, 'faq': r_faq, 'gallery': r_gallery}
 
 
+def r_objects_v5(b):
+    """Approved V5 /work-style Objects composition, sourced entirely from CMS body[]."""
+    intro = b["body"][0]
+    projects = [it for it in b["body"][1:] if it.get("kind") == "beat"]
+    out = [
+        '<div class="objects-work">',
+        '  <div class="objects-home-title r">',
+        f'    <h2 class="big r">{intro["heading"]}</h2>',
+        '    <p class="role r">APPETITE / STATUS / SELF-MANAGEMENT</p>',
+        f'    <p class="fact r">{intro["fact"]}</p>',
+        '  </div>',
+    ]
+    for n, it in enumerate(projects, 1):
+        media_images = (it.get("media") or {}).get("images", [])
+        gallery = []
+        for im in media_images:
+            gallery.append(
+                '      <figure class="work-image fr r"><div class="veil"></div>'
+                + img_tag(im) + '</figure>'
+            )
+        out.extend([
+            '  <div class="project r">',
+            f'    <div class="project-copy"><span class="mono">{n:02d}</span>'
+            f'<h3>{it["heading"]}</h3><p>{it["fact"]}</p></div>',
+            '    <div class="gallery project-gallery">',
+            *gallery,
+            '    </div>',
+            '  </div>',
+        ])
+    out.append('</div>')
+    return '\n'.join(out)
+
+
+def r_info_v5(blocks):
+    """About + FAQ overlay, rendered from the same Sveltia-managed blocks."""
+    about = next(b for b in blocks if b["id"] == "about")
+    faq = next(b for b in blocks if b["id"] == "faq")
+    rows = '\n'.join(
+        f'<details><summary>{it["q"]}</summary><p>{it["a"]}</p></details>'
+        for it in faq["items"]
+    )
+    return (f'<div class="info-overlay" id="info">\n'
+            f'  <button class="info-close" id="infoClose" type="button">CLOSE ×</button>\n'
+            f'  <div class="info-inner">\n'
+            f'    <div class="index mono"><span>—</span><span>INFORMATION</span><span class="jp">情報</span></div>\n'
+            f'    <p class="mono">ABOUT</p>\n'
+            f'    <p class="lede">{about["lede"]}</p>\n'
+            f'    <p class="mono info-faq-label">FAQ</p>\n{rows}\n'
+            f'  </div>\n</div>')
+
+
 # ---------- flow ----------
 
 def read_parts():
@@ -193,7 +244,7 @@ def flow(blocks, parts):
         if b.get("aria"): at.append(f'aria-label="{b["aria"]}"')
         t = b.get("type")
         if t == "content":
-            body = "  " + r_body(b["body"])
+            body = "  " + (r_objects_v5(b) if b["id"] == "objects" else r_body(b["body"]))
         elif t == "part":
             body = parts[b["id"]]
         else:
@@ -303,7 +354,7 @@ def render_page():
 
     if "{{FLOW}}" not in tpl:
         sys.exit("ERROR: template.html has no {{FLOW}} placeholder")
-    out = tpl.replace("{{FLOW}}", flow(blocks, parts))
+    out = tpl.replace("{{FLOW}}", flow(blocks, parts)).replace("{{INFO}}", r_info_v5(blocks))
     return out, used
 
 

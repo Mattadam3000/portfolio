@@ -304,6 +304,125 @@
   .navItem{position:absolute;right:14px;bottom:14px;white-space:nowrap;background:var(--paper);color:var(--ink);border:1px solid var(--ink);font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 13px;text-decoration:none;cursor:pointer;opacity:0;pointer-events:none;transform:translate(0,0);transition:transform .45s var(--ease),opacity .3s var(--ease);will-change:transform,opacity}
   #nav.open .navItem{opacity:1;pointer-events:auto}
   @media (prefers-reduced-motion:reduce){.navItem{transition:opacity .2s}}
+
+
+  /* ===================== APPROVED HOMEPAGE V5 ===================== */
+  :root{
+    --paper:#f3f1eb;--ink:#0a0a0a;--accent:#ea54c6;
+    --muted:rgba(10,10,10,.52);--hair:rgba(10,10,10,.22);
+    --pink:#ea54c6;--v5ease:cubic-bezier(.22,1,.36,1);
+  }
+  html{background:var(--paper)}
+  body{background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;letter-spacing:-.005em}
+  .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .bar{position:fixed;z-index:100;top:0;left:0;right:0;padding:18px clamp(18px,3vw,48px);color:#fff;mix-blend-mode:difference;pointer-events:none}
+  .bar .mark,.bar span{pointer-events:auto;opacity:1;color:inherit;text-decoration:none}
+  .bar .mark{font-weight:700;letter-spacing:-.03em}
+  .hero{min-height:100svh;padding:0 clamp(18px,3vw,48px);max-width:none}
+  .hero .claim{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:clamp(48px,11.8vw,154px);line-height:.88;letter-spacing:-.067em;font-weight:500;text-transform:uppercase}
+  .hero .sub{margin-top:24px;margin-left:4px}
+  .hero .down{left:clamp(18px,3vw,48px)}
+
+  #flow{display:block;position:relative;max-width:1280px;margin:0 auto;padding:0 20px clamp(100px,14vw,180px)}
+  #flow .sortable{position:relative;padding:0;margin:0}
+  #flow .sortable + .sortable{margin-top:clamp(110px,15vw,190px)}
+  #flow .sortable.architect{padding:clamp(70px,9vw,120px) 0;margin-top:0}
+  .vlabel{display:none!important}
+  .index{display:grid;grid-template-columns:70px 1fr 1fr;gap:0;border-top:1px solid var(--ink);padding-top:10px;margin-bottom:clamp(60px,8vw,105px);color:var(--ink);align-items:start}
+  .index .jp{text-align:right;color:rgba(10,10,10,.55);margin-left:0}
+
+  .architect .roles{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:clamp(34px,6.1vw,72px);line-height:.98;letter-spacing:-.045em;font-weight:500;color:var(--pink)}
+  .architect .roles span{display:block}
+  .roster-names{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:clamp(25px,4.2vw,52px);line-height:1.02;letter-spacing:-.038em;font-weight:500;color:var(--pink)}
+  .roster-names span:not(:last-child)::after{content:" · ";white-space:pre;color:inherit}
+  .roster-names span{display:inline}
+
+  h2.big{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-.064em;line-height:.86;text-transform:none;font-size:clamp(46px,7.5vw,108px);margin:0 0 30px;color:var(--ink)}
+  .role{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:11px;line-height:1.35;letter-spacing:.08em;font-weight:400;text-transform:uppercase;color:var(--muted);margin:0 0 22px}
+  .fact{font-size:clamp(16px,1.55vw,19px);line-height:1.52;font-weight:400;max-width:46ch;color:var(--ink)}
+  .fact b{font-weight:600}
+  .beat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,6vw,92px);align-items:start;margin-bottom:clamp(100px,14vw,175px)}
+  .beat.flip{grid-template-columns:1fr 1fr}
+  .beat.flip .fr,.beat.flip .stack,.beat.flip .play{order:-1}
+  .stack{gap:clamp(12px,1.6vw,24px)}
+  .fr{background:#ddd}
+  .fr .veil{background:var(--ink)}
+  .fr.wide{aspect-ratio:4/3}
+  .fr.realme-crop{aspect-ratio:3/4}
+  .fr.realme-crop img{object-fit:cover;object-position:center center}
+  .duo{gap:clamp(10px,1.5vw,24px);margin-top:0;margin-bottom:clamp(80px,10vw,130px)}
+  .future-second{border-top:1px solid var(--ink);padding-top:clamp(70px,9vw,110px)!important}
+
+  .statement{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--pink);font-size:clamp(44px,9vw,116px);line-height:.9;letter-spacing:-.055em;font-weight:500;padding:clamp(100px,13vw,170px) 0!important}
+  .statement .stmt-head,.stmt-head{font:inherit;letter-spacing:inherit;line-height:inherit;text-transform:none;color:inherit}
+
+  /* Exact /work Objects composition, but every word/image comes from content.json. */
+  .objects-work{margin-top:0}
+  .objects-home-title{max-width:760px;margin-bottom:clamp(70px,10vw,135px)}
+  .objects-home-title .big{margin-bottom:22px}
+  .objects-home-title .role{margin:0 0 22px}
+  .objects-home-title .fact{max-width:38em}
+  .objects-work .project{margin-top:clamp(80px,11vw,150px)}
+  .objects-work .project-copy{display:grid;grid-template-columns:70px minmax(180px,.7fr) 1fr;gap:28px;border-top:1px solid var(--ink);padding:12px 0 32px;align-items:start}
+  .objects-work .project-copy h3{font-size:clamp(34px,5vw,74px);line-height:.92;letter-spacing:-.05em;margin:0;font-weight:500}
+  .objects-work .project-copy p{font-size:18px;line-height:1.35;margin:4px 0 0;max-width:45ch}
+  .objects-work .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.5vw,24px)}
+  .objects-work .work-image{position:relative;margin:0;background:#ddd;overflow:hidden;aspect-ratio:4/5}
+  .objects-work .work-image img{display:block;width:100%;height:100%;object-fit:cover}
+
+  .seenin{padding:0!important}
+  .seenin .pubs{border-top:1px solid var(--ink);padding-top:12px;margin:0}
+  .seenin .pubs .plbl{color:var(--ink)}
+  .seenin .pubs .names{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--pink);font-size:clamp(21px,3vw,38px);line-height:1;letter-spacing:-.03em;font-weight:500;gap:7px 18px}
+  .standing{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:clamp(34px,5.2vw,66px);line-height:.92;letter-spacing:-.045em;font-weight:500;color:var(--ink);max-width:20em}
+  .standing .acc{color:var(--pink)}
+  .photolead{margin-top:clamp(50px,7vw,90px)}
+  .grid{gap:clamp(8px,1.1vw,14px)}
+
+  #about,#faq{display:none!important}
+  #contact{position:relative;color:#f4f2ec;background:#0b0b0b;box-shadow:0 0 0 100vmax #0b0b0b;clip-path:inset(0 -100vmax);padding-top:clamp(90px,12vw,150px)!important;padding-bottom:clamp(90px,12vw,150px)!important}
+  #contact .index{border-color:#f4f2ec;color:#f4f2ec}
+  #contact .index .jp{color:rgba(244,242,236,.58)}
+  #contact .cta-lead{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:clamp(48px,10.5vw,138px);line-height:.88;letter-spacing:-.06em;font-weight:500;text-transform:none;color:#f4f2ec}
+  #contact input,#contact textarea{color:#f4f2ec;border-color:rgba(244,242,236,.34);font-size:16px}
+  #contact input::placeholder,#contact textarea::placeholder{color:rgba(244,242,236,.5)}
+  #contact input:focus,#contact textarea:focus{border-color:#f4f2ec}
+  #contact button{background:#f4f2ec;color:#0b0b0b;font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:11px;letter-spacing:.08em;font-weight:400;padding:16px 28px}
+  .ticker{background:#0b0b0b;color:#f4f2ec;border-color:rgba(244,242,236,.28);font-weight:500;letter-spacing:-.025em}
+  .ticker-inner{color:#f4f2ec;font-weight:500}
+  footer{background:#0b0b0b;color:rgba(244,242,236,.68);padding-top:28px;padding-bottom:32px}
+  footer .info-link{border:0;background:transparent;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;padding:0}
+  footer .info-link:hover{color:#f4f2ec}
+
+  .info-overlay{position:fixed;inset:0;z-index:130;background:var(--paper);color:var(--ink);overflow:auto;display:none;padding:clamp(72px,10vh,120px) clamp(18px,8vw,120px)}
+  .info-overlay.open{display:block}
+  .info-inner{max-width:900px;margin:0 auto}
+  .info-overlay .lede{font-size:clamp(22px,3vw,38px);line-height:1.12;letter-spacing:-.035em;max-width:28ch;margin:24px 0 0;color:var(--ink)}
+  .info-overlay .info-faq-label{margin-top:9vh}
+  .info-overlay details{border-bottom:1px solid var(--hair);padding:22px 0}
+  .info-overlay summary{font-size:clamp(17px,2.4vw,24px);font-weight:500;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+  .info-overlay summary::-webkit-details-marker{display:none}
+  .info-overlay summary::after{content:"+";font-weight:400;color:var(--muted)}
+  .info-overlay details[open] summary::after{content:"–"}
+  .info-overlay details p{margin-top:16px;font-size:16px;line-height:1.6;color:var(--muted);max-width:46em}
+  .info-close{position:fixed;top:20px;right:20px;border:0;background:transparent;color:var(--ink);font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:11px;letter-spacing:.08em;cursor:pointer}
+  body.info-open{overflow:hidden}
+
+  #navDot{color:#0a0a0a;mix-blend-mode:normal}
+  .navItem{background:var(--paper);border-color:var(--ink);font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.08em}
+  .ink-btn,.panel{display:none!important}
+  .r{transform:translateY(18px);transition:opacity .65s var(--v5ease),transform .65s var(--v5ease)}
+  .r.in{transform:none}
+
+  @media(max-width:860px){
+    #flow{padding-left:18px;padding-right:18px}
+    .beat,.beat.flip{grid-template-columns:1fr;gap:26px;margin-bottom:13vh}
+    .beat.flip .fr,.beat.flip .stack,.beat.flip .play{order:0}
+    .objects-work .project-copy{grid-template-columns:38px 1fr}
+    .objects-work .project-copy p{grid-column:2}
+    .objects-work .project-gallery{grid-template-columns:1fr}
+  }
+
 </style>
 <!-- Structured data is generated by structured_data.py from CMS content. -->
 <script type="application/ld+json">
@@ -323,7 +442,7 @@
         "Brand Designer",
         "Photographer"
       ],
-      "description": "Matt Adam is a visual architect based in Los Angeles, from Toronto. He built the visual identity for Future and Metro Boomin's We Don't Trust You and We Still Don't Trust You , two consecutive #1 albums, and shot the cover of Juice WRLD's Legends Never Die , the biggest posthumous debut since Tupac and Biggie. He created Unwrap & Steal , a public art project with over 100 million views and three documentaries, where he wraps his artwork like gifts and hides it in public for people to find and keep. His interventions turn hidden systems of money, appetite, and body control into street-scale art; the Ozempic piece was featured on NBC News . His photography appears in Taschen's Ice Cold and was presented by Beyond the Streets . He has worked with Kanye West, Travis Scott, Playboi Carti, Young Thug, 21 Savage, The Weeknd, and Benny Blanco.",
+      "description": "Matt Adam is a visual architect based in Los Angeles, from Toronto, working across photography, art, creative direction, objects, and public interventions. His work is built around control: appetite, status, self-optimization, and the systems shaping what people want. He built visual worlds for Future and Metro Boomin, Juice WRLD, The Weeknd, and Benny Blanco; created Unwrap & Steal ; and has work featured by NBC News , Taschen , and Beyond the Streets .",
       "sameAs": [
         "https://www.instagram.com/mattadam___",
         "https://www.complex.com/style/a/mike-destefano/meet-emerging-photographer-whose-captured-travis-scott-juice-wrld-kanye-west-matt-adam-interview",
@@ -371,7 +490,7 @@
       "@type": "Photograph",
       "@id": "https://mattadam.art/#legends",
       "name": "Legends Never Die.",
-      "description": "Juice WRLD. 497,000 first week. The biggest posthumous debut since Tupac and Biggie. Matt Adam shot the portrait; the family chose it for the cover. One of the most viewed album covers of the decade.",
+      "description": "Juice WRLD. 497,000 first week. The biggest posthumous debut since Tupac and Biggie. Matt Adam shot the portrait; the family chose it for the cover.",
       "creator": {
         "@id": "https://mattadam.art/#person"
       },
@@ -381,7 +500,7 @@
       "@type": "CreativeWork",
       "@id": "https://mattadam.art/#wdty",
       "name": "We Don't Trust You.",
-      "description": "Future and Metro Boomin. Two consecutive #1 albums in the same span. Matt Adam built the visual identity. Every image the world saw was his. The only photographer to shoot three covers for the biggest first-week rap sales of the decade.",
+      "description": "Future and Metro Boomin. Two consecutive #1 albums, weeks apart. Matt Adam built the visual identity across both: covers, vinyl, billboards, and rollout.",
       "creator": {
         "@id": "https://mattadam.art/#person"
       },
@@ -391,7 +510,7 @@
       "@type": "CreativeWork",
       "@id": "https://mattadam.art/#unwrap-steal",
       "name": "Unwrap & Steal.",
-      "description": "Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated Telemarketers . Matt Adam wraps his artwork like gifts, hides it in public, and posts the clues. Thousands of people across countries and continents race to find it and steal the art. Ownership doesn't flow through permission or purchase. It flows through attention, speed, and the will to go get it.",
+      "description": "Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated Telemarketers . Matt Adam wraps original artworks like gifts, hides them in public, and releases clues. People race to find and steal them. Ownership moves through attention, speed, and the will to go get it.",
       "creator": {
         "@id": "https://mattadam.art/#person"
       },
@@ -401,7 +520,7 @@
       "@type": "VisualArtwork",
       "@id": "https://mattadam.art/#paintings",
       "name": "Paintings.",
-      "description": "The public work gets the first reaction. The paintings are where it becomes unavoidable. Screenprinting and painting over his own photographs, plus wheatpasting, printing his photographs and pasting them up in public, sometimes all of it at once. The interventions make the social system visible. The paintings make the nervous system visible, where control stops being theatrical and becomes a body under strain. This is the center of everything.",
+      "description": "Matt Adam takes familiar images, objects and symbols from popular culture and changes their context. Different mediums, same questions: what controls us, what we try to control, and who gets to decide.",
       "creator": {
         "@id": "https://mattadam.art/#person"
       },
@@ -432,15 +551,7 @@
           "name": "What is Unwrap & Steal?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Unwrap & Steal is a public art project by Matt Adam in Los Angeles. He wraps his artwork like gifts, hides it in public, and posts clues so people race to find and keep it. Over 100 million views and three documentaries, one by Emmy-nominated director Sam Lipman-Stern."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who is Matt Adam?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Matt Adam is a visual architect from Toronto, based in Los Angeles, working across photography, art, brand design, creative direction, and campaign strategy. Known for the Juice WRLD cover, Future and Metro Boomin, and Unwrap & Steal. In Taschen's Ice Cold, presented by Beyond the Streets, featured on NBC News."
+            "text": "Unwrap & Steal is a public art project by Matt Adam . He wraps original artworks like gifts, hides them in public, and releases clues so people race to find and keep them."
           }
         }
       ]
@@ -451,7 +562,7 @@
 </head>
 <body>
 
-<div class="bar mono"><span>MATT ADAM</span><span>LOS ANGELES</span></div>
+<div class="bar mono"><a href="/" class="mark">MATT ADAM</a><span>LOS ANGELES</span></div>
 
 <!-- 00 CLAIM -->
 <header class="hero" id="hero">
@@ -469,9 +580,9 @@
   <span class="vlabel mono">音楽 — THE FLAGSHIP</span><div class="index mono"><span>01</span><span>MUSIC</span><span class="jp">音楽</span></div>
   <div class="beat">
     <div>
-      <h2 class="big r">Legends<br>Never Die.</h2>
+      <h2 class="big r">Legends<br>Never Die</h2>
       <p class="role r">ALBUM COVER</p>
-      <p class="fact r"><b>Juice WRLD.</b> 497,000 first week. The biggest posthumous debut since Tupac and Biggie. Matt Adam shot the portrait; the family chose it for the cover. One of the most viewed album covers of the decade.</p>
+      <p class="fact r"><b>Juice WRLD.</b> 497,000 first week. The biggest posthumous debut since Tupac and Biggie. Matt Adam shot the portrait; the family chose it for the cover.</p>
     </div>
     <div class="stack r">
       <div class="fr" data-key="juice-portrait" style="aspect-ratio:1170/1738"><div class="veil"></div>
@@ -484,15 +595,15 @@
 <div class="sortable roster" id="roster" data-label="roster" aria-label="Artists Matt Adam has worked with">
   <span class="vlabel mono">名簿 — THE ROSTER</span><div class="index mono"><span>—</span><span>WORKED WITH</span><span class="jp">名簿</span></div>
   <div class="roster-names r">
-    <span>Juice WRLD</span><span>Future</span><span>Metro Boomin</span><span>The Weeknd</span><span>Kanye West</span><span>Travis Scott</span><span>Playboi Carti</span><span>Young Thug</span><span>21 Savage</span><span>A$AP Rocky</span><span>Nav</span><span>Benny Blanco</span><span>Tory Lanez</span><span>Justin Bieber</span><span>Halsey</span><span>Selena Gomez</span><span>BTS</span><span>Gracie Abrams</span><span>Lykke Li</span><span>Nas</span><span>James Blake</span><span>Usher</span><span>Snoop Dogg</span><span>Diplo</span><span>Marshmello</span><span>Calvin Harris</span><span>Shake Shack</span><span>Spotify</span><span>Grand Marnier</span><span>Interscope Records</span><span>Sony Music</span><span>Atlantic Records</span><span>Capitol Records</span><span>Core Response</span>
+    <span>Juice WRLD</span><span>Future</span><span>Metro Boomin</span><span>The Weeknd</span><span>Kanye West</span><span>Travis Scott</span><span>Playboi Carti</span><span>Young Thug</span><span>21 Savage</span><span>A$AP Rocky</span><span>Nav</span><span>Benny Blanco</span><span>Justin Bieber</span><span>Halsey</span><span>Selena Gomez</span><span>BTS</span><span>Gracie Abrams</span><span>Lykke Li</span><span>Nas</span><span>James Blake</span><span>Usher</span><span>Snoop Dogg</span><span>Diplo</span><span>Marshmello</span><span>Calvin Harris</span><span>Shake Shack</span><span>Spotify</span><span>Grand Marnier</span><span>Interscope Records</span><span>Sony Music</span><span>Atlantic Records</span><span>Capitol Records</span>
   </div>
 </div>
 <div class="sortable" id="wdty" data-label="wdty" aria-label="Future and Metro Boomin, We Don't Trust You">
   <div class="beat flip">
     <div>
-      <h2 class="big r">We Don't<br>Trust You.</h2>
+      <h2 class="big r">We Don't<br>Trust You</h2>
       <p class="role r">CREATIVE DIRECTION + VISUAL IDENTITY</p>
-      <p class="fact r"><b>Future and Metro Boomin.</b> Two consecutive #1 albums in the same span. Matt Adam built the visual identity. Every image the world saw was his. The only photographer to shoot three covers for the biggest first-week rap sales of the decade.</p>
+      <p class="fact r"><b>Future and Metro Boomin.</b> Two consecutive #1 albums, weeks apart. Matt Adam built the visual identity across both: covers, vinyl, billboards, and rollout.</p>
     </div>
     <div class="fr r" data-key="wdty"><div class="veil"></div>
       <img src="/img/cade447acb.jpg" alt="Future and Metro Boomin We Don't Trust You album cover, visual identity by Matt Adam" loading="lazy" width="1400" height="1400"></div>
@@ -501,37 +612,46 @@
 <div class="sortable" id="wsdty" data-label="wsdty" aria-label="Future and Metro Boomin, We Still Don't Trust You">
   <div class="beat">
     <div>
-      <h2 class="big r">We Still<br>Don't Trust You.</h2>
+      <h2 class="big r">We Still<br>Don't Trust You</h2>
       <p class="role r">CREATIVE DIRECTION + VISUAL IDENTITY</p>
-      <p class="fact r">The sequel. Another #1, weeks later. The covers, the vinyl, the rollout. One visual world.</p>
+      <p class="fact r">The second chapter, released weeks later. Another #1. One visual world.</p>
     </div>
     <div class="fr r" data-key="wsdty"><div class="veil"></div>
       <img src="/img/755ee4b88f.jpg" alt="Future and Metro Boomin We Still Don't Trust You album cover, shot by Matt Adam" loading="lazy" width="1400" height="1400"></div>
   </div>
 </div>
-<div class="sortable" id="pluto" data-label="pluto" aria-label="Future, Mixtape Pluto">
+<div class="sortable future-chapter" id="pluto" data-label="pluto" aria-label="Future, Mixtape Pluto">
   <div class="beat flip">
     <div>
-      <h2 class="big r">Mixtape<br>Pluto.</h2>
+      <h2 class="big r">Mixtape<br>Pluto</h2>
       <p class="role r">VISUAL ROLLOUT</p>
-      <p class="fact r"><b>Future.</b> Matt Adam shot every visual in the rollout: billboards, posters, press, and the visual assets used to roll out and promote the music videos.</p>
+      <p class="fact r"><b>Future.</b> Matt Adam shot the rollout: billboards, posters, press, and visual assets around the music videos.</p>
     </div>
     <div class="stack r lead-left">
       <div class="fr wide" data-key="pluto-billboard" style="aspect-ratio:828/620"><div class="veil"></div>
         <img src="/img/3c7bee3dc0.jpg" alt="Future Mixtape Pluto billboard wrapping The Reef building in downtown Los Angeles, shot by Matt Adam" loading="lazy" width="828" height="620"></div>
-      <div class="fr wide" data-key="pluto-street"><div class="veil"></div>
-        <img src="/img/6e0fb6ab6d.jpg" alt="Future Mixtape Pluto OUT NOW posters wheatpasted on the street, shot by Matt Adam" loading="lazy" width="720" height="900"></div>
       <div class="fr" data-key="pluto"><div class="veil"></div>
         <img src="/img/f3735fc527.jpg" alt="Future Mixtape Pluto polaroid shot by Matt Adam" loading="lazy" width="1400" height="1400"></div>
     </div>
   </div>
 </div>
+<div class="sortable future-second" id="real-me" data-label="real-me" aria-label="Future, The Real Me">
+  <div class="beat">
+    <div>
+      <h2 class="big r">The Real<br>Me</h2>
+      <p class="role r">VISUAL ROLLOUT</p>
+      <p class="fact r"><b>Future.</b> Matt Adam shot the photography and rollout assets across the campaign: billboards in Los Angeles and Times Square, press, and visual assets around the music videos.</p>
+    </div>
+    <div class="fr r realme-crop" data-key="real-me-times-square"><div class="veil"></div>
+      <img src="/img/future-the-real-me-times-square-matt-adam.webp" alt="Future The Real Me billboard in Times Square using photography by Matt Adam" loading="lazy" width="225" height="400"></div>
+  </div>
+</div>
 <div class="sortable" id="weeknd" data-label="weeknd" aria-label="The Weeknd">
   <div class="beat">
     <div>
-      <h2 class="big r">The Weeknd.</h2>
+      <h2 class="big r">The Weeknd</h2>
       <p class="role r">ROLLOUT VISUALS</p>
-      <p class="fact r">The first images of a new era. Matt Adam shot the photographs that opened the rollout for <b>Hurry Up Tomorrow</b>, the final chapter of the trilogy that began with <i>After Hours</i>.</p>
+      <p class="fact r">Matt Adam shot the first images of The Weeknd's <b>Hurry Up Tomorrow</b> era, opening the final chapter of the trilogy that began with <i>After Hours</i>.</p>
     </div>
     <div class="fr r" data-key="weeknd-green"><div class="veil"></div>
       <img src="/img/cd5dc90625.jpg" alt="The Weeknd photographed by Matt Adam" loading="lazy" style="object-position:center 30%" width="670" height="670"></div>
@@ -540,9 +660,9 @@
 <div class="sortable" id="benny" data-label="benny" aria-label="Benny Blanco">
   <div class="beat flip">
     <div>
-      <h2 class="big r">Benny<br>Blanco.</h2>
+      <h2 class="big r">Benny<br>Blanco</h2>
       <p class="role r">CREATIVE DIRECTION + VISUAL IDENTITY + ROLLOUT</p>
-      <p class="fact r">Matt Adam shaped the visual identity for Benny's transition from producer to artist, beginning with "Eastside." For the albums <b>Friends Keep Secrets 1</b> and <b>Friends Keep Secrets 2</b>, he shot every visual asset across both rollouts. The campaigns ran on billboards worldwide, including a full Sunset Boulevard takeover of nine billboards at once, at a scale no one had done before.</p>
+      <p class="fact r">Matt Adam shaped Benny Blanco's visual identity as he moved from producer to artist, beginning with "Eastside." He shot every visual across <b>Friends Keep Secrets 1</b> and <b>Friends Keep Secrets 2</b>, including a nine-billboard Sunset Boulevard takeover.</p>
     </div>
     <div class="fr r" data-key="benny"><div class="veil"></div>
       <img src="/img/4bcc436e68.jpg" alt="Benny Blanco photographed by Matt Adam on a pink backdrop with dogs in wedding attire" loading="lazy" width="1400" height="1400"></div>
@@ -554,9 +674,9 @@
 <div class="sortable" id="unwrap-steal" data-label="unwrap-steal" aria-label="Unwrap and Steal, a real life art heist">
   <span class="vlabel mono">公共芸術 — THE INSTALLATIONS</span><div class="index mono"><span>02</span><span>PUBLIC ART INSTALLATIONS</span><span class="jp">公共芸術</span></div>
   <div>
-      <h2 class="big r">Unwrap<br>&amp; Steal.</h2>
+      <h2 class="big r">Unwrap<br>&amp; Steal</h2>
       <p class="role r">REAL LIFE ART HEISTS</p>
-      <p class="fact r">Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated <i>Telemarketers</i>. Matt Adam wraps his artwork like gifts, hides it in public, and posts the clues. Thousands of people across countries and continents race to find it and steal the art. Ownership doesn't flow through permission or purchase. It flows through attention, speed, and the will to go get it.</p>
+      <p class="fact r">Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated <i>Telemarketers</i>. Matt Adam wraps original artworks like gifts, hides them in public, and releases clues. People race to find and steal them. Ownership moves through attention, speed, and the will to go get it.</p>
   </div>
   <div class="fr r wide" data-key="uns-lead" style="margin-top:6vh;margin-bottom:14px"><div class="veil"></div>
     <img src="/img/9803254175.jpg" alt="Matt Adam removing an orange-wrapped Unwrap and Steal canvas from a downtown Los Angeles wall on San Pedro Street" loading="lazy" width="1800" height="1159"></div>
@@ -575,9 +695,9 @@
   <span class="vlabel mono">記録 — THE RECORD</span><div class="index mono"><span>03</span><span>GALLERIES &amp; PUBLICATIONS</span><span class="jp">記録</span></div>
   <div class="credit">
     <div>
-      <h2 class="big r">Taschen —<br>Ice Cold.</h2>
+      <h2 class="big r">Taschen —<br>Ice Cold</h2>
       <p class="role r">PUBLISHED WORKS</p>
-      <p class="fact r">Taschen publishes the most serious art books on earth. <i>Ice Cold: A Hip-Hop Jewelry History</i> is the canonical record of the subject. Matt Adam's photographs of Young Thug and A$AP Rocky are printed inside it, credited by name.</p>
+      <p class="fact r">Matt Adam's photographs of Young Thug and A$AP Rocky are published in <i>Taschen's Ice Cold: A Hip-Hop Jewelry History</i>, credited by name.</p>
     </div>
     <div class="fr r tall" data-key="ic-cover"><div class="veil"></div>
       <img src="/img/081ea58315.jpg" alt="Ice Cold: A Hip-Hop Jewelry History, Taschen, featuring Matt Adam photography" loading="lazy" width="1100" height="1100"></div>
@@ -592,9 +712,9 @@
 <div class="sortable" id="dead-city-punx" data-label="dead-city-punx" aria-label="Beyond the Streets, Dead City Punx">
   <div class="credit flip">
     <div>
-      <h2 class="big r">Beyond the Streets —<br>Dead City Punx.</h2>
+      <h2 class="big r">Beyond the Streets —<br>Dead City Punx</h2>
       <p class="role r">PUBLISHED WORKS + GALLERY + DOCUMENTARY</p>
-      <p class="fact r">Five years photographing Dead City Punx on film in the Los Angeles underground. The work became a documentary directed by Roger Gastman, founder of Beyond the Streets, the world's most authoritative institution for graffiti, street art, and subculture, co-executive produced by Zack de la Rocha of Rage Against the Machine. Matt Adam's photographs run throughout the film, which also features footage from his own Unwrap &amp; Steal documentary. His photography fills a major portion of the "Dead City" book, including the cover, and hangs in the exhibition PUNX: The Art of Dead City &amp; Friends at Beyond the Streets, Los Angeles.</p>
+      <p class="fact r">Five years photographing Dead City Punx on film in the Los Angeles underground became a documentary directed by Roger Gastman and co-executive produced by Zack de la Rocha, a book, and the exhibition <i>PUNX: The Art of Dead City &amp; Friends</i> at Beyond the Streets, Los Angeles.</p>
     </div>
     <div class="fr r tall" data-key="dcp-main"><div class="veil"></div>
       <img src="/img/f2042cf4b4.jpg" alt="Matt Adam with the Dead City Punx book at Beyond the Streets, Los Angeles" loading="lazy" width="1050" height="1400"></div>
@@ -608,51 +728,39 @@
 </div>
 <div class="sortable" id="objects" data-label="objects" aria-label="Objects, the practice">
   <span class="vlabel mono">作品 — THE PRACTICE</span><div class="index mono"><span>04</span><span>ART</span><span class="jp">作品</span></div>
-  <div class="series-head r">
-    <h2 class="big">Objects.</h2>
-    <p class="fact">Photographs of objects, made into zines and bandanas, built to look real. An empty bag of cocaine. A piece of raw meat. An Ozempic needle. The point isn't shock. Each one makes a hidden system visible: appetite, status, body control. <b>Jeff Koons shows you what you want. Matt Adam shows you what's controlling you.</b></p>
+  <div class="objects-work">
+  <div class="objects-home-title r">
+    <h2 class="big r">Objects</h2>
+    <p class="role r">APPETITE / STATUS / SELF-MANAGEMENT</p>
+    <p class="fact r">Photographs of objects, made into zines and bandanas, built to look real. An empty bag of cocaine. A piece of raw meat. An Ozempic needle. Each one makes a hidden system visible: appetite, status and body control.</p>
   </div>
-  <div class="beat intv-beat">
-    <div>
-      <h3 class="ser r"><span class="sernum">1.</span>Party<br><span class="sero">The cocaine series.</span></h3>
-      <p class="fact r">An oversized dollar bill and cocaine, staged on the street. The party zine and bandana, printed to look like a real empty bag. Money as appetite, status, and the performance of excess.</p>
-    </div>
-    <div class="stack r">
-      <div class="fr wide" data-key="party-straw"><div class="veil"></div>
-        <img src="/img/23312d3dc4.jpg" alt="Matt Adam Party series, oversized dollar-bill straw and cocaine staged on the Hollywood Walk of Fame" loading="lazy" width="1100" height="1464"></div>
-      <div class="fr wide" data-key="party-bag"><div class="veil"></div>
-        <img src="/img/3627afb24f.jpg" alt="Matt Adam Party series, empty baggie object printed to look real" loading="lazy" width="1052" height="1400"></div>
+  <div class="project r">
+    <div class="project-copy"><span class="mono">01</span><h3>PARTY</h3><p>An oversized dollar bill and cocaine staged on the street. Money as appetite, status and the performance of excess.</p></div>
+    <div class="gallery project-gallery">
+      <figure class="work-image fr r"><div class="veil"></div><img src="/img/23312d3dc4.jpg" alt="Matt Adam Party series, oversized dollar-bill straw and cocaine staged on the Hollywood Walk of Fame" loading="lazy" width="1100" height="1464"></figure>
+      <figure class="work-image fr r"><div class="veil"></div><img src="/img/3627afb24f.jpg" alt="Matt Adam Party series, empty baggie object printed to look real" loading="lazy" width="1052" height="1400"></figure>
     </div>
   </div>
-  <div class="beat flip intv-beat">
-    <div>
-      <h3 class="ser r"><span class="sernum">2.</span>Rotten<br><span class="sero">The raw-meat series.</span></h3>
-      <p class="fact r">A deer head with blood. The rotten zine, printed, wrapped, and displayed as a cut of raw meat in a butcher’s case. Appetite stripped of the packaging that makes consumption comfortable.</p>
-    </div>
-    <div class="stack r">
-      <div class="fr wide" data-key="rotten-deer"><div class="veil"></div>
-        <img src="/img/6b6ac73254.jpg" alt="Matt Adam Rotten series, deer head intervention on a downtown Los Angeles sidewalk" loading="lazy" width="1100" height="1467"></div>
-      <div class="fr wide" data-key="rotten-meat"><div class="veil"></div>
-        <img src="/img/aea159db19.jpg" alt="Matt Adam Rotten series, photographed meat staged in a Los Angeles butcher case" loading="lazy" width="1100" height="1467"></div>
+  <div class="project r">
+    <div class="project-copy"><span class="mono">02</span><h3>ROTTEN</h3><p>A deer head with blood. The Rotten zine printed, wrapped and displayed like a cut of raw meat in a butcher's case.</p></div>
+    <div class="gallery project-gallery">
+      <figure class="work-image fr r"><div class="veil"></div><img src="/img/6b6ac73254.jpg" alt="Matt Adam Rotten series, deer head intervention on a downtown Los Angeles sidewalk" loading="lazy" width="1100" height="1467"></figure>
+      <figure class="work-image fr r"><div class="veil"></div><img src="/img/aea159db19.jpg" alt="Matt Adam Rotten series, photographed meat staged in a Los Angeles butcher case" loading="lazy" width="1100" height="1467"></figure>
     </div>
   </div>
-  <div class="beat intv-beat">
-    <div>
-      <h3 class="ser r"><span class="sernum">3.</span>Skinny<br><span class="sero">The Ozempic series.</span></h3>
-      <p class="fact r">A deflated doll impaled by a giant Ozempic needle on the highway to Coachella. The skinny zine and bandana. Body image, appetite, and self-optimization rendered at monumental scale.</p>
-    </div>
-    <div class="stack r">
-      <div class="fr wide" data-key="skinny-doll"><div class="veil"></div>
-        <img src="/img/bbe0c95b5b.jpg" alt="Matt Adam Skinny series, deflated doll impaled on a giant Ozempic needle mounted on a desert billboard near Coachella" loading="lazy" width="1100" height="1462"></div>
-      <div class="fr wide" data-key="skinny-pen"><div class="veil"></div>
-        <img src="/img/c66308601c.jpg" alt="Matt Adam Skinny series, oversized Ozempic pen prop held in hand" loading="lazy" width="1100" height="1460"></div>
+  <div class="project r">
+    <div class="project-copy"><span class="mono">03</span><h3>SKINNY</h3><p>The Ozempic image moved from public intervention into printed objects, zines and bandanas.</p></div>
+    <div class="gallery project-gallery">
+      <figure class="work-image fr r"><div class="veil"></div><img src="/img/bbe0c95b5b.jpg" alt="Matt Adam Skinny series, deflated doll impaled on a giant Ozempic needle mounted on a desert billboard near Coachella" loading="lazy" width="1100" height="1462"></figure>
+      <figure class="work-image fr r"><div class="veil"></div><img src="/img/c66308601c.jpg" alt="Matt Adam Skinny series, oversized Ozempic pen prop held in hand" loading="lazy" width="1100" height="1460"></figure>
     </div>
   </div>
+</div>
 </div>
 <div class="sortable" id="nbc-news" data-label="nbc-news" aria-label="Matt Adam on NBC News">
   <div class="beat flip">
     <div>
-      <h2 class="big r">On<br>The News.</h2>
+      <h2 class="big r">On<br>The News</h2>
       <p class="fact r"><b>Andy Warhol had soup cans. Matt Adam has the Ozempic needle.</b> Warhol was interested in what America consumed. Matt Adam is interested in what people use to control themselves. The Ozempic intervention broke past the art world and onto NBC News.</p>
     </div>
     <div class="play r" id="nbcPlay" aria-label="NBC News segment">
@@ -665,9 +773,9 @@
 <div class="sortable" id="art-show" data-label="art-show" aria-label="Nobody Came To My Art Show">
   <div class="beat flip" style="margin-bottom:8vh">
     <div>
-      <h2 class="big r">Nobody Came<br>To My Art Show.</h2>
+      <h2 class="big r">Nobody Came<br>To My Art Show</h2>
       <p class="role r">ART SHOW + PERFORMANCE ART</p>
-      <p class="fact r">Weeks before his first warehouse art exhibit, Matt Adam ran through Hollywood in a clown costume, spray-painting <b>"nobody came to my art show"</b> on a pink-wrapped canvas. Then the invitations arrived: pieces of concrete, each marked "break." On the night, a 2,000-pound concrete monolith blocked the gate, the pink canvas buried inside it. The crowd had to break it themselves to get in. Inside: the paintings and more work, waiting in a room they'd already earned.</p>
+      <p class="fact r">Weeks before his first warehouse exhibition, Matt Adam ran through Hollywood in a clown costume spray-painting <b>"nobody came to my art show"</b> on a pink-wrapped canvas. Invitations arrived as pieces of concrete marked "break." On opening night, a 2,000-pound concrete monolith blocked the gate with the canvas buried inside. The crowd had to break it open to enter.</p>
     </div>
     <div class="fr r tall" data-key="show-canvas"><div class="veil"></div>
       <img src="/img/47d505d062.jpg" alt="Matt Adam lying under a pink nobody came to my art show canvas at a Los Angeles mall" loading="lazy" width="1050" height="1400"></div>
@@ -678,29 +786,17 @@
 <div class="sortable" id="paintings" data-label="paintings" aria-label="Paintings">
   <div class="beat">
     <div>
-      <h2 class="big r">Paintings.</h2>
-      <p class="fact r">The public work gets the first reaction. The paintings are where it becomes unavoidable. Screenprinting and painting over his own photographs, plus wheatpasting, printing his photographs and pasting them up in public, sometimes all of it at once. The interventions make the social system visible. The paintings make the nervous system visible, where control stops being theatrical and becomes a body under strain. <b>This is the center of everything.</b></p>
+      <h2 class="big r">Paintings</h2>
+      <p class="fact r">Matt Adam takes familiar images, objects and symbols from popular culture and changes their context. Different mediums, same questions: what controls us, what we try to control, and who gets to decide.</p>
     </div>
     <div class="fr r tall fit" data-key="paint-ozempic"><div class="veil"></div>
       <img src="/img/d6570a0e66.jpg" alt="Matt Adam painting, Ozempic semaglutide packaging arranged as a cross, screenprinted in black on a silver field" loading="lazy" width="1100" height="1100"></div>
   </div>
   <div class="duo" style="margin-top:6vh">
-      <div class="fr r tall fit" data-key="paint-green"><div class="veil"></div>
-        <img src="/img/eff0bd7bcb.jpg" alt="Matt Adam painting, black and white photographic image overlaid with a fluorescent green square" loading="lazy" width="1100" height="1647"></div>
-      <div class="fr r tall fit" data-key="paint-pink"><div class="veil"></div>
-        <img src="/img/6ba7c91318.jpg" alt="Matt Adam painting, black and white photographic image overlaid with a dripping pink painted outline" loading="lazy" width="1100" height="1647"></div>
-  </div>
-  <div class="fr r fit full" data-key="orange-hat"><div class="veil"></div>
-    <img src="/img/61bb9c8805.jpg" alt="Matt Adam in an orange beanie standing in front of one of his large black-and-white paintings" loading="lazy" width="1080" height="924"></div>
-  <div class="duo" style="margin-top:0">
-      <div class="fr r wide fit" data-key="paint-c2"><div class="veil"></div>
-        <img src="/img/edf575549f.jpg" alt="Matt Adam painting, horned three-eyed figure with bombs in black on a yellow field" loading="lazy" width="1100" height="837"></div>
-      <div class="fr r wide fit" data-key="paint-c1"><div class="veil"></div>
-        <img src="/img/1a041c5cdb.jpg" alt="Matt Adam painting, black ink figure on a periwinkle field" loading="lazy" width="1100" height="837"></div>
-      <div class="fr r wide fit" data-key="paint-c3"><div class="veil"></div>
-        <img src="/img/862b5bf443.jpg" alt="Matt Adam painting in pink and black, tangled figures and hands" loading="lazy" width="1100" height="837"></div>
-      <div class="fr r wide fit" data-key="paint-c4"><div class="veil"></div>
-        <img src="/img/5c6c7c7b8f.jpg" alt="Matt Adam painting, multi-eyed creature in black line on a pink field" loading="lazy" width="1100" height="837"></div>
+      <div class="fr r tall fit" data-key="ozempic-paintings-color"><div class="veil"></div>
+        <img src="/img/ozempic-paintings-matt-adam.webp" alt="Four Matt Adam Ozempic cross paintings in yellow, orange, pink and blue" loading="lazy" width="900" height="1200"></div>
+      <div class="fr r tall fit" data-key="ozempic-paintings-studio"><div class="veil"></div>
+        <img src="/img/ozempic-cross-camo-paintings-matt-adam.webp" alt="Group of Matt Adam Ozempic cross paintings in the studio" loading="lazy" width="900" height="1200"></div>
   </div>
   <div class="fr r wide fit" data-key="mickey-paintings" style="margin-top:6vh"><div class="veil"></div>
     <img src="/img/04b582b3ba.jpg" alt="Four Matt Adam Mickey Mouse paintings in black ink, with hand-lettered slogans" loading="lazy" width="1565" height="1037"></div>
@@ -722,25 +818,25 @@
   <div class="photolead r" data-key="photo-lead"><img src="/img/ba7b1aa412.jpg" alt="Matt Adam photographing The Weeknd, Future, and Metro Boomin in a white studio" loading="lazy" width="1800" height="1011"></div>
 
   <div class="grid r" id="photoGrid">
-    <div class="gtile fr ph has" data-key="grid0" data-i="0" tabindex="0" aria-label="Photograph 1"><img src="/img/8987fb7730.jpg" alt="Matt Adam photography 1" loading="lazy" width="1600" height="1072"></div>
-    <div class="gtile fr ph has" data-key="grid1" data-i="1" tabindex="0" aria-label="Photograph 2"><img src="/img/99cf83ca6d.jpg" alt="Matt Adam photography 2" loading="lazy" width="1600" height="1072"></div>
-    <div class="gtile fr ph has" data-key="grid2" data-i="2" tabindex="0" aria-label="Photograph 3"><img src="/img/614a480a5b.jpg" alt="Matt Adam photography 3" loading="lazy" width="1600" height="1072"></div>
-    <div class="gtile fr ph has" data-key="grid3" data-i="3" tabindex="0" aria-label="Photograph 4"><img src="/img/84a7a23833.jpg" alt="Matt Adam photography 4" loading="lazy" width="1600" height="1072"></div>
-    <div class="gtile fr ph has" data-key="grid4" data-i="4" tabindex="0" aria-label="Photograph 5"><img src="/img/377274d1e2.jpg" alt="Matt Adam photography 5" loading="lazy" width="1600" height="1072"></div>
-    <div class="gtile fr ph has" data-key="grid5" data-i="5" tabindex="0" aria-label="Photograph 6"><img src="/img/156e429394.jpg" alt="Matt Adam photography 6" loading="lazy" width="1600" height="1072"></div>
-    <div class="gtile fr ph has" data-key="grid6" data-i="6" tabindex="0" aria-label="Photograph 7"><img src="/img/b31a763279.jpg" alt="Matt Adam photography 7" loading="lazy" width="1600" height="1072"></div>
-    <div class="gtile fr ph has" data-key="grid7" data-i="7" tabindex="0" aria-label="Photograph 8"><img src="/img/134f3a2dec.jpg" alt="Matt Adam photography 8" loading="lazy" width="1000" height="670"></div>
-    <div class="gtile fr ph has" data-key="grid8" data-i="8" tabindex="0" aria-label="Photograph 9"><img src="/img/551b369868.jpg" alt="Matt Adam photography 9" loading="lazy" width="1600" height="1072"></div>
+    <div class="gtile fr ph has" data-key="grid0" data-i="0" tabindex="0" aria-label="The Weeknd, Future, and Metro Boomin photographed by Matt Adam"><img src="/img/8987fb7730.jpg" alt="The Weeknd, Future, and Metro Boomin photographed by Matt Adam" loading="lazy" width="1600" height="1072"></div>
+    <div class="gtile fr ph has" data-key="grid1" data-i="1" tabindex="0" aria-label="Future and Metro Boomin photographed by Matt Adam"><img src="/img/99cf83ca6d.jpg" alt="Future and Metro Boomin photographed by Matt Adam" loading="lazy" width="1600" height="1072"></div>
+    <div class="gtile fr ph has" data-key="grid2" data-i="2" tabindex="0" aria-label="Ye, formerly Kanye West, and Kim Kardashian photographed by Matt Adam"><img src="/img/614a480a5b.jpg" alt="Ye, formerly Kanye West, and Kim Kardashian photographed by Matt Adam" loading="lazy" width="1600" height="1072"></div>
+    <div class="gtile fr ph has" data-key="grid3" data-i="3" tabindex="0" aria-label="Punk show photographed by Matt Adam"><img src="/img/84a7a23833.jpg" alt="Punk show photographed by Matt Adam" loading="lazy" width="1600" height="1072"></div>
+    <div class="gtile fr ph has" data-key="grid4" data-i="4" tabindex="0" aria-label="Street takeover photographed by Matt Adam"><img src="/img/377274d1e2.jpg" alt="Street takeover photographed by Matt Adam" loading="lazy" width="1600" height="1072"></div>
+    <div class="gtile fr ph has" data-key="grid5" data-i="5" tabindex="0" aria-label="Future in a motel photographed by Matt Adam"><img src="/img/156e429394.jpg" alt="Future in a motel photographed by Matt Adam" loading="lazy" width="1600" height="1072"></div>
+    <div class="gtile fr ph has" data-key="grid6" data-i="6" tabindex="0" aria-label="Punk show photographed by Matt Adam"><img src="/img/b31a763279.jpg" alt="Punk show photographed by Matt Adam" loading="lazy" width="1600" height="1072"></div>
+    <div class="gtile fr ph has" data-key="grid7" data-i="7" tabindex="0" aria-label="Woman in a pink bath with a cross photographed by Matt Adam"><img src="/img/134f3a2dec.jpg" alt="Woman in a pink bath with a cross photographed by Matt Adam" loading="lazy" width="1000" height="670"></div>
+    <div class="gtile fr ph has" data-key="grid8" data-i="8" tabindex="0" aria-label="Benny Blanco and Selena Gomez photographed by Matt Adam"><img src="/img/551b369868.jpg" alt="Benny Blanco and Selena Gomez photographed by Matt Adam" loading="lazy" width="1600" height="1072"></div>
   </div>
 </div>
 <div class="sortable about" id="about" data-label="about" aria-label="About Matt Adam">
   <div class="index mono"><span>—</span><span>ABOUT</span><span class="jp">概要</span></div>
   <p class="lede r">
-    <b>Matt Adam</b> is a visual architect based in Los Angeles, from Toronto. He built the visual identity for Future and Metro Boomin's <b>We Don't Trust You</b> and <b>We Still Don't Trust You</b>, two consecutive #1 albums, and shot the cover of Juice WRLD's <b>Legends Never Die</b>, the biggest posthumous debut since Tupac and Biggie. He created <b>Unwrap &amp; Steal</b>, a public art project with over 100 million views and three documentaries, where he wraps his artwork like gifts and hides it in public for people to find and keep. His interventions turn hidden systems of money, appetite, and body control into street-scale art; the Ozempic piece was featured on <b>NBC News</b>. His photography appears in <b>Taschen's Ice Cold</b> and was presented by <b>Beyond the Streets</b>. He has worked with Kanye West, Travis Scott, Playboi Carti, Young Thug, 21 Savage, The Weeknd, and Benny Blanco.
+    <b>Matt Adam</b> is a visual architect based in Los Angeles, from Toronto, working across photography, art, creative direction, objects, and public interventions. His work is built around control: appetite, status, self-optimization, and the systems shaping what people want. He built visual worlds for Future and Metro Boomin, Juice WRLD, The Weeknd, and Benny Blanco; created <b>Unwrap &amp; Steal</b>; and has work featured by <b>NBC News</b>, <b>Taschen</b>, and <b>Beyond the Streets</b>.
   </p>
 </div>
 <div class="sortable door" id="contact" data-label="contact" aria-label="Contact Matt Adam">
-  <span class="vlabel mono">連絡 — THE DOOR</span><div class="index mono"><span>05</span><span>CONTACT</span><span class="jp">連絡</span></div>
+  <span class="vlabel mono">連絡 — THE DOOR</span><div class="index mono"><span>06</span><span>CONTACT</span><span class="jp">連絡</span></div>
   <p class="cta-lead r">Make it<br>undeniable.</p>
   <form id="doorForm" action="https://formspree.io/f/xkjnqajj" method="POST" autocomplete="off">
     <input type="text" name="name" placeholder="NAME" required aria-label="Name">
@@ -758,9 +854,7 @@
     <details><summary>Who built the visual identity for We Don't Trust You?</summary>
       <p><b>Matt Adam</b> built the visual identity for Future and Metro Boomin's <b>We Don't Trust You</b> and <b>We Still Don't Trust You</b>, covering art, vinyl, and the full rollout. Both debuted at #1 in 2024.</p></details>
     <details><summary>What is Unwrap &amp; Steal?</summary>
-      <p><b>Unwrap &amp; Steal</b> is a public art project by <b>Matt Adam</b> in Los Angeles. He wraps his artwork like gifts, hides it in public, and posts clues so people race to find and keep it. Over 100 million views and three documentaries, one by Emmy-nominated director Sam Lipman-Stern.</p></details>
-    <details><summary>Who is Matt Adam?</summary>
-      <p><b>Matt Adam</b> is a visual architect from Toronto, based in Los Angeles, working across photography, art, brand design, creative direction, and campaign strategy. Known for the Juice WRLD cover, Future and Metro Boomin, and Unwrap &amp; Steal. In Taschen's Ice Cold, presented by Beyond the Streets, featured on NBC News.</p></details>
+      <p><b>Unwrap &amp; Steal</b> is a public art project by <b>Matt Adam</b>. He wraps original artworks like gifts, hides them in public, and releases clues so people race to find and keep them.</p></details>
   </div>
 </div>
 </section>
@@ -768,7 +862,20 @@
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner">MATT ADAM — MAKE IT UNDENIABLE — MATT ADAM — MAKE IT UNDENIABLE — MATT ADAM — MAKE IT UNDENIABLE — MATT ADAM — MAKE IT UNDENIABLE —&nbsp;</div>
 </div>
-<footer class="mono"><span>© 2026 MATT ADAM</span><span>34.05°N 118.24°W</span></footer>
+<footer class="mono"><span>© 2026 MATT ADAM</span><button class="info-link" id="infoOpen" type="button">ABOUT / FAQ ↗</button><span>34.05°N 118.24°W</span></footer>
+
+<div class="info-overlay" id="info">
+  <button class="info-close" id="infoClose" type="button">CLOSE ×</button>
+  <div class="info-inner">
+    <div class="index mono"><span>—</span><span>INFORMATION</span><span class="jp">情報</span></div>
+    <p class="mono">ABOUT</p>
+    <p class="lede"><b>Matt Adam</b> is a visual architect based in Los Angeles, from Toronto, working across photography, art, creative direction, objects, and public interventions. His work is built around control: appetite, status, self-optimization, and the systems shaping what people want. He built visual worlds for Future and Metro Boomin, Juice WRLD, The Weeknd, and Benny Blanco; created <b>Unwrap &amp; Steal</b>; and has work featured by <b>NBC News</b>, <b>Taschen</b>, and <b>Beyond the Streets</b>.</p>
+    <p class="mono info-faq-label">FAQ</p>
+<details><summary>Who shot the Juice WRLD Legends Never Die cover?</summary><p><b>Matt Adam</b> shot the Juice WRLD <b>Legends Never Die</b> cover. He photographed Juice WRLD in 2019; the family selected the image for the posthumous album, which debuted at #1 with 497,000 first-week units.</p></details>
+<details><summary>Who built the visual identity for We Don't Trust You?</summary><p><b>Matt Adam</b> built the visual identity for Future and Metro Boomin's <b>We Don't Trust You</b> and <b>We Still Don't Trust You</b>, covering art, vinyl, and the full rollout. Both debuted at #1 in 2024.</p></details>
+<details><summary>What is Unwrap &amp; Steal?</summary><p><b>Unwrap &amp; Steal</b> is a public art project by <b>Matt Adam</b>. He wraps original artworks like gifts, hides them in public, and releases clues so people race to find and keep them.</p></details>
+  </div>
+</div>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
   <button class="lb-close mono" id="lbClose">CLOSE ✕</button>
@@ -934,6 +1041,7 @@ document.querySelectorAll(".play").forEach(p=>{const v=p.querySelector("video");
   <a class="navItem" href="#" data-target="objects">Art</a>
   <a class="navItem" href="#" data-target="photography">Photography</a>
   <a class="navItem" href="#" data-target="contact">Contact</a>
+  <a class="navItem" href="/work/" target="_blank" rel="noopener" data-external="1">Art / Work ↗</a>
   <a class="navItem" href="https://unwrapandsteal.com" target="_blank" rel="noopener" data-external="1">Shop</a>
 </nav>
 <script>
@@ -980,5 +1088,23 @@ document.querySelectorAll(".play").forEach(p=>{const v=p.querySelector("video");
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
 </script>
+
+<script id="homepage-v5-info">
+(function(){
+  function init(){
+    var info=document.getElementById('info');
+    var open=document.getElementById('infoOpen');
+    var close=document.getElementById('infoClose');
+    if(!info||!open||!close) return;
+    function set(v){info.classList.toggle('open',v);document.body.classList.toggle('info-open',v);if(v)close.focus();}
+    open.addEventListener('click',function(){set(true)});
+    close.addEventListener('click',function(){set(false);open.focus()});
+    info.addEventListener('click',function(e){if(e.target===info)set(false)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&info.classList.contains('open'))set(false)});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
 </body>
 </html>
