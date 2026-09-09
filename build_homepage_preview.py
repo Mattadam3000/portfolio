@@ -13,8 +13,8 @@ PATCH = r'''
   .homepage-work-link:hover{opacity:1}
   #contact{padding-top:14vh}
   #about.preview-about-source{display:none!important}
-  .homepage-info-link{display:inline-block;margin-top:26px;border:0;background:transparent;color:var(--muted);font:inherit;cursor:pointer;padding:0;text-transform:uppercase;letter-spacing:.14em;font-family:var(--fm);font-size:11px;text-decoration:underline;text-underline-offset:4px;opacity:.65}
-  .homepage-info-link:hover{color:var(--ink);opacity:1}
+  .homepage-info-link{border:0;background:transparent;color:inherit;cursor:pointer;padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit;opacity:.65;text-decoration:none}
+  .homepage-info-link:hover{color:var(--ink);opacity:1;text-decoration:underline;text-underline-offset:4px}
   #faq.preview-info-overlay{position:fixed;inset:0;z-index:120;display:none;max-width:none;margin:0;padding:max(72px,10vh) max(20px,8vw) 10vh;background:var(--paper);color:var(--ink);overflow-y:auto;-webkit-overflow-scrolling:touch}
   #faq.preview-info-overlay.open{display:block}
   #faq.preview-info-overlay .faq{max-width:900px;margin:0 auto}
@@ -84,6 +84,7 @@ PATCH = r'''
     const faq=document.getElementById('faq');
     const aboutBlock=document.getElementById('about');
     const contact=document.getElementById('contact');
+    const footer=document.querySelector('footer');
     if(faq&&aboutBlock&&contact){
       const aboutLede=aboutBlock.querySelector('.lede');
       aboutBlock.classList.add('preview-about-source');
@@ -128,24 +129,26 @@ PATCH = r'''
         faq.insertBefore(close,faq.firstChild);
       }
 
-      if(!contact.querySelector('.homepage-info-link')){
-        const trigger=document.createElement('button');
+      // Keep this as quiet footer metadata, never as a second CTA beside SEND.
+      let trigger=document.querySelector('.homepage-info-link');
+      if(!trigger&&footer){
+        trigger=document.createElement('button');
         trigger.type='button';
         trigger.className='homepage-info-link';
-        trigger.textContent='MORE INFO ↗';
+        trigger.textContent='ABOUT / FAQ ↗';
         trigger.setAttribute('aria-label','Open About and FAQ');
-        contact.appendChild(trigger);
-        trigger.addEventListener('click',()=>{
-          faq.classList.add('open');
-          document.body.classList.add('preview-info-open');
-          faq.querySelector('.preview-info-close')?.focus();
-        });
+        footer.appendChild(trigger);
       }
+      trigger?.addEventListener('click',()=>{
+        faq.classList.add('open');
+        document.body.classList.add('preview-info-open');
+        faq.querySelector('.preview-info-close')?.focus();
+      });
 
       faq.querySelector('.preview-info-close')?.addEventListener('click',()=>{
         faq.classList.remove('open');
         document.body.classList.remove('preview-info-open');
-        contact.querySelector('.homepage-info-link')?.focus();
+        trigger?.focus();
       });
       faq.addEventListener('click',e=>{
         if(e.target===faq){
@@ -157,7 +160,7 @@ PATCH = r'''
         if(e.key==='Escape'&&faq.classList.contains('open')){
           faq.classList.remove('open');
           document.body.classList.remove('preview-info-open');
-          contact.querySelector('.homepage-info-link')?.focus();
+          trigger?.focus();
         }
       });
     }
