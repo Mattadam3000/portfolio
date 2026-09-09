@@ -25,12 +25,17 @@ PATCH = r'''
   .preview-faq-label{max-width:900px;margin:0 auto 28px}
   .preview-info-close{position:fixed;right:20px;top:max(18px,env(safe-area-inset-top));z-index:121;border:0;background:transparent;color:var(--ink);cursor:pointer;font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
   body.preview-info-open{overflow:hidden}
+  .preview-real-me .r{opacity:1;transform:none}
+  .preview-real-me .fr img{opacity:1}
+  .preview-real-me .fr .veil{transform:scaleY(0)}
   @media(max-width:760px){.homepage-work-link{right:18px;bottom:max(22px,env(safe-area-inset-bottom))}#faq.preview-info-overlay{padding-left:18px;padding-right:18px}.preview-info-close{right:18px}}
 </style>
 <script id="homepage-vision-preview-patch">
 (function(){
   function apply(){
     const norm=s=>(s||'').replace(/\s+/g,' ').trim().toLowerCase();
+    const assetBase='https://raw.githubusercontent.com/Mattadam3000/portfolio/0c685c6ef8bcfcb91729c7d180142cb29692bb7b/preview/assets/';
+
     function setFactById(id,markup){
       const root=document.getElementById(id);
       if(!root) return false;
@@ -63,8 +68,66 @@ PATCH = r'''
     setFactByHeading('Nobody Came','Weeks before his first warehouse exhibition, Matt Adam ran through Hollywood in a clown costume spray-painting <b>"nobody came to my art show"</b> on a pink-wrapped canvas. Invitations arrived as pieces of concrete marked "break." On opening night, a 2,000-pound concrete monolith blocked the gate with the canvas buried inside. The crowd had to break it open to enter.');
     setFactByHeading('Paintings','Matt Adam takes familiar images, objects and symbols from popular culture and changes their context. Different mediums, same questions: what controls us, what we try to control, and who gets to decide.');
 
-    // Warhol and Koons comparisons stay exactly as they are on the current homepage.
+    // Add Future — The Real Me directly after Mixtape Pluto and before The Weeknd.
+    const pluto=document.getElementById('pluto');
+    const weeknd=document.getElementById('weeknd');
+    if(pluto&&weeknd&&!document.getElementById('real-me')){
+      const realMe=document.createElement('div');
+      realMe.className='sortable preview-real-me';
+      realMe.id='real-me';
+      realMe.dataset.label='real-me';
+      realMe.setAttribute('aria-label','Future, The Real Me');
+      realMe.innerHTML=`
+        <div class="beat">
+          <div>
+            <h2 class="big r">The Real<br>Me.</h2>
+            <p class="role r">VISUAL ROLLOUT</p>
+            <p class="fact r"><b>Future.</b> Matt Adam shot the photography and rollout assets across the campaign: billboards in Los Angeles and Times Square, press, and visual assets around the music videos.</p>
+          </div>
+          <div class="stack r">
+            <div class="fr fit" data-key="real-me-times-square"><div class="veil"></div>
+              <img src="${assetBase}future-the-real-me-times-square-matt-adam.webp" alt="Future The Real Me Times Square billboard using photography by Matt Adam" loading="lazy" width="225" height="400">
+            </div>
+            <div class="fr fit" data-key="real-me-los-angeles"><div class="veil"></div>
+              <img src="${assetBase}future-the-real-me-sunset-billboard-matt-adam.webp" alt="Future The Real Me Los Angeles billboard using photography by Matt Adam" loading="lazy" width="300" height="400">
+            </div>
+          </div>
+        </div>`;
+      weeknd.parentNode.insertBefore(realMe,weeknd);
+    }
 
+    // Replace only the cartoon-heavy painting grid with the more relevant Ozempic/cross works.
+    const paintingSwaps={
+      '/img/edf575549f.jpg':{
+        src:assetBase+'ozempic-paintings-matt-adam.webp',
+        alt:'Four Matt Adam Ozempic cross paintings in yellow, orange, pink and blue'
+      },
+      '/img/1a041c5cdb.jpg':{
+        src:assetBase+'ozempic-camo-paintings-matt-adam.webp',
+        alt:'Two Matt Adam Ozempic cross paintings over camouflage patterns'
+      },
+      '/img/862b5bf443.jpg':{
+        src:assetBase+'ozempic-cross-camo-paintings-matt-adam.webp',
+        alt:'Group of Matt Adam Ozempic cross paintings in the studio'
+      },
+      '/img/5c6c7c7b8f.jpg':{
+        src:assetBase+'ozempic-paintings-matt-adam-selfie.webp',
+        alt:'Matt Adam in his studio with four colorful Ozempic cross paintings'
+      }
+    };
+    const paintings=document.getElementById('paintings');
+    if(paintings){
+      paintings.querySelectorAll('img').forEach(img=>{
+        const replacement=paintingSwaps[img.getAttribute('src')];
+        if(!replacement) return;
+        img.src=replacement.src;
+        img.alt=replacement.alt;
+        img.removeAttribute('width');
+        img.removeAttribute('height');
+      });
+    }
+
+    // Warhol and Koons comparisons stay exactly as they are on the current homepage.
     const about=document.querySelector('#about .lede');
     if(about){
       about.innerHTML='<b>Matt Adam</b> is a visual architect based in Los Angeles, from Toronto, working across photography, art, creative direction, objects, and public interventions. His work is built around control: appetite, status, self-optimization, and the systems shaping what people want. He built visual worlds for Future and Metro Boomin, Juice WRLD, The Weeknd, and Benny Blanco; created <b>Unwrap &amp; Steal</b>; and has work featured by <b>NBC News</b>, <b>Taschen</b>, and <b>Beyond the Streets</b>.';
@@ -89,7 +152,6 @@ PATCH = r'''
       const aboutLede=aboutBlock.querySelector('.lede');
       aboutBlock.classList.add('preview-about-source');
       aboutBlock.setAttribute('aria-hidden','true');
-
       faq.classList.add('preview-info-overlay');
       document.body.appendChild(faq);
 
@@ -99,7 +161,6 @@ PATCH = r'''
         idx.innerHTML='<span>—</span><span>INFORMATION</span><span class="jp">情報</span>';
         faq.insertBefore(idx,faq.firstChild);
       }
-
       if(aboutLede&&!faq.querySelector('.preview-about-copy')){
         const aboutCopy=document.createElement('div');
         aboutCopy.className='preview-about-copy';
@@ -112,7 +173,6 @@ PATCH = r'''
         const faqContent=faq.querySelector('.faq');
         faq.insertBefore(aboutCopy,faqContent||null);
       }
-
       if(!faq.querySelector('.preview-faq-label')){
         const faqLabel=document.createElement('span');
         faqLabel.className='mono preview-faq-label';
@@ -120,7 +180,6 @@ PATCH = r'''
         const faqContent=faq.querySelector('.faq');
         faq.insertBefore(faqLabel,faqContent||null);
       }
-
       if(!faq.querySelector('.preview-info-close')){
         const close=document.createElement('button');
         close.type='button';
@@ -129,7 +188,7 @@ PATCH = r'''
         faq.insertBefore(close,faq.firstChild);
       }
 
-      // Keep this as quiet footer metadata, never as a second CTA beside SEND.
+      // Quiet footer metadata, never a second CTA beside SEND.
       let trigger=document.querySelector('.homepage-info-link');
       if(!trigger&&footer){
         trigger=document.createElement('button');
@@ -144,7 +203,6 @@ PATCH = r'''
         document.body.classList.add('preview-info-open');
         faq.querySelector('.preview-info-close')?.focus();
       });
-
       faq.querySelector('.preview-info-close')?.addEventListener('click',()=>{
         faq.classList.remove('open');
         document.body.classList.remove('preview-info-open');
@@ -204,16 +262,11 @@ PATCH = r'''
 with open(SRC, encoding='utf-8') as f:
     html = f.read()
 
-# Make root-relative assets resolve against the actual live site when the copy is
-# rendered from a branch preview host.
 if '<base href="https://mattadam.art/">' not in html:
     html = html.replace('<head>', '<head>\n<base href="https://mattadam.art/">', 1)
 
-# Never index the temporary preview.
 html = re.sub(r'<meta name="robots"[^>]*>', '<meta name="robots" content="noindex,nofollow">', html, count=1)
 html = re.sub(r'<title>.*?</title>', '<title>PREVIEW | Matt Adam Homepage Vision</title>', html, count=1, flags=re.S)
-
-# Do not expose live structured data on a noindex design preview.
 html = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', '', html, flags=re.S)
 
 if 'homepage-vision-preview-patch' not in html:
