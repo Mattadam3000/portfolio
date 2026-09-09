@@ -845,8 +845,8 @@ document.querySelectorAll(".play").forEach(p=>{const v=p.querySelector("video");
   .homepage-work-link:hover{opacity:1}
   #contact{padding-top:14vh}
   #about.preview-about-source{display:none!important}
-  .homepage-info-link{display:inline-block;margin-top:26px;border:0;background:transparent;color:var(--muted);font:inherit;cursor:pointer;padding:0;text-transform:uppercase;letter-spacing:.14em;font-family:var(--fm);font-size:11px}
-  .homepage-info-link:hover{color:var(--ink)}
+  .homepage-info-link{display:inline-block;margin-top:26px;border:0;background:transparent;color:var(--muted);font:inherit;cursor:pointer;padding:0;text-transform:uppercase;letter-spacing:.14em;font-family:var(--fm);font-size:11px;text-decoration:underline;text-underline-offset:4px;opacity:.65}
+  .homepage-info-link:hover{color:var(--ink);opacity:1}
   #faq.preview-info-overlay{position:fixed;inset:0;z-index:120;display:none;max-width:none;margin:0;padding:max(72px,10vh) max(20px,8vw) 10vh;background:var(--paper);color:var(--ink);overflow-y:auto;-webkit-overflow-scrolling:touch}
   #faq.preview-info-overlay.open{display:block}
   #faq.preview-info-overlay .faq{max-width:900px;margin:0 auto}
@@ -964,7 +964,8 @@ document.querySelectorAll(".play").forEach(p=>{const v=p.querySelector("video");
         const trigger=document.createElement('button');
         trigger.type='button';
         trigger.className='homepage-info-link';
-        trigger.textContent='INFO ↗';
+        trigger.textContent='MORE INFO ↗';
+        trigger.setAttribute('aria-label','Open About and FAQ');
         contact.appendChild(trigger);
         trigger.addEventListener('click',()=>{
           faq.classList.add('open');
