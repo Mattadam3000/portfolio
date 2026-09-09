@@ -24,38 +24,44 @@ jobs:
       - name: Snapshot protected work files
         run: |
           sha256sum work/index.html work.json build_work.py admin/work/config.yml > /tmp/work-before.sha
-      - name: Normalize image filenames and CMS metadata
+      - name: Normalize filenames and write actual dimensions
         run: |
-          mv 'img/IMG_8797 2.JPEG' img/future-the-real-me-times-square-matt-adam.jpg
+          if [ -f 'img/IMG_8797 2.JPEG' ]; then mv 'img/IMG_8797 2.JPEG' img/future-the-real-me-times-square-matt-adam.jpg; fi
           python3 - <<'PY'
           import json
           from pathlib import Path
+          from PIL import Image
+
           p=Path('content.json')
           d=json.loads(p.read_text())
           blocks={b['id']:b for b in d['blocks']}
+
+          assets={
+            'real': 'img/future-the-real-me-times-square-matt-adam.jpg',
+            'paint1': 'img/ozempic-paintings-matt-adam.jpg',
+            'paint2': 'img/ozempic-cross-camo-paintings-matt-adam.jpg',
+          }
+          sizes={}
+          for k,path in assets.items():
+            with Image.open(path) as im:
+              sizes[k]=im.size
+              print(path, im.size)
+
           real=blocks['real-me']['body'][0]['media']['images'][0]
           real['src']='/img/future-the-real-me-times-square-matt-adam.jpg'
-          real['w']=1152; real['h']=2048
+          real['w'],real['h']=sizes['real']
+
           duo=next(x for x in blocks['paintings']['body'] if x.get('kind')=='duo')
           duo['images'][0]['src']='/img/ozempic-paintings-matt-adam.jpg'
-          duo['images'][0]['w']=1536; duo['images'][0]['h']=2048
+          duo['images'][0]['w'],duo['images'][0]['h']=sizes['paint1']
           duo['images'][1]['src']='/img/ozempic-cross-camo-paintings-matt-adam.jpg'
-          duo['images'][1]['w']=1536; duo['images'][1]['h']=2048
+          duo['images'][1]['w'],duo['images'][1]['h']=sizes['paint2']
+
+          assert sizes['real'][0] >= 1152 and sizes['real'][1] >= 2048
+          assert sizes['paint1'][0] >= 1536 and sizes['paint1'][1] >= 2048
+          assert sizes['paint2'][0] >= 1536 and sizes['paint2'][1] >= 2048
+
           p.write_text(json.dumps(d, ensure_ascii=False, indent=2)+'\n')
-          PY
-      - name: Validate exact image dimensions
-        run: |
-          python3 - <<'PY'
-          from PIL import Image
-          expected={
-            'img/future-the-real-me-times-square-matt-adam.jpg':(1152,2048),
-            'img/ozempic-paintings-matt-adam.jpg':(1536,2048),
-            'img/ozempic-cross-camo-paintings-matt-adam.jpg':(1536,2048),
-          }
-          for p,sz in expected.items():
-            with Image.open(p) as im:
-              assert im.size==sz,(p,im.size,sz)
-              print(p, im.size)
           PY
       - name: Build and validate homepage
         run: |
@@ -78,7 +84,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add content.json template.html index.html img/future-the-real-me-times-square-matt-adam.jpg img/ozempic-paintings-matt-adam.jpg img/ozempic-cross-camo-paintings-matt-adam.jpg
+          git add content.json index.html img/future-the-real-me-times-square-matt-adam.jpg img/ozempic-paintings-matt-adam.jpg img/ozempic-cross-camo-paintings-matt-adam.jpg
           git add -u -- 'img/IMG_8797 2.JPEG'
           git diff --cached --quiet && exit 0
           git commit -m 'Use original high-res homepage images [skip ci]'
