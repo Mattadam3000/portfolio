@@ -280,14 +280,14 @@
             "class": "stack r",
             "images": [
               {
-                "src": "/img/IMG_8797 2.JPEG",
+                "src": "/img/future-the-real-me-times-square-matt-adam.jpg",
                 "alt": "Future The Real Me billboard in Times Square using photography by Matt Adam",
                 "frame": "fr r realme-crop",
                 "key": "real-me-times-square",
                 "aspect": "",
                 "position": "",
-                "w": 225,
-                "h": 400
+                "w": 1152,
+                "h": 2048
               }
             ],
             "id": "",
@@ -894,16 +894,16 @@
               "alt": "Four Matt Adam Ozempic cross paintings in yellow, orange, pink and blue",
               "frame": "fr r tall fit",
               "key": "ozempic-paintings-color",
-              "w": 900,
-              "h": 1200
+              "w": 3024,
+              "h": 4032
             },
             {
               "src": "/img/ozempic-cross-camo-paintings-matt-adam.jpg",
               "alt": "Group of Matt Adam Ozempic cross paintings in the studio",
               "frame": "fr r tall fit",
               "key": "ozempic-paintings-studio",
-              "w": 900,
-              "h": 1200
+              "w": 3024,
+              "h": 4032
             }
           ]
         },
