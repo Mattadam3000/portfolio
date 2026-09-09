@@ -51,6 +51,14 @@ jobs:
           python3 structured_data.py
           python3 structured_data.py --check
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install smoke-test dependencies
+        working-directory: test
+        run: npm install --no-audit --no-fund
+
       - name: Validate homepage
         run: node test/smoke.js
 
