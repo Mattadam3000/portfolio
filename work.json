@@ -9,20 +9,21 @@
     {
       "id": "skinny",
       "number": "01",
-      "title": "SKINNY",
-      "label": "OZEMPIC / BODY CONTROL",
-      "intro": "Warhol used the soup can because it said something about his time. I use the Ozempic needle because I think it says something about ours.",
-      "copy": "We try to control our bodies, our appetite, how we look and how people see us. At the same time, drugs, algorithms and the world around us are constantly shaping what we want.",
-      "images": ["/img/bbe0c95b5b.jpg", "/img/c66308601c.jpg", "/img/6f12304531.jpg"]
+      "title": "SKINNY CHRIST",
+      "label": "OZEMPIC / BODY CONTROL / DEVOTION",
+      "intro": "Ozempic packaging arranged as a cross turns the pursuit of thinness into an object of faith.",
+      "copy": "A weight-loss drug becomes religious iconography: appetite, discipline and the promise that the body can be controlled.",
+      "layout": "feature",
+      "images": ["/img/d6570a0e66.jpg"]
     },
     {
       "id": "paintings",
       "number": "02",
       "title": "PAINTINGS",
       "label": "PAINTINGS / SCREENPRINT / PHOTOGRAPH",
-      "intro": "The public work gets the first reaction. The paintings are where the pressure stays.",
-      "copy": "Screenprinting and painting over my own photographs, then pushing the same images back into public space. Different forms, same obsession: control.",
-      "images": ["/img/d6570a0e66.jpg", "/img/eff0bd7bcb.jpg", "/img/6ba7c91318.jpg", "/img/61bb9c8805.jpg", "/img/edf575549f.jpg", "/img/1a041c5cdb.jpg", "/img/862b5bf443.jpg", "/img/5c6c7c7b8f.jpg", "/img/04b582b3ba.jpg"]
+      "intro": "The same questions continue across the paintings: appetite, status, desire and control.",
+      "copy": "Screenprinting and painting over my own photographs, then pushing the same images back into public space. Different forms, same obsession: who shapes what we want.",
+      "images": ["/img/eff0bd7bcb.jpg", "/img/6ba7c91318.jpg", "/img/61bb9c8805.jpg", "/img/edf575549f.jpg", "/img/1a041c5cdb.jpg", "/img/862b5bf443.jpg", "/img/5c6c7c7b8f.jpg", "/img/04b582b3ba.jpg"]
     },
     {
       "id": "objects",
