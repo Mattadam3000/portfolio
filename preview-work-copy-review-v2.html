@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base href="https://mattadam.art/work/">
+<style id="audit-preview-force-visible">.reveal{opacity:1!important;transform:none!important}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Work — Matt Adam</title>
+<meta name="description" content="Paintings, objects and public interventions by Matt Adam.">
+<link rel="canonical" href="https://mattadam.art/work/">
+<meta property="og:title" content="Work — Matt Adam">
+<meta property="og:description" content="Paintings, objects and public interventions about control.">
+<meta property="og:url" content="https://mattadam.art/work/">
+<style>
+:root{--paper:#ffffff;--ink:#0a0a0a;--line:rgba(10,10,10,.22);--pad:clamp(18px,3vw,48px);--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;color:var(--ink);background:var(--paper);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.mono{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.topbar{position:fixed;z-index:20;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad);color:#fff;mix-blend-mode:difference}.topbar .mark{font-weight:700;letter-spacing:-.03em}.topbar nav{display:flex;gap:18px}.topbar a:hover{opacity:.55}
+.hero-video{position:relative;height:100svh;min-height:620px;background:#111;overflow:hidden;color:#fff}.hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.92) contrast(1.04)}.hero-video:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.08) 42%,rgba(0,0,0,.52))}.hero-copy{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:clamp(28px,6vh,72px);display:grid;grid-template-columns:1fr minmax(280px,760px);gap:4vw;align-items:end}.hero-copy .eyebrow{align-self:end}.hero-copy h1{font-size:clamp(36px,5.5vw,88px);line-height:.94;letter-spacing:-.055em;font-weight:500;margin:0;max-width:15ch}.hero-copy .down{display:block;margin-top:28px;font-size:12px}
+.work-section{padding:clamp(70px,11vw,160px) var(--pad);border-top:1px solid var(--line)}.section-index{display:grid;grid-template-columns:70px 1fr 1fr;border-top:1px solid var(--ink);padding-top:10px;margin-bottom:clamp(60px,9vw,130px)}.section-index span:last-child{text-align:right}.section-copy{display:grid;grid-template-columns:minmax(120px,.55fr) 1.25fr 1fr;gap:clamp(24px,4vw,70px);align-items:start;margin-bottom:clamp(46px,7vw,100px)}.kicker{margin:8px 0 0}h2{font-size:clamp(48px,8vw,128px);line-height:.84;letter-spacing:-.065em;font-weight:500;margin:0}.lead{font-size:clamp(22px,2.7vw,43px);line-height:1.08;letter-spacing:-.035em;margin:0}.body-copy{grid-column:3;margin:24px 0 0;font-size:15px;line-height:1.5;max-width:46ch}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.5vw,24px)}.gallery .work-image:nth-child(3n){grid-column:1/-1}.work-image{margin:0;background:#ddd;overflow:hidden;min-height:24vw}.work-image img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}.gallery .work-image:nth-child(3n) img{aspect-ratio:16/10}#paintings .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}#paintings .gallery .work-image{grid-column:auto}#paintings .gallery .work-image img{aspect-ratio:4/5}
+@media(min-width:761px){#skinny .gallery .work-image:nth-child(3) img{object-position:center 40%}}
+.stats{display:flex;gap:clamp(22px,6vw,90px);font-size:clamp(30px,5vw,76px);letter-spacing:-.05em;margin:-30px 0 70px;border-bottom:1px solid var(--ink);padding-bottom:25px}.project{margin-top:clamp(80px,11vw,150px)}.project-copy{display:grid;grid-template-columns:70px minmax(180px,.7fr) 1fr;gap:28px;border-top:1px solid var(--ink);padding:12px 0 32px;align-items:start}.project-copy h3{font-size:clamp(34px,5vw,74px);line-height:.92;letter-spacing:-.05em;margin:0;font-weight:500}.project-copy p{font-size:18px;line-height:1.35;margin:4px 0 0;max-width:45ch}.project-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.project-gallery .work-image:nth-child(3n){grid-column:auto}
+.record{padding:clamp(80px,11vw,150px) var(--pad);border-top:1px solid var(--ink)}.record h2,.about h2{font-size:clamp(42px,7vw,105px);line-height:.9;letter-spacing:-.055em;margin:0 0 60px;font-weight:500}.record-list{display:flex;flex-wrap:wrap;border-top:1px solid var(--ink)}.record-list span{width:50%;padding:15px 0;border-bottom:1px solid var(--line);font-size:clamp(21px,3vw,42px);letter-spacing:-.03em}.record-list span:nth-child(even){text-align:right}
+.about{padding:clamp(80px,12vw,180px) var(--pad);background:#0b0b0b;color:#f4f2ec}.about p{font-size:clamp(25px,3.6vw,58px);line-height:1.06;letter-spacing:-.045em;max-width:22ch;margin:0 0 80px}.about-footer{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.35);padding-top:15px}.about-footer a{text-decoration:underline;text-underline-offset:4px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.in{opacity:1;transform:none}
+@media(max-width:760px){.topbar nav a:not(:last-child){display:none}.hero-video{min-height:560px}.hero-copy{display:block}.hero-copy .eyebrow{display:block;margin-bottom:18px}.hero-copy h1{font-size:clamp(34px,10.4vw,58px);max-width:12ch}.section-index{grid-template-columns:42px 1fr}.section-index span:last-child{display:none}.section-copy{display:block}.section-copy h2{margin:12px 0 32px}.lead{font-size:clamp(24px,7vw,34px)}.body-copy{margin-top:22px}.gallery,#paintings .gallery{grid-template-columns:1fr}.gallery .work-image,.gallery .work-image:nth-child(3n),#paintings .gallery .work-image{grid-column:auto;min-height:0}.gallery .work-image img,.gallery .work-image:nth-child(3n) img,#paintings .gallery .work-image img{aspect-ratio:auto;height:auto}.stats{display:grid;gap:14px;width:100%;max-width:100%;font-size:clamp(36px,11vw,52px);line-height:.92;letter-spacing:-.06em;margin-top:0}.stats span{display:block;min-width:0;max-width:100%;white-space:nowrap}.project-copy{grid-template-columns:38px 1fr}.project-copy p{grid-column:2}.project-gallery{grid-template-columns:1fr}.record-list span{width:100%}.record-list span:nth-child(even){text-align:left}.about-footer{display:block}.about-footer span,.about-footer a{display:block;margin-top:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://mattadam.art/#person",
+      "name": "Matt Adam",
+      "url": "https://mattadam.art/",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Los Angeles",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Los Angeles",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
+      },
+      "workLocation": {
+        "@type": "Place",
+        "name": "Los Angeles",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Los Angeles",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
+      },
+      "sameAs": [
+        "https://www.instagram.com/mattadam___",
+        "https://www.complex.com/style/a/mike-destefano/meet-emerging-photographer-whose-captured-travis-scott-juice-wrld-kanye-west-matt-adam-interview",
+        "https://www.vanityfair.com/style/2020/11/matt-adam-photographer-to-the-stars-is-an-artist",
+        "https://www.altpress.com/matt-adam-photo-gallery-unwrap-and-steal/",
+        "https://www.imdb.com/title/tt27842581/"
+      ],
+      "description": "Matt Adam is an artist and visual architect based in Los Angeles. His practice moves between paintings, objects and public interventions, using control as the thread between them."
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://mattadam.art/work/#page",
+      "url": "https://mattadam.art/work/",
+      "name": "Work - Matt Adam",
+      "description": "I make paintings, objects and work in public about control: what controls us, what we try to control, and who gets to decide.",
+      "about": {
+        "@id": "https://mattadam.art/#person"
+      },
+      "mainEntity": {
+        "@id": "https://mattadam.art/work/#work-list"
+      },
+      "isPartOf": {
+        "@id": "https://mattadam.art/#website"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://mattadam.art/work/#work-list",
+      "name": "Matt Adam - Selected Work",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SKINNY CHRIST",
+          "url": "https://mattadam.art/work/#skinny",
+          "description": "Warhol used the soup can because it said something about his time. I use the Ozempic needle because I think it says something about ours."
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "PAINTINGS",
+          "url": "https://mattadam.art/work/#paintings",
+          "description": "The public work gets the first reaction. The paintings are where the pressure stays."
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "OBJECTS",
+          "url": "https://mattadam.art/work/#objects",
+          "description": "Objects that make hidden systems physical."
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "UNWRAP & STEAL",
+          "url": "https://mattadam.art/work/#unwrap-steal",
+          "description": "I wrap original artworks like gifts, put them up in cities around the world, release clues, and people steal them."
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "PUBLIC WORK",
+          "url": "https://mattadam.art/work/#public-work",
+          "description": "The conditions around the work are part of the work."
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="topbar"><a class="mark" href="/">MATT ADAM</a><nav class="mono"><a href="#paintings">Paintings</a><a href="#objects">Objects</a><a href="#unwrap-steal">Unwrap & Steal</a><a href="/">Full site ↗</a></nav></header>
+<main>
+<section class="hero-video" aria-label="Matt Adam art practice">
+<video autoplay muted loop playsinline preload="metadata" poster="/img/bbe0c95b5b.jpg" aria-hidden="true"><source src="https://cdn.shopify.com/videos/c/vp/2d8792aa83d14101a806d0c4d9fa8a96/2d8792aa83d14101a806d0c4d9fa8a96.HD-1080p-2.5Mbps-90297882.mp4" type="video/mp4"></video>
+<div class="hero-copy"><span class="eyebrow mono">MATT ADAM / WORK</span><div><h1>I make paintings, objects and work in public about control: what controls us, what we try to control, and who gets to decide.</h1><a class="down mono" href="#skinny">WORK ↓</a></div></div>
+</section>
+<section class="work-section" id="skinny">
+<div class="section-index mono">
+<span>01</span><span>SKINNY CHRIST</span><span>OZEMPIC / BODY CONTROL</span>
+</div>
+<div class="section-copy reveal">
+<p class="kicker mono">OZEMPIC / BODY CONTROL</p>
+<h2>SKINNY CHRIST</h2>
+<p class="lead">Warhol used the soup can because it said something about his time. I use the Ozempic needle because I think it says something about ours.</p>
+<p class="body-copy">We try to control our bodies, our appetite, how we look and how people see us. At the same time, drugs, algorithms and the world around us are constantly shaping what we want.</p>
+</div>
+<div class="gallery"><figure class="work-image"><img src="/img/d6570a0e66.jpg" alt="SKINNY CHRIST: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/bbe0c95b5b.jpg" alt="SKINNY CHRIST: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/IMG_5075 2.JPG" alt="SKINNY CHRIST: artwork documentation" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="work-section" id="paintings">
+<div class="section-index mono">
+<span>02</span><span>PAINTINGS</span><span>PAINTINGS / SCREENPRINT / PHOTOGRAPH</span>
+</div>
+<div class="section-copy reveal">
+<p class="kicker mono">PAINTINGS / SCREENPRINT / PHOTOGRAPH</p>
+<h2>PAINTINGS</h2>
+<p class="lead">The paintings hold the same questions as the public work: control, belief, appetite, and what we choose to worship.</p>
+<p class="body-copy">The works below are from <i>Skinny Christ</i> — Ozempic needles arranged as crosses. They are one recent series within a wider painting practice.</p>
+</div>
+<div class="gallery"><figure class="work-image"><img src="/img/ozempic-cross-paintings-matt-adam.jpg" alt="PAINTINGS: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/ozempic-paintings-matt-adam.jpg" alt="PAINTINGS: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/ozempic-camo-paintings-matt-adam.jpg" alt="PAINTINGS: artwork documentation" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="work-section" id="objects">
+<div class="section-index mono">
+<span>03</span><span>OBJECTS</span><span>APPETITE / STATUS / SELF-MANAGEMENT</span>
+</div>
+<div class="section-copy reveal">
+<p class="kicker mono">APPETITE / STATUS / SELF-MANAGEMENT</p>
+<h2>OBJECTS</h2>
+<p class="lead">Objects that make hidden systems physical.</p>
+<p class="body-copy">An empty bag of cocaine. A piece of raw meat. An Ozempic needle. Zines, bandanas and sculptural publishing made to look like the things they are talking about.</p>
+</div>
+<div class="project reveal"><div class="project-copy"><span class="mono">01</span><h3>PARTY</h3><p>An oversized dollar bill and cocaine staged on the street. Money as appetite, status and the performance of excess.</p></div>
+<div class="gallery project-gallery"><figure class="work-image"><img src="/img/23312d3dc4.jpg" alt="PARTY: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/3627afb24f.jpg" alt="PARTY: artwork documentation" loading="lazy" decoding="async"></figure></div>
+</div>
+<div class="project reveal"><div class="project-copy"><span class="mono">02</span><h3>ROTTEN</h3><p>A deer head and trail of blood staged in the street. The Rotten bandana and zine carry the image into objects; the zine is wrapped and displayed like a cut of raw meat in a butcher&#x27;s case.</p></div>
+<div class="gallery project-gallery"><figure class="work-image"><img src="/img/6b6ac73254.jpg" alt="ROTTEN: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/aea159db19.jpg" alt="ROTTEN: artwork documentation" loading="lazy" decoding="async"></figure></div>
+</div>
+<div class="project reveal"><div class="project-copy"><span class="mono">03</span><h3>SKINNY</h3><p>The Ozempic image moved from public intervention into printed objects, zines and bandanas.</p></div>
+<div class="gallery project-gallery"><figure class="work-image"><img src="/img/bbe0c95b5b.jpg" alt="SKINNY: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/c66308601c.jpg" alt="SKINNY: artwork documentation" loading="lazy" decoding="async"></figure></div>
+</div>
+</section>
+<section class="work-section" id="unwrap-steal">
+<div class="section-index mono">
+<span>04</span><span>UNWRAP &amp; STEAL</span><span>PUBLIC WORK / ACQUISITION SYSTEM</span>
+</div>
+<div class="section-copy reveal">
+<p class="kicker mono">PUBLIC WORK / ACQUISITION SYSTEM</p>
+<h2>UNWRAP &amp; STEAL</h2>
+<p class="lead">I wrap original artworks like gifts, put them up in cities around the world, release clues, and people steal them.</p>
+<p class="body-copy">People hunt for the clues and race to be the first to steal the work. The hunt, the theft, and who ends up with it become part of its history.</p>
+</div>
+<div class="stats reveal"><span>100M+ VIEWS</span><span>3 DOCUMENTARIES</span></div>
+<div class="gallery"><figure class="work-image"><img src="/img/5568ae4dd9.jpg" alt="UNWRAP &amp; STEAL: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/e1040f7064.jpg" alt="UNWRAP &amp; STEAL: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/9803254175.jpg" alt="UNWRAP &amp; STEAL: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/f45b6bdbf3.jpg" alt="UNWRAP &amp; STEAL: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/61033f3083.jpg" alt="UNWRAP &amp; STEAL: artwork documentation" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="work-section" id="public-work">
+<div class="section-index mono">
+<span>05</span><span>PUBLIC WORK</span><span>INTERVENTIONS / PERFORMANCE ART / PUBLIC SPACE</span>
+</div>
+<div class="section-copy reveal">
+<p class="kicker mono">INTERVENTIONS / ACCESS / SPECTACLE</p>
+<h2>PUBLIC WORK</h2>
+<p class="lead">The conditions around the work are part of the work.</p>
+<p class="body-copy">This includes street installations, performance art, exhibitions, objects and Unwrap &amp; Steal. Location, access, risk, spectacle, and what people do in response are treated as material — not just context.</p>
+</div>
+<div class="gallery"><figure class="work-image"><img src="/img/47d505d062.jpg" alt="PUBLIC WORK: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/IMG_3697.jpg" alt="PUBLIC WORK: artwork documentation" loading="lazy" decoding="async"></figure><figure class="work-image"><img src="/img/bbe0c95b5b.jpg" alt="PUBLIC WORK: artwork documentation" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="record"><div class="section-index mono"><span>06</span><span>SELECTED RECORD</span><span>SELECTED</span></div><h2>SELECTED RECORD</h2><div class="record-list"><span>NBC NEWS</span><span>BEYOND THE STREETS</span><span>TASCHEN</span><span>ROLLING STONE</span><span>BILLBOARD</span><span>VANITY FAIR</span><span>HYPEBEAST</span></div></section>
+<section class="about"><div class="section-index mono"><span>07</span><span>ABOUT</span><span>LOS ANGELES</span></div><h2>ABOUT</h2><p>Matt Adam is an artist and visual architect based in Los Angeles. His practice moves between paintings, objects and public interventions, using control as the thread between them.</p><div class="about-footer mono"><span>MATT ADAM © 2026</span><a href="/#contact">CONTACT ↗</a><a href="/">MATTADAM.ART ↗</a></div></section>
+</main>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body>
+</html>
