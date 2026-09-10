@@ -3,14 +3,11 @@
     {
       "type": "roles",
       "id": "architect",
-      "label": "Visual Architect",
+      "label": "Artist & Creative Director",
       "classes": "sortable architect",
-      "aria": "Matt Adam, Visual Architect",
+      "aria": "Matt Adam — Artist & Creative Director",
       "roles": [
-        "Artist",
-        "Creative Director",
-        "Brand Designer",
-        "Photographer"
+        "Matt Adam — Artist & Creative Director"
       ]
     },
     {
@@ -35,8 +32,8 @@
           "heading": "Legends<br>Never Die",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "ALBUM COVER",
-          "fact": "<b>Juice WRLD.</b> 497,000 first week. The biggest posthumous debut since Tupac and Biggie. Matt Adam shot the portrait; the family chose it for the cover.",
+          "role": "ALBUM COVER PHOTOGRAPHY",
+          "fact": "Photographed the portrait chosen by Juice WRLD’s family for the cover. <i>Legends Never Die</i> debuted at #1 with 497,000 first-week units—the biggest posthumous debut since Tupac and The Notorious B.I.G.",
           "style": "",
           "media": {
             "type": "stack",
@@ -136,8 +133,8 @@
           "heading": "We Don't<br>Trust You",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "CREATIVE DIRECTION + VISUAL IDENTITY",
-          "fact": "<b>Future and Metro Boomin.</b> Two consecutive #1 albums, weeks apart. Matt Adam built the visual identity across both: covers, vinyl, billboards, and rollout.",
+          "role": "CREATIVE DIRECTION + COVER PHOTOGRAPHY",
+          "fact": "<b>Future and Metro Boomin.</b> Built the visual identity across two consecutive #1 albums, photographing both covers and carrying the world through vinyl, billboards, and rollout imagery.",
           "style": "",
           "media": {
             "type": "single",
@@ -178,8 +175,8 @@
           "heading": "We Still<br>Don't Trust You",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "CREATIVE DIRECTION + VISUAL IDENTITY",
-          "fact": "The second chapter, released weeks later. Another #1. One visual world.",
+          "role": "CREATIVE DIRECTION + COVER PHOTOGRAPHY",
+          "fact": "Released weeks later, the second chapter also debuted at #1. Photographed the cover and extended the same visual world through packaging and rollout imagery.",
           "style": "",
           "media": {
             "type": "single",
@@ -220,8 +217,8 @@
           "heading": "Mixtape<br>Pluto",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "VISUAL ROLLOUT",
-          "fact": "<b>Future.</b> Matt Adam shot the rollout: billboards, posters, press, and visual assets around the music videos.",
+          "role": "CAMPAIGN PHOTOGRAPHY",
+          "fact": "Photography for Future’s <i>Mixtape Pluto</i>, carried across multiple Los Angeles billboards, posters, press, and visual assets around the music videos.",
           "style": "",
           "media": {
             "type": "stack",
@@ -272,8 +269,8 @@
           "heading": "The Real<br>Me",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "VISUAL ROLLOUT",
-          "fact": "<b>Future.</b> Matt Adam shot the photography and rollout assets across the campaign: billboards in Los Angeles and Times Square, press, and visual assets around the music videos.",
+          "role": "CAMPAIGN PHOTOGRAPHY",
+          "fact": "Photography for Future’s <i>The Real Me</i>, carried across Los Angeles and Times Square billboards, press imagery, and visual assets accompanying the music videos.",
           "style": "",
           "media": {
             "type": "single",
@@ -314,8 +311,8 @@
           "heading": "The Weeknd",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "ROLLOUT VISUALS",
-          "fact": "Matt Adam shot the first images of The Weeknd's <b>Hurry Up Tomorrow</b> era, opening the final chapter of the trilogy that began with <i>After Hours</i>.",
+          "role": "PHOTOGRAPHY",
+          "fact": "Photographed the first images of The Weeknd’s <b>Hurry Up Tomorrow</b> era, introducing the final chapter of the trilogy that began with <i>After Hours</i>.",
           "style": "",
           "media": {
             "type": "single",
@@ -356,8 +353,8 @@
           "heading": "Benny<br>Blanco",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "CREATIVE DIRECTION + VISUAL IDENTITY + ROLLOUT",
-          "fact": "Matt Adam shaped Benny Blanco's visual identity as he moved from producer to artist, beginning with \"Eastside.\" He shot every visual across <b>Friends Keep Secrets 1</b> and <b>Friends Keep Secrets 2</b>, including a nine-billboard Sunset Boulevard takeover.",
+          "role": "CREATIVE DIRECTION + PHOTOGRAPHY",
+          "fact": "Shaped Benny Blanco’s visual identity as he moved from producer to recording artist, beginning with “Eastside.” Created every visual asset across <b>Friends Keep Secrets 1</b> and <b>Friends Keep Secrets 2</b>, including a nine-billboard Sunset Boulevard takeover. “Eastside” is 7× Platinum in the U.S.",
           "style": "",
           "media": {
             "type": "single",
@@ -414,8 +411,8 @@
           "heading": "Unwrap<br>&amp; Steal",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "REAL LIFE ART HEISTS",
-          "fact": "Over 100 million views. Three documentaries, one directed by Sam Lipman-Stern of the Emmy-nominated <i>Telemarketers</i>. Matt Adam wraps original artworks like gifts, hides them in public, and releases clues. People race to find and steal them. Ownership moves through attention, speed, and the will to go get it.",
+          "role": "PUBLIC ART",
+          "fact": "Original artworks, wrapped like gifts and hidden in public. Clues are released. People race to find and steal them. The hunt becomes part of the work. <b>100M+ views.</b> Three documentaries, including one directed by Sam Lipman-Stern.",
           "style": "",
           "media": null
         },
@@ -495,8 +492,8 @@
           "heading": "Taschen —<br>Ice Cold",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "PUBLISHED WORKS",
-          "fact": "Matt Adam's photographs of Young Thug and A$AP Rocky are published in <i>Taschen's Ice Cold: A Hip-Hop Jewelry History</i>, credited by name.",
+          "role": "PUBLICATION",
+          "fact": "Photographs of Young Thug and A$AP Rocky published in <i>Ice Cold: A Hip-Hop Jewelry History</i> by Vikki Tobak, Taschen.",
           "style": "",
           "media": {
             "type": "single",
@@ -559,8 +556,8 @@
           "heading": "Beyond the Streets —<br>Dead City Punx",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "PUBLISHED WORKS + GALLERY + DOCUMENTARY",
-          "fact": "Five years photographing Dead City Punx on film in the Los Angeles underground became a documentary directed by Roger Gastman and co-executive produced by Zack de la Rocha, a book, and the exhibition <i>PUNX: The Art of Dead City &amp; Friends</i> at Beyond the Streets, Los Angeles.",
+          "role": "PHOTOGRAPHY + PUBLICATION + EXHIBITION + FILM",
+          "fact": "Five years photographing Dead City Punx on film in the Los Angeles underground. The work appears in the <i>Dead City</i> book, was exhibited in <i>PUNX: The Art of Dead City &amp; Friends</i> at Beyond the Streets, Los Angeles, and was used in a documentary directed by Roger Gastman and co-executive produced by Zack de la Rocha.",
           "style": "",
           "media": {
             "type": "single",
@@ -627,7 +624,7 @@
           "kind": "prose",
           "heading": "Objects",
           "heading_class": "big",
-          "fact": "Photographs of objects, made into zines and bandanas, built to look real. An empty bag of cocaine. A piece of raw meat. An Ozempic needle. Each one makes a hidden system visible: appetite, status and body control.",
+          "fact": "Photographs become things you can hold, unfold, wear, and read. The packaging is part of the work. Each object turns a hidden system—appetite, status, consumption, body control—into something physical.",
           "class": "series-head r"
         },
         {
@@ -680,7 +677,7 @@
           "heading_tag": "h3",
           "heading_class": "ser r",
           "role": "",
-          "fact": "A deer head with blood. The Rotten zine printed, wrapped and displayed like a cut of raw meat in a butcher's case.",
+          "fact": "A deer head and trail of blood staged in the street. The Rotten zine and bandana carry the same image into objects, with the zine wrapped and displayed like a cut of raw meat in a butcher’s case.",
           "style": "",
           "media": {
             "type": "stack",
@@ -722,7 +719,7 @@
           "heading_tag": "h3",
           "heading_class": "ser r",
           "role": "",
-          "fact": "The Ozempic image moved from public intervention into printed objects, zines and bandanas.",
+          "fact": "The Ozempic image moves between public intervention, paintings, zines and bandanas. A prescription product becomes a recurring symbol of appetite, body control and self-transformation.",
           "style": "",
           "media": {
             "type": "stack",
@@ -804,8 +801,8 @@
           "heading": "Nobody Came<br>To My Art Show",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "ART SHOW + PERFORMANCE ART",
-          "fact": "Weeks before his first warehouse exhibition, Matt Adam ran through Hollywood in a clown costume spray-painting <b>\"nobody came to my art show\"</b> on a pink-wrapped canvas. Invitations arrived as pieces of concrete marked \"break.\" On opening night, a 2,000-pound concrete monolith blocked the gate with the canvas buried inside. The crowd had to break it open to enter.",
+          "role": "EXHIBITION + PERFORMANCE ART",
+          "fact": "The exhibition began before anyone entered. As performance art, I ran through Hollywood in a clown costume carrying a pink-wrapped canvas marked <b>“nobody came to my art show.”</b> Invitations arrived as pieces of concrete marked “break.” On opening night, a 2,000-pound concrete monolith blocked the gate with the painting buried inside. The crowd had to break it open to enter.",
           "style": "margin-bottom:8vh",
           "media": {
             "type": "single",
@@ -861,7 +858,7 @@
           "heading_tag": "h2",
           "heading_class": "big r",
           "role": "",
-          "fact": "Matt Adam takes familiar images, objects and symbols from popular culture and changes their context. Different mediums, same questions: what controls us, what we try to control, and who gets to decide.",
+          "fact": "Photographs, packaging, and familiar symbols reworked through screenprinting and painting. The work moves through control, belief, appetite, self-optimization, and the systems that shape what we want.",
           "style": "",
           "media": {
             "type": "single",
@@ -967,7 +964,7 @@
         "style": "margin-bottom:16px"
       },
       "fact": {
-        "html": "Artists, places, and moments as they were.",
+        "html": "People, places, and moments as they were, before memory edits them.",
         "style": "margin-bottom:8vh"
       },
       "lead": {
