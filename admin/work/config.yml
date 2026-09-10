@@ -11,7 +11,8 @@ media_folder: /img
 public_folder: /img
 site_url: https://mattadam.art/work/
 display_url: https://mattadam.art/work/
-publish_mode: editorial_workflow
+# Saves commit straight to main — see the note in admin/config.yml. The real
+# safety net is git history, not a pull request you approve yourself.
 
 collections:
   - name: work_page

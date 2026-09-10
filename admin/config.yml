@@ -17,9 +17,11 @@ public_folder: /img
 site_url: https://mattadam.art
 display_url: https://mattadam.art
 
-# Every change opens a pull request instead of committing straight to main,
-# so nothing reaches the live site unreviewed.
-publish_mode: editorial_workflow
+# Saves commit straight to main. There is one editor, so a pull request was
+# review in name only — approving your own change seconds after writing it —
+# and having to go and merge it was the entire reason editing felt slow.
+# The real safety net is git: every version is one revert away, and build.yml
+# is deliberately written so a failed build serves stale HTML, not a 404.
 
 collections:
   - name: page

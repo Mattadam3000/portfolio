@@ -39,6 +39,46 @@ SAME_AS = [
     'https://www.imdb.com/title/tt27842581/',
 ]
 
+# ── WHERE HE ACTUALLY WORKS ─────────────────────────────────────────────
+#
+# "Los Angeles" appeared only inside a prose sentence. That is a string an
+# engine has to read and infer from. As structured properties it becomes a
+# fact it can act on, which is what "artist in Los Angeles"-shaped questions
+# are answered from — entity data is consulted long before body copy is.
+#
+# City level deliberately. There is no street address here and none should be
+# added: this file is published to a public page on every build.
+LOS_ANGELES = {
+    '@type': 'Place',
+    'name': 'Los Angeles',
+    'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Los Angeles',
+        'addressRegion': 'CA',
+        'addressCountry': 'US',
+    },
+}
+
+
+def occupations(roles):
+    """Each role as an Occupation tied to Los Angeles.
+
+    jobTitle already says "Photographer" and homeLocation already says
+    "Los Angeles", but nothing joined the two. hasOccupation does: it states
+    that the photography happens HERE, which is the exact shape of the
+    question being asked. Built from the same CMS roles as jobTitle, so it
+    can never claim a role the site does not.
+    """
+    return [
+        {
+            '@type': 'Occupation',
+            'name': role,
+            'occupationLocation': {'@type': 'City', 'name': 'Los Angeles'},
+        }
+        for role in roles
+    ]
+
+
 # Schema types are structural metadata only. Names and descriptions come from
 # CMS-controlled visible content below.
 HOME_WORK_TYPES = {
@@ -84,6 +124,8 @@ def home_graph(content):
     about = block_by_id(blocks, 'about') or {}
     faq = block_by_id(blocks, 'faq') or {}
 
+    job_titles = [clean_text(x) for x in roles.get('roles', []) if clean_text(x)]
+
     person = {
         '@type': 'Person',
         '@id': PERSON_ID,
@@ -91,10 +133,14 @@ def home_graph(content):
         'alternateName': 'Matt Adam Visual Architect',
         'url': 'https://mattadam.art/',
         'image': 'https://mattadam.art/og.png',
-        'jobTitle': [clean_text(x) for x in roles.get('roles', []) if clean_text(x)],
+        'jobTitle': job_titles,
         'description': clean_text(about.get('lede')),
+        'homeLocation': LOS_ANGELES,
+        'workLocation': LOS_ANGELES,
         'sameAs': SAME_AS,
     }
+    if job_titles:
+        person['hasOccupation'] = occupations(job_titles)
 
     works = []
     for block_id, schema_type in HOME_WORK_TYPES.items():
@@ -156,11 +202,15 @@ def work_graph(content):
     about = content.get('about') or {}
     sections = content.get('sections') or []
 
+    # Same @id as the homepage, so this is the same entity — it must not
+    # describe him as located anywhere else, or say less about it.
     person = {
         '@type': 'Person',
         '@id': PERSON_ID,
         'name': 'Matt Adam',
         'url': 'https://mattadam.art/',
+        'homeLocation': LOS_ANGELES,
+        'workLocation': LOS_ANGELES,
         'sameAs': SAME_AS,
     }
     if clean_text(about.get('copy')):
