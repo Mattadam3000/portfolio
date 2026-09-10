@@ -1,7 +1,7 @@
 {
   "hero": {
-    "eyebrow": "MATT ADAM / WORK",
-    "statement": "I make paintings, objects and work in public about control: what controls us, what we try to control, and who gets to decide.",
+    "eyebrow": "MATT ADAM / ART",
+    "statement": "I make paintings, objects, and work in public about desire, control, and ownership.",
     "video": "https://cdn.shopify.com/videos/c/vp/2d8792aa83d14101a806d0c4d9fa8a96/2d8792aa83d14101a806d0c4d9fa8a96.HD-1080p-2.5Mbps-90297882.mp4",
     "poster": "/img/bbe0c95b5b.jpg"
   },
@@ -10,18 +10,22 @@
       "id": "skinny",
       "number": "01",
       "title": "SKINNY CHRIST",
-      "label": "OZEMPIC / BODY CONTROL",
-      "intro": "Warhol used the soup can because it said something about his time. I use the Ozempic needle because I think it says something about ours.",
-      "copy": "We try to control our bodies, our appetite, how we look and how people see us. At the same time, drugs, algorithms and the world around us are constantly shaping what we want.",
-      "images": ["/img/d6570a0e66.jpg", "/img/bbe0c95b5b.jpg", "/img/IMG_5075 2.JPG"]
+      "label": "PAINTING + PUBLIC INTERVENTION",
+      "intro": "The body becomes a project. Transformation becomes a belief.",
+      "copy": "Ozempic needles and packaging take the form of crosses. On a billboard, an oversized needle supports a deflated body. Skinny Christ brings together appetite, belief, and the pressure to remake ourselves, asking what we place our faith in when the body is never enough.",
+      "images": [
+        "/img/d6570a0e66.jpg",
+        "/img/bbe0c95b5b.jpg",
+        "/img/IMG_5075 2.JPG"
+      ]
     },
     {
       "id": "paintings",
       "number": "02",
       "title": "PAINTINGS",
-      "label": "PAINTINGS / SCREENPRINT / PHOTOGRAPH",
-      "intro": "The public work gets the first reaction. The paintings are where the pressure stays.",
-      "copy": "Screenprinting and painting over my own photographs, then pushing the same images back into public space. Different forms, same obsession: control.",
+      "label": "SCREENPRINT + PAINTING",
+      "intro": "Desire, control, and the images we learn to believe in.",
+      "copy": "My paintings move across subjects and symbols, using screenprinting and painting to examine how images shape what we want and what we believe. The works shown here are from my recent Skinny Christ series: Ozempic needles and packaging arranged as crosses, bringing the promise of bodily transformation into the language of faith.",
       "images": [
         "/img/ozempic-cross-paintings-matt-adam.jpg",
         "/img/ozempic-paintings-matt-adam.jpg",
@@ -32,24 +36,33 @@
       "id": "objects",
       "number": "03",
       "title": "OBJECTS",
-      "label": "APPETITE / STATUS / SELF-MANAGEMENT",
-      "intro": "Objects that make hidden systems physical.",
-      "copy": "An empty bag of cocaine. A piece of raw meat. An Ozempic needle. Zines, bandanas and sculptural publishing made to look like the things they are talking about.",
+      "label": "ZINES + BANDANAS + SCULPTURAL PUBLISHING",
+      "intro": "The packaging is part of the work.",
+      "copy": "I turn photographs into objects that borrow the appearance of things we consume, desire, or discard. Across appetite, status, and control of the body, their meaning shifts as they’re handled, opened, worn, or read.",
       "projects": [
         {
           "title": "PARTY",
-          "copy": "An oversized dollar bill and cocaine staged on the street. Money as appetite, status and the performance of excess.",
-          "images": ["/img/23312d3dc4.jpg", "/img/3627afb24f.jpg"]
+          "copy": "An oversized dollar bill and cocaine occupy the street. A printed object takes the form of an empty baggie. The spectacle is public. The object fits in your hands.",
+          "images": [
+            "/img/23312d3dc4.jpg",
+            "/img/3627afb24f.jpg"
+          ]
         },
         {
           "title": "ROTTEN",
-          "copy": "A deer head with blood. The Rotten zine printed, wrapped and displayed like a cut of raw meat in a butcher's case.",
-          "images": ["/img/6b6ac73254.jpg", "/img/aea159db19.jpg"]
+          "copy": "A deer head and blood staged on a downtown Los Angeles sidewalk. A bandana and photography zine packaged like raw meat and displayed in a butcher’s case. The same confrontation moves from the street into something you can hold, wear, and read.",
+          "images": [
+            "/img/6b6ac73254.jpg",
+            "/img/aea159db19.jpg"
+          ]
         },
         {
           "title": "SKINNY",
-          "copy": "The Ozempic image moved from public intervention into printed objects, zines and bandanas.",
-          "images": ["/img/bbe0c95b5b.jpg", "/img/c66308601c.jpg"]
+          "copy": "The Ozempic image moves from the billboard into paintings, bandanas, and printed objects. Its context changes with each form: something prescribed, something displayed, something worn.",
+          "images": [
+            "/img/bbe0c95b5b.jpg",
+            "/img/c66308601c.jpg"
+          ]
         }
       ]
     },
@@ -57,29 +70,65 @@
       "id": "unwrap-steal",
       "number": "04",
       "title": "UNWRAP & STEAL",
-      "label": "PUBLIC WORK / ACQUISITION SYSTEM",
+      "label": "PUBLIC ART + OWNERSHIP",
       "intro": "I wrap original artworks like gifts, put them up in cities around the world, release clues, and people steal them.",
-      "copy": "People hunt, race, trade information and take the work. The finding becomes part of the object's history.",
-      "stats": ["100M+ VIEWS", "3 DOCUMENTARIES"],
-      "images": ["/img/5568ae4dd9.jpg", "/img/e1040f7064.jpg", "/img/9803254175.jpg", "/img/f45b6bdbf3.jpg", "/img/61033f3083.jpg"]
+      "copy": "The clues set off a hunt to be the first to steal the work. The race, the taking, and the change of ownership become part of the artwork itself.",
+      "stats": [
+        "100M+ VIEWS",
+        "3 DOCUMENTARIES"
+      ],
+      "images": [
+        "/img/5568ae4dd9.jpg",
+        "/img/e1040f7064.jpg",
+        "/img/9803254175.jpg",
+        "/img/f45b6bdbf3.jpg",
+        "/img/61033f3083.jpg"
+      ]
     },
     {
       "id": "public-work",
       "number": "05",
       "title": "PUBLIC WORK",
-      "label": "INTERVENTIONS / ACCESS / SPECTACLE",
-      "intro": "The conditions around the work are part of the work.",
-      "copy": "For my first warehouse exhibition, a 2,000-pound concrete monolith blocked the gate with a painting buried inside it. The audience had to break through the block to enter the show.",
-      "images": ["/img/47d505d062.jpg", "/img/IMG_3697.jpg", "/img/bbe0c95b5b.jpg"]
+      "label": "PUBLIC INTERVENTIONS + PERFORMANCE ART",
+      "intro": "The work extends beyond the gallery.",
+      "copy": "My public practice spans installations, objects, and performance art. I alter billboards, stage sculptures in the street, and turn photographs into zines and objects disguised as everyday products. A deer head and blood appear on a sidewalk. A deflated body hangs from a giant Ozempic needle. In Unwrap & Steal, I wrap original artworks like gifts, put them up in cities around the world, release clues, and people steal them. Performances range from running through Hollywood in a clown costume with a pink-wrapped canvas to making an audience break through concrete to enter an exhibition. Desire, control, and ownership become public confrontations. People can participate, object, or walk away.",
+      "images": [
+        "/img/47d505d062.jpg",
+        "/img/IMG_3697.jpg",
+        "/img/bbe0c95b5b.jpg"
+      ]
     }
   ],
   "record": {
     "title": "SELECTED RECORD",
-    "items": ["NBC NEWS", "BEYOND THE STREETS", "TASCHEN", "ROLLING STONE", "BILLBOARD", "VANITY FAIR", "HYPEBEAST"]
+    "items": [
+      {
+        "name": "Beyond the Streets",
+        "detail": "EXHIBITION · PUNX: The Art of Dead City & Friends, Los Angeles · Photography"
+      },
+      {
+        "name": "Taschen",
+        "detail": "PUBLICATION · Ice Cold: A Hip-Hop Jewelry History, Vikki Tobak · Photographs of Young Thug and A$AP Rocky"
+      },
+      {
+        "name": "Dead City",
+        "detail": "PUBLICATION · Beyond the Streets · Photography"
+      },
+      {
+        "name": "NBC News",
+        "detail": "COVERAGE · Ozempic billboard intervention"
+      },
+      {
+        "name": "Selected press",
+        "detail": "Rolling Stone · Billboard · Vanity Fair · Hypebeast"
+      }
+    ]
   },
   "about": {
     "title": "ABOUT",
-    "copy": "Matt Adam is an artist and visual architect based in Los Angeles. His practice moves between paintings, objects and public interventions, using control as the thread between them.",
-    "contact": "/#contact"
+    "copy": "Matt Adam is an artist based in Los Angeles, originally from Toronto. He works across paintings, photography, objects, performance art, and public interventions. His practice considers how desire is shaped and how ownership changes our relationship to an image or object.",
+    "contact": "/#contact",
+    "inquiry": "For available works, commissions, and exhibition inquiries. Include the title or a description of the work you’re interested in.",
+    "contact_label": "ARTWORK INQUIRIES ↗"
   }
 }

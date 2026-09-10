@@ -1,13 +1,14 @@
 <!-- Block markup for mattadam.art.
      Page ORDER lives in content.json blocks[]; this file holds each block's markup.
      {{BEAT:id}} placeholders are filled from content.json beats{}.
-     Assembled by build.py into index.html — do not edit index.html. -->
+     Assembled by build.py into index.html · do not edit index.html. -->
 
 <!--PART:contact-->  <p class="cta-lead r">Make it<br>undeniable.</p>
+  <p class="fact r" style="margin:28px 0 40px;max-width:34em">For creative direction, photography, commissions, and artwork inquiries.</p>
   <form id="doorForm" action="https://formspree.io/f/xkjnqajj" method="POST" autocomplete="off">
     <input type="text" name="name" placeholder="NAME" required aria-label="Name">
     <input type="text" name="from" placeholder="EMAIL" required aria-label="Email">
-    <textarea name="project" placeholder="PROJECT" required aria-label="Project"></textarea>
+    <textarea name="project" placeholder="MESSAGE" required aria-label="Message"></textarea>
     <input type="hidden" name="_subject" value="New inquiry from mattadam.art">
     <button type="submit">SEND</button>
     <span class="sent mono" id="sentNote">SENT. EXPECT A REPLY.</span>

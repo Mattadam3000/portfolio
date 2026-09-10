@@ -44,7 +44,7 @@ SAME_AS = [
 # "Los Angeles" appeared only inside a prose sentence. That is a string an
 # engine has to read and infer from. As structured properties it becomes a
 # fact it can act on, which is what "artist in Los Angeles"-shaped questions
-# are answered from — entity data is consulted long before body copy is.
+# are answered from · entity data is consulted long before body copy is.
 #
 # City level deliberately. There is no street address here and none should be
 # added: this file is published to a public page on every build.
@@ -130,7 +130,6 @@ def home_graph(content):
         '@type': 'Person',
         '@id': PERSON_ID,
         'name': 'Matt Adam',
-        'alternateName': 'Matt Adam Visual Architect',
         'url': 'https://mattadam.art/',
         'image': 'https://mattadam.art/og.png',
         'jobTitle': job_titles,
@@ -202,7 +201,7 @@ def work_graph(content):
     about = content.get('about') or {}
     sections = content.get('sections') or []
 
-    # Same @id as the homepage, so this is the same entity — it must not
+    # Same @id as the homepage, so this is the same entity · it must not
     # describe him as located anywhere else, or say less about it.
     person = {
         '@type': 'Person',

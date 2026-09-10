@@ -11,7 +11,7 @@ Usage:
   python3 build.py           write index.html
   python3 build.py --check   validate + verify index.html is up to date (no writes)
 
-index.html is GENERATED — never edit it by hand.
+index.html is GENERATED · never edit it by hand.
 """
 import json, re, sys, os
 
@@ -182,7 +182,7 @@ def r_objects_v5(b):
         '<div class="objects-work">',
         '  <div class="objects-home-title r">',
         f'    <h2 class="big r">{intro["heading"]}</h2>',
-        '    <p class="role r">APPETITE / STATUS / SELF-MANAGEMENT</p>',
+        '    <p class="role r">ZINES + BANDANAS + SCULPTURAL PUBLISHING</p>',
         f'    <p class="fact r">{intro["fact"]}</p>',
         '  </div>',
     ]
@@ -218,7 +218,7 @@ def r_info_v5(blocks):
     return (f'<div class="info-overlay" id="info">\n'
             f'  <button class="info-close" id="infoClose" type="button">CLOSE ×</button>\n'
             f'  <div class="info-inner">\n'
-            f'    <div class="index mono"><span>—</span><span>INFORMATION</span><span class="jp">情報</span></div>\n'
+            f'    <div class="index mono"><span></span><span>INFORMATION</span><span class="jp">情報</span></div>\n'
             f'    <p class="mono">ABOUT</p>\n'
             f'    <p class="lede">{about["lede"]}</p>\n'
             f'    <p class="mono info-faq-label">FAQ</p>\n{rows}\n'
@@ -297,7 +297,7 @@ def validate(blocks):
                 if not im.get("alt"):
                     errs.append(f'{where}: empty alt text ({im["src"]})')
                 if not (im.get("w") and im.get("h")):
-                    errs.append(f'{where}: missing width/height — causes layout shift ({im["src"]})')
+                    errs.append(f'{where}: missing width/height · causes layout shift ({im["src"]})')
     return errs
 
 
@@ -331,7 +331,7 @@ def render_page():
             errs.append(f'parts.html has PART:{pid} but no block with that id')
         elif blk.get("type") != "part":
             errs.append(f'block "{pid}" is type "{blk.get("type")}" but parts.html still '
-                        f'has <!--PART:{pid}--> — dead markup, remove it')
+                        f'has <!--PART:{pid}--> · dead markup, remove it')
 
     used = set()
     KINDS = {"beat", "prose", "duo", "single"}

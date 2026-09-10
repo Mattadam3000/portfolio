@@ -81,7 +81,13 @@ collections:
             widget: object
             fields:
               - { name: title, label: Heading, widget: string }
-              - { name: items, label: Names, widget: list }
+              - name: items
+                label: Credits
+                widget: list
+                summary: '{{fields.name}}'
+                fields:
+                  - { name: name, label: Name, widget: string }
+                  - { name: detail, label: Contribution, widget: text, required: false }
 
           - name: about
             label: About
@@ -90,3 +96,5 @@ collections:
               - { name: title, label: Heading, widget: string }
               - { name: copy, label: Copy, widget: text }
               - { name: contact, label: Contact link, widget: string }
+              - { name: inquiry, label: Artwork inquiry copy, widget: text, required: false }
+              - { name: contact_label, label: Contact label, widget: string, required: false }
