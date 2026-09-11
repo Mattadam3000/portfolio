@@ -21,6 +21,10 @@ def gallery(images, title, cls='gallery'):
 
 
 def section(s):
+    link = ''
+    if s.get('link_url') and s.get('link_label'):
+        description = f'<br><br>{esc(s["link_description"])}' if s.get('link_description') else ''
+        link = f'{description}<br><a class="map-link" href="{esc(s["link_url"])}">{esc(s["link_label"])}</a>'
     parts = [
         f'<section class="work-section" id="{esc(s["id"])}">',
         '<div class="section-index mono">',
@@ -30,7 +34,7 @@ def section(s):
         f'<p class="kicker mono">{esc(s["label"])}</p>',
         f'<h2>{esc(s["title"])}</h2>',
         f'<p class="lead">{esc(s["intro"])}</p>',
-        f'<p class="body-copy">{esc(s["copy"])}</p>',
+        f'<p class="body-copy">{esc(s["copy"])}{link}</p>',
         '</div>'
     ]
     if s.get('stats'):
@@ -83,6 +87,7 @@ def render(data):
 .reveal{{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}}.reveal.in{{opacity:1;transform:none}}
 @media(max-width:760px){{.topbar nav a:not(:last-child){{display:none}}.hero-video{{min-height:560px}}.hero-copy{{display:block}}.hero-copy .eyebrow{{display:block;margin-bottom:18px}}.hero-copy h1{{font-size:clamp(34px,10.4vw,58px);max-width:12ch}}.section-index{{grid-template-columns:42px 1fr}}.section-index span:last-child{{display:none}}.section-copy{{display:block}}.section-copy h2{{margin:12px 0 32px}}.lead{{font-size:clamp(24px,7vw,34px)}}.body-copy{{margin-top:22px}}.gallery,#paintings .gallery{{grid-template-columns:1fr}}.gallery .work-image,.gallery .work-image:nth-child(3n),#paintings .gallery .work-image{{grid-column:auto;min-height:0}}.gallery .work-image img,.gallery .work-image:nth-child(3n) img,#paintings .gallery .work-image img{{aspect-ratio:auto;height:auto}}.stats{{display:grid;gap:14px;width:100%;max-width:100%;font-size:clamp(36px,11vw,52px);line-height:.92;letter-spacing:-.06em;margin-top:0}}.stats span{{display:block;min-width:0;max-width:100%;white-space:nowrap}}.project-copy{{grid-template-columns:38px 1fr}}.project-copy p{{grid-column:2}}.project-gallery{{grid-template-columns:1fr}}.record-list{{grid-template-columns:1fr}}.about-footer{{display:block}}.about-footer span,.about-footer a{{display:block;margin-top:8px}}}}
 @media(prefers-reduced-motion:reduce){{html{{scroll-behavior:auto}}.reveal{{opacity:1;transform:none;transition:none}}}}
+.map-link{{display:inline-flex;align-items:center;justify-content:center;max-width:100%;min-height:44px;margin-top:22px;padding:14px 18px;border:1px solid currentColor;background:transparent;color:var(--ink);font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:13px;font-weight:400;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .15s,color .15s}}.map-link:hover{{background:var(--ink);color:var(--paper)}}.map-link:focus-visible{{outline:2px solid var(--ink);outline-offset:4px}}
 </style>
 </head>
 <body>
