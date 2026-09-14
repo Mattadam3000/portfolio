@@ -1,0 +1,13 @@
+{
+  "title": "Photography · Matt Adam",
+  "intro": "Shot on film. A record of time.",
+  "sequence": ["grid3", "grid5", "grid7", "grid4", "grid6", "grid1", "grid0", "grid8", "grid2"],
+  "additional_images": [],
+  "commissions": [
+    {"id":"legends", "title":"Juice WRLD", "subtitle":"Legends Never Die", "credit":"Album cover photography", "copy":"The portrait selected by Juice WRLD’s family for Legends Never Die.", "keys":["juice-portrait","juice-cover"]},
+    {"id":"wdty", "title":"Future & Metro Boomin", "subtitle":"We Don’t Trust You / We Still Don’t Trust You", "credit":"Album cover photography", "copy":"Both album covers photographed on film.", "keys":["wdty","wsdty"]},
+    {"id":"weeknd", "title":"The Weeknd", "subtitle":"Hurry Up Tomorrow", "credit":"Photography", "copy":"The first images of the Hurry Up Tomorrow era.", "keys":["weeknd-green"]},
+    {"id":"benny", "title":"Benny Blanco", "subtitle":"Friends Keep Secrets 1 & 2", "credit":"Photography", "copy":"Photography across both releases, from Eastside to a nine-billboard Sunset Boulevard takeover.", "keys":["benny"]},
+    {"id":"pluto", "title":"Future", "subtitle":"Mixtape Pluto / The Real Me", "credit":"Campaign photography", "copy":"Photographs carried across billboards, posters, press, and album rollouts.", "keys":["pluto", "pluto-billboard", "real-me-times-square"]}
+  ]
+}

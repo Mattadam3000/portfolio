@@ -32,6 +32,11 @@ jobs:
           grep -q 'mattadam.art/work/' work/index.html
           grep -q 'UNWRAP &amp; STEAL' work/index.html
 
+      - name: Render and validate photography page
+        run: |
+          python3 build_photography.py
+          python3 build_photography.py --check
+
       - name: Generate and validate structured data
         run: |
           python3 structured_data.py

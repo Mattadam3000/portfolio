@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{TITLE}}</title>
+<meta name="description" content="Photography by Matt Adam. Portraits, life on film, and album cover photography for Juice WRLD, Future, Metro Boomin, and The Weeknd. Los Angeles.">
+<link rel="canonical" href="https://mattadam.art/photography/">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="Shot on film. A record of time. Selected photographs and commissions by Matt Adam.">
+<meta property="og:url" content="https://mattadam.art/photography/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Ctext x='32' y='49' text-anchor='middle' font-size='56' fill='white'%3E◎%3C/text%3E%3C/svg%3E">
+<style>
+{{SHARED_CSS}}
+.mono{font-size:12px}.topbar nav{font-size:12px}.topbar a{display:inline-flex;align-items:center;min-height:28px}
+.photo-header{padding:110px var(--pad) 32px;display:flex;align-items:baseline;justify-content:space-between;gap:24px}.photo-header h1{font-weight:500;font-size:clamp(42px,7.5vw,112px);line-height:.94;letter-spacing:-.065em;margin:0}.photo-header p{margin:0;font-size:14px}
+.photo-sequence{padding:0 var(--pad);display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(18px,4vw,64px);row-gap:clamp(48px,8vw,128px);align-items:center}.photo{margin:0;min-width:0}.photo.full{grid-column:1/-1}.photo-open{display:block;border:0;padding:0;margin:0;background:transparent;width:100%;cursor:zoom-in}.photo img{display:block;width:100%;height:auto}.photo-open:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offset:6px}.photo-sequence .photo:first-child img{max-height:79svh;object-fit:contain}.photo-sequence .photo:nth-child(3){padding:10% 0}.photo-sequence .photo:nth-child(6){padding:0 8%}
+.photo-note{padding:clamp(70px,10vw,150px) var(--pad)}.photo-note p{font-size:clamp(30px,5.6vw,80px);line-height:1;letter-spacing:-.05em;max-width:17ch;margin:0}
+.photo-section{padding:50px var(--pad) 100px}.photo-section .section-index{margin-bottom:70px}.photo-section h2{font-size:clamp(48px,8vw,112px);max-width:14ch;margin-bottom:70px;line-height:.94}.commission{display:grid;grid-template-columns:1fr 2fr;gap:6vw;margin-top:100px;padding-top:20px;border-top:1px solid var(--line);align-items:start}.commission-copy h3{font-size:clamp(26px,3.5vw,48px);line-height:1;letter-spacing:-.04em;font-weight:500;margin:0 0 14px}.commission-copy p{font-size:16px;line-height:1.5;max-width:33ch}.commission-copy .release{font-size:20px;line-height:1.2}.commission-copy .mono{font-size:12px;margin-top:30px}.commission-images{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}.commission-images .photo:only-child{grid-column:1/-1;width:85%;justify-self:end}.commission-images .photo:nth-child(3){grid-column:1/-1;width:50%;justify-self:end}.record .record-entry p{font-size:16px}.record h2{max-width:13ch;line-height:.98}.record .mono{margin-bottom:40px}.about p{max-width:24ch}.about .inquiry-copy{font-size:18px;letter-spacing:0;max-width:42ch}.contact-link{display:inline-block;font-size:clamp(35px,7vw,100px);letter-spacing:-.05em;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:12px;margin-bottom:90px}.about-footer{gap:20px;font-size:12px}
+.lightbox{max-width:none;max-height:none;width:100%;height:100dvh;border:0;padding:64px 20px 40px;background:#0a0a0a;color:white}.lightbox::backdrop{background:#0a0a0a}.lightbox img{display:block;width:100%;height:calc(100% - 32px);object-fit:contain}.lightbox button{position:absolute;top:16px;right:20px;border:1px solid #666;background:#0a0a0a;color:#fff;padding:12px 16px;cursor:pointer;font:inherit}.lightbox p{text-align:center;font-size:14px;margin:12px 0 0}body:has(dialog[open]){overflow:hidden}
+@media(max-width:760px){.topbar nav{gap:14px}.topbar nav a:not(:last-child){display:inline-flex}.topbar .mark{font-size:14px}.photo-header{padding-top:105px;display:block}.photo-header p{margin-top:20px}.photo-sequence{grid-template-columns:1fr;row-gap:36px}.photo-sequence .photo,.photo-sequence .photo.full{grid-column:auto;padding:0}.photo-sequence .photo:first-child img{max-height:none}.photo-section{padding-bottom:50px}.photo-section h2{margin-bottom:50px}.commission{grid-template-columns:1fr;gap:28px;margin-top:64px}.commission-copy p{max-width:40ch}.commission-images .photo:only-child{width:100%}.commission-images .photo:nth-child(3){width:65%}.section-index{font-size:12px}.about-footer{display:flex;flex-wrap:wrap}.photo-header h1{font-size:clamp(42px,11vw,72px)}}
+</style>
+</head>
+<body>
+<header class="topbar"><a class="mark" href="/">MATT ADAM</a><nav class="mono" aria-label="Photography navigation"><a href="#commissions">Commissions</a><a href="#contact">Contact</a></nav></header>
+<main>
+<header class="photo-header"><h1>Photography</h1><p class="mono">Matt Adam · Los Angeles</p></header>
+<section class="photo-sequence" id="photographs" aria-label="Selected photographs by Matt Adam">{{PHOTOGRAPHS}}</section>
+<div class="photo-note"><p>{{INTRO}}</p></div>
+<section class="photo-section" id="commissions"><div class="section-index mono"><span>02</span><span>Selected commissions</span><span>Photography</span></div><h2>Selected<br>commissions.</h2>{{COMMISSIONS}}</section>
+<section class="record" id="publications"><p class="mono">03 · In print & on view</p><h2>Publications &<br>exhibitions.</h2><div class="record-list"><div class="record-entry"><span>Taschen</span><p>Photographs of Young Thug and A$AP Rocky in <i>Ice Cold: A Hip-Hop Jewelry History</i> by Vikki Tobak.</p></div><div class="record-entry"><span>Beyond the Streets</span><p>Five years photographing Dead City Punx on film. Published in the <i>Dead City</i> book and exhibited in <i>PUNX: The Art of Dead City & Friends</i>, Los Angeles.</p></div></div></section>
+<section class="about" id="contact"><h2>Matt Adam.</h2><p>Photographer and artist.<br>Los Angeles, by way of Toronto.</p><p class="inquiry-copy">Working on film, across portraiture, music, and life in the street.</p><p class="inquiry-copy">Photography commissions, representation, and print inquiries.</p><a class="contact-link" href="/#contact">Get in touch ↗</a><footer class="about-footer mono"><span>© 2026 Matt Adam</span><a href="/">Full site ↗</a><a href="/work/">Artworks ↗</a><a href="#photographs">Back to photographs ↑</a></footer></section>
+</main>
+<dialog class="lightbox" aria-label="Enlarged photograph"><button type="button" autofocus>Close ×</button><img alt=""><p></p></dialog>
+<script>
+const viewer=document.querySelector('.lightbox');
+const viewerImage=viewer.querySelector('img');
+const caption=viewer.querySelector('p');
+document.querySelectorAll('.photo-open').forEach(button=>button.addEventListener('click',()=>{const photo=button.querySelector('img');viewerImage.src=photo.src;viewerImage.alt=photo.alt;caption.textContent=photo.alt;viewer.showModal();}));
+viewer.querySelector('button').addEventListener('click',()=>viewer.close());
+viewer.addEventListener('click',e=>{if(e.target===viewer)viewer.close();});
+</script>
+</body>
+</html>
