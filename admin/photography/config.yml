@@ -1,0 +1,61 @@
+# Dedicated editor. Only photography.json is editable here.
+backend:
+  name: github
+  repo: Mattadam3000/portfolio
+  branch: main
+  base_url: https://sveltia-cms-auth.mattadamco.workers.dev
+media_folder: /img/photography
+public_folder: /img/photography
+site_url: https://mattadam.art/photography/
+display_url: https://mattadam.art/photography/
+collections:
+  - name: photography_page
+    label: Photography
+    files:
+      - name: photography
+        label: Projects & page settings
+        file: photography.json
+        description: >
+          Edit only /photography. Drag projects to change their order. Each project
+          appears as one large image; opening it shows the rest of its photographs.
+          Save to publish. Updates appear after the site finishes rebuilding.
+        fields:
+          - { name: title, label: Browser title, widget: string }
+          - { name: description, label: Search description, widget: text }
+          - { name: contact_label, label: Contact link label, widget: string, default: Contact }
+          - { name: contact_url, label: Contact link, widget: string, default: '/#contact' }
+          - name: projects
+            label: Projects
+            label_singular: Project
+            widget: list
+            required: false
+            collapsed: true
+            summary: '{{fields.title}}'
+            hint: Drag to reorder. Add, delete, or switch off Visible to hide a project.
+            fields:
+              - { name: title, label: Project title, widget: string }
+              - name: slug
+                label: Project URL
+                widget: string
+                hint: 'Example: juice-wrld. Use a unique name with lowercase letters, numbers, and hyphens.'
+                pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use lowercase letters, numbers, and single hyphens.']
+              - { name: published, label: Visible on site, widget: boolean, default: true }
+              - { name: description, label: Small bottom description, widget: text, required: false }
+              - name: cover
+                label: Cover image
+                widget: image
+                required: false
+                hint: Optional. Uses the first photograph below when left empty. Vertical and horizontal images keep their full frame.
+              - { name: cover_alt, label: Cover image description, widget: string, required: false, hint: 'Describe the image for accessibility. Defaults to the project title.' }
+              - name: images
+                label: Project photographs
+                label_singular: Photograph
+                widget: list
+                collapsed: true
+                required: false
+                summary: '{{fields.image}}'
+                hint: Add as many as you need. Drag to reorder. A visible project needs at least one photograph.
+                fields:
+                  - { name: image, label: Photograph, widget: image }
+                  - { name: alt, label: Image description, widget: string, required: false, hint: 'Describe the photograph for accessibility. Defaults to the project title.' }
+                  - { name: caption, label: Small bottom caption, widget: text, required: false, hint: 'Optional. Defaults to the project description.' }

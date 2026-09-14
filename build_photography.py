@@ -1,57 +1,92 @@
 #!/usr/bin/env python3
-"""Build /photography using the existing work-page design and homepage assets."""
+"""Build the photography index and project galleries from their isolated CMS file."""
 import html
 import json
 import re
 import sys
 from pathlib import Path
-import build_work
+from urllib.parse import urlparse, unquote
 
 ROOT = Path(__file__).resolve().parent
+OUT = ROOT / 'photography'
 
 def esc(value):
-    return html.escape(str(value), quote=True)
+    return html.escape(str(value or ''), quote=True)
 
-def render():
-    data = json.loads((ROOT / 'photography.json').read_text())
-    content = json.loads((ROOT / 'content.json').read_text())
-    assets = {}
-    def collect(value):
-        if isinstance(value, dict):
-            if value.get('key') and value.get('src') and value.get('w'):
-                assets[value['key']] = value
-            for child in value.values(): collect(child)
-        elif isinstance(value, list):
-            for child in value: collect(child)
-    collect(content)
-    collect(data['additional_images'])
-    def photograph(key, eager=False, cls=''):
-        a = assets[key]
-        assert (ROOT / a['src'].lstrip('/')).is_file(), a['src']
-        assert a['alt'] and a['w'] > 0 and a['h'] > 0
-        return f'<figure class="photo {cls}"><button class="photo-open" type="button" aria-label="Enlarge: {esc(html.unescape(a["alt"]))}"><img src="{esc(a["src"])}" alt="{esc(html.unescape(a["alt"]))}" width="{a["w"]}" height="{a["h"]}" loading="{"eager" if eager else "lazy"}" {"fetchpriority=high" if eager else ""} decoding="async"></button></figure>'
-    sequence = data['sequence'] + [a['key'] for a in data['additional_images']]
-    photographs = ''.join(photograph(k, i == 0, 'full' if i in [0,3,6] else '') for i,k in enumerate(sequence))
-    commissions = []
-    for p in data['commissions']:
-        commissions.append(f'<article class="commission" id="{esc(p["id"])}"><div class="commission-copy"><h3>{esc(p["title"])}</h3><p class="release">{esc(p["subtitle"])}</p><p class="mono">{esc(p["credit"])}</p><p>{esc(p["copy"])}</p></div><div class="commission-images">'+''.join(photograph(k) for k in p['keys'])+'</div></article>')
-    # Reuse the /work shell styling so the established site language stays shared.
-    work = build_work.render(json.loads((ROOT / 'work.json').read_text()))
-    shared_css = re.search(r'<style>(.*?)</style>', work, re.S).group(1)
-    page = (ROOT / 'photography-template.html').read_text()
-    for key, value in {'TITLE':esc(data['title']), 'INTRO':esc(data['intro']), 'SHARED_CSS':shared_css, 'PHOTOGRAPHS':photographs, 'COMMISSIONS':''.join(commissions)}.items():
-        page = page.replace('{{'+key+'}}', value)
-    assert not re.search(r'{{\w+}}', page)
-    return page
+def image_source(src):
+    if not isinstance(src, str) or not src:
+        raise ValueError('Every published photograph needs an image.')
+    if src.startswith('https://') and urlparse(src).netloc:
+        return src
+    path = (ROOT / unquote(src).lstrip('/')).resolve()
+    if not path.is_relative_to(ROOT / 'img') or not path.is_file():
+        raise ValueError(f'Image not found in img/: {src}')
+    return '/' + path.relative_to(ROOT).as_posix()
+
+def render_all(data=None):
+    data = data if data is not None else json.loads((ROOT / 'photography.json').read_text())
+    shell = (ROOT / 'photography-template.html').read_text()
+    projects = [p for p in data.get('projects', []) if p.get('published', True)]
+    slugs = set()
+    for p in projects:
+        slug = p['slug']
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug) or slug in slugs:
+            raise ValueError(f'Use a unique lowercase project URL with hyphens: {slug}')
+        slugs.add(slug)
+        if not p.get('title') or not p.get('images'):
+            raise ValueError(f'Published project {slug} needs a title and at least one image.')
+    contact = data.get('contact_url') or '/#contact'
+    if not ((contact.startswith('/') and not contact.startswith('//')) or contact.startswith(('https://','mailto:'))):
+        raise ValueError('Contact link must be a site path, HTTPS link, or email link.')
+    def slide(p, photo, number, total, cover=False):
+        src = image_source(photo['image'])
+        alt = photo.get('alt') or p['title']
+        image = f'<img src="{esc(src)}" alt="{esc(html.unescape(alt))}" loading="{"eager" if number == 1 else "lazy"}" decoding="async" {"fetchpriority=high" if number == 1 else ""}>'
+        link = '/photography/' + p['slug'] + '/'
+        if cover:
+            picture = f'<a class="image-stage" href="{link}" aria-label="View {esc(p["title"])}">{image}</a>'
+            label = f'<a class="project-label" href="{link}"><span>{esc(p["title"])}</span><span class="description">{esc(p.get("description"))}</span></a>'
+            count = f'<a class="view-link" href="{link}" aria-label="View {esc(p["title"])} gallery">View <span aria-hidden="true">↗</span></a>'
+        else:
+            picture = f'<div class="image-stage">{image}</div>'
+            label = f'<div class="project-label"><span>{esc(p["title"])}</span><span class="description">{esc(photo.get("caption") or p.get("description"))}</span></div>'
+            count = f'<span class="counter" aria-label="Image {number} of {total}">{number:02d} / {total:02d}</span>'
+        return f'<section class="slide" id="{p["slug"] if cover else "image-"+str(number)}" aria-label="{esc(p["title"])}{ "" if cover else ", image "+str(number)}">{picture}<footer class="caption">{label}{count}</footer></section>'
+    def page(title, description, path, slides, back):
+        values = dict(TITLE=esc(title), DESCRIPTION=esc(description), CANONICAL=esc('https://mattadam.art'+path), SLIDES=slides,
+                      BACK=back, CONTACT_URL=esc(contact), CONTACT_LABEL=esc(data.get('contact_label') or 'Contact'))
+        result = shell
+        for key,value in values.items(): result = result.replace('{{'+key+'}}',value)
+        assert not re.search(r'{{\w+}}', result)
+        return result
+    results = {}
+    covers = []
+    for n,p in enumerate(projects,1):
+        photo = dict(p['images'][0])
+        if p.get('cover'):
+            photo['image'] = p['cover']
+            photo['alt'] = p.get('cover_alt') or p['title']
+        covers.append(slide(p,photo,n,len(projects),True))
+        gallery = ''.join(slide(p,photo,i,len(p['images'])) for i,photo in enumerate(p['images'],1))
+        back = f'<a href="/photography/#{p["slug"]}">Back <span aria-hidden="true">↗</span></a>'
+        results[f'{p["slug"]}/index.html'] = page(p['title']+' · Matt Adam',p.get('description') or data['description'],'/photography/'+p['slug']+'/',gallery,back)
+    index_slides = ''.join(covers) or '<section class="slide empty"><p>No projects on view.</p></section>'
+    results['index.html'] = page(data['title'],data['description'],'/photography/',index_slides,'')
+    return results
 
 if __name__ == '__main__':
-    page = render()
-    out = ROOT / 'photography' / 'index.html'
+    pages = render_all()
+    stale = [p for p in OUT.glob('*/index.html') if p.relative_to(OUT).as_posix() not in pages]
     if '--check' in sys.argv:
-        if not out.exists() or out.read_text() != page:
-            raise SystemExit('Photography page is stale. Run python3 build_photography.py')
-        print('Photography page and image references verified.')
+        if stale or any(not (OUT / p).exists() or (OUT / p).read_text() != s for p,s in pages.items()):
+            raise SystemExit('Photography pages are stale. Run python3 build_photography.py')
+        print(f'Verified {len(pages)} photography pages and their image references.')
     else:
-        out.parent.mkdir(exist_ok=True)
-        out.write_text(page)
-        print('Built photography/index.html')
+        for name,content in pages.items():
+            p = OUT / name
+            p.parent.mkdir(parents=True,exist_ok=True)
+            p.write_text(content)
+        for p in stale:
+            p.unlink()
+            if not any(p.parent.iterdir()): p.parent.rmdir()
+        print(f'Built {len(pages)} photography pages.')

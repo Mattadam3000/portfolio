@@ -67,10 +67,17 @@ Regression tests that run the real page scripts in jsdom. See `test/README.md`.
 
 ## Photography page
 
-`/photography/` is built by `python3 build_photography.py`. It shares the work page's
-design styles and references images from `content.json` by their stable `key`.
-`photography.json` controls the image sequence and photography-specific credits.
-Add archive photographs under `additional_images` with `key`, `src`, `alt`, `w`,
-and `h`; place the image in `img/`. They are appended to the photo sequence.
-The HTML shell is `photography-template.html`. Check generated output and local
-image references with `python3 build_photography.py --check`.
+Open https://mattadam.art/admin/photography/ to manage this page using the existing
+GitHub sign-in. The isolated editor writes only `photography.json`.
+
+Projects appear in list order, with one cover image per screen. The cover links
+to `/photography/{slug}/`, where the remaining images appear one per screen.
+The editor can add, remove, hide, and reorder projects and photographs, upload
+images, select a cover, and edit captions. A blank cover uses the first image.
+Images preserve their original proportions. No manual image dimensions needed.
+
+Save commits to main; the existing build workflow regenerates the page and
+galleries. Removed or hidden projects have their generated pages removed.
+
+Run `python3 build_photography.py` and `python3 build_photography.py --check`.
+`photography-template.html` controls the shared photography layout.
