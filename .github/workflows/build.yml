@@ -12,6 +12,7 @@ on:
   push:
     branches: [main]
     paths:
+      - .github/workflows/build.yml
       - content.json
       - work.json
       - photography.json
@@ -28,6 +29,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: build-site
@@ -38,6 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
@@ -72,3 +76,26 @@ jobs:
           git add template.html index.html work/index.html photography
           git commit -m "Normalize template and rebuild pages [skip ci]"
           git push
+
+      # Commits made with GITHUB_TOKEN do not trigger another Pages deployment.
+      # Explicitly request and verify publication after generated HTML is pushed.
+      - name: Publish rebuilt site and verify Pages build
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const { data: head } = await github.rest.git.getRef({ owner, repo, ref: 'heads/main' });
+            const expected = head.object.sha;
+            await github.request('POST /repos/{owner}/{repo}/pages/builds', { owner, repo });
+            for (let attempt = 0; attempt < 60; attempt++) {
+              await new Promise(resolve => setTimeout(resolve, 5000));
+              const { data: build } = await github.request('GET /repos/{owner}/{repo}/pages/builds/latest', { owner, repo });
+              if (build.commit !== expected) continue;
+              if (build.status === 'errored') throw new Error(build.error?.message || 'Pages build failed');
+              if (build.status === 'built') {
+                core.info(`Published ${expected} to https://mattadam.art/`);
+                return;
+              }
+            }
+            throw new Error(`Timed out waiting for Pages to publish ${expected}`);

@@ -4,8 +4,8 @@ backend:
   repo: Mattadam3000/portfolio
   branch: main
   base_url: https://sveltia-cms-auth.mattadamco.workers.dev
-media_folder: /img/photography
-public_folder: /img/photography
+media_folder: /img
+public_folder: /img
 site_url: https://mattadam.art/photography/
 display_url: https://mattadam.art/photography/
 collections:
