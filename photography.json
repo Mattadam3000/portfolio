@@ -5,11 +5,27 @@
   "contact_url": "/#contact",
   "projects": [
     {
-      "slug": "punk-shows",
-      "title": "Punk shows",
-      "description": "Los Angeles. Shot on film.",
+      "title": "Pink Bath",
+      "slug": "pink-bath",
       "published": true,
+      "description": "",
       "cover": "",
+      "cover_alt": "",
+      "images": [
+        {
+          "image": "/img/crossbath.jpeg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "title": "Punk shows",
+      "slug": "punk-shows",
+      "published": true,
+      "description": "Los Angeles. Shot on film.",
+      "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/84a7a23833.jpg",
@@ -24,11 +40,12 @@
       ]
     },
     {
-      "slug": "future-motel",
       "title": "Future",
-      "description": "Portrait on film.",
+      "slug": "future-motel",
       "published": true,
+      "description": "Portrait on film.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/156e429394.jpg",
@@ -38,11 +55,12 @@
       ]
     },
     {
-      "slug": "pink-bath",
-      "title": "Pink bath",
-      "description": "Shot on film.",
+      "title": "Pink bath 2",
+      "slug": "pink-bath2",
       "published": true,
+      "description": "Shot on film.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/134f3a2dec.jpg",
@@ -52,11 +70,12 @@
       ]
     },
     {
-      "slug": "street-takeover",
       "title": "Street takeover",
-      "description": "Los Angeles. Shot on film.",
+      "slug": "street-takeover",
       "published": true,
+      "description": "Los Angeles. Shot on film.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/377274d1e2.jpg",
@@ -66,11 +85,12 @@
       ]
     },
     {
-      "slug": "future-metro-boomin",
       "title": "Future & Metro Boomin",
-      "description": "Portraits and album cover photography.",
+      "slug": "future-metro-boomin",
       "published": true,
+      "description": "Portraits and album cover photography.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/8987fb7730.jpg",
@@ -95,11 +115,12 @@
       ]
     },
     {
-      "slug": "benny-selena",
       "title": "Benny Blanco & Selena Gomez",
-      "description": "Shot on film.",
+      "slug": "benny-selena",
       "published": true,
+      "description": "Shot on film.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/551b369868.jpg",
@@ -109,11 +130,12 @@
       ]
     },
     {
-      "slug": "ye-kim",
       "title": "Ye & Kim Kardashian",
-      "description": "Shot on film.",
+      "slug": "ye-kim",
       "published": true,
+      "description": "Shot on film.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/614a480a5b.jpg",
@@ -123,11 +145,12 @@
       ]
     },
     {
-      "slug": "legends-never-die",
       "title": "Juice WRLD",
-      "description": "Legends Never Die. Album cover photography.",
+      "slug": "legends-never-die",
       "published": true,
+      "description": "Legends Never Die. Album cover photography.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/818a46bfed.jpg",
@@ -142,11 +165,12 @@
       ]
     },
     {
-      "slug": "the-weeknd",
       "title": "The Weeknd",
-      "description": "Hurry Up Tomorrow. Photography.",
+      "slug": "the-weeknd",
       "published": true,
+      "description": "Hurry Up Tomorrow. Photography.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/cd5dc90625.jpg",
@@ -156,11 +180,12 @@
       ]
     },
     {
-      "slug": "benny-blanco",
       "title": "Benny Blanco",
-      "description": "Friends Keep Secrets 1 & 2. Photography.",
+      "slug": "benny-blanco",
       "published": true,
+      "description": "Friends Keep Secrets 1 & 2. Photography.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/4bcc436e68.jpg",
@@ -170,11 +195,12 @@
       ]
     },
     {
-      "slug": "future-campaigns",
       "title": "Future",
-      "description": "Mixtape Pluto / The Real Me. Campaign photography.",
+      "slug": "future-campaigns",
       "published": true,
+      "description": "Mixtape Pluto / The Real Me. Campaign photography.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
           "image": "/img/f3735fc527.jpg",
