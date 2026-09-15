@@ -55,6 +55,21 @@
       ]
     },
     {
+      "title": "Street takeover",
+      "slug": "street-takeover",
+      "published": true,
+      "description": "Los Angeles. Shot on film.",
+      "cover": "",
+      "cover_alt": "",
+      "images": [
+        {
+          "image": "/img/377274d1e2.jpg",
+          "alt": "Street takeover photographed by Matt Adam",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "title": "The End",
       "slug": "the-end",
       "published": true,
@@ -75,16 +90,21 @@
       ]
     },
     {
-      "title": "Street takeover",
-      "slug": "street-takeover",
+      "title": "Juice WRLD",
+      "slug": "legends-never-die",
       "published": true,
-      "description": "Los Angeles. Shot on film.",
+      "description": "Legends Never Die. Album cover photography.",
       "cover": "",
       "cover_alt": "",
       "images": [
         {
-          "image": "/img/377274d1e2.jpg",
-          "alt": "Street takeover photographed by Matt Adam",
+          "image": "/img/818a46bfed.jpg",
+          "alt": "Juice WRLD portrait on film by Matt Adam",
+          "caption": ""
+        },
+        {
+          "image": "/img/c461fa69f1.jpg",
+          "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
           "caption": ""
         }
       ]
@@ -160,26 +180,6 @@
         {
           "image": "/img/614a480a5b.jpg",
           "alt": "Ye, formerly Kanye West, and Kim Kardashian photographed by Matt Adam",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "title": "Juice WRLD",
-      "slug": "legends-never-die",
-      "published": true,
-      "description": "Legends Never Die. Album cover photography.",
-      "cover": "",
-      "cover_alt": "",
-      "images": [
-        {
-          "image": "/img/818a46bfed.jpg",
-          "alt": "Juice WRLD portrait on film by Matt Adam",
-          "caption": ""
-        },
-        {
-          "image": "/img/c461fa69f1.jpg",
-          "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
           "caption": ""
         }
       ]
