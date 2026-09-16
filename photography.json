@@ -20,6 +20,73 @@
       ]
     },
     {
+      "slug": "project-9d0cea50",
+      "title": "Hanging",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/737166b7-f7a3-492a-a24e-e21692c54548.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-8c8ce271",
+      "title": "Diptych",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/794f9c8e-5380-4dc2-95b8-a324606742ee.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/af8cd1c2-ba20-4665-9914-497f63cba60e.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "title": "Juice WRLD",
+      "slug": "legends-never-die",
+      "published": true,
+      "description": "Legends Never Die. Album cover photography.",
+      "cover": "",
+      "cover_alt": "",
+      "images": [
+        {
+          "image": "/img/818a46bfed.jpg",
+          "alt": "Juice WRLD portrait on film by Matt Adam",
+          "caption": ""
+        },
+        {
+          "image": "/img/c461fa69f1.jpg",
+          "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-3916e709",
+      "title": "Young Thug",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/7fd15abd-9f7a-4d83-bba9-696d83c9cf5a.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "title": "The End",
       "slug": "the-end",
       "published": true,
@@ -34,6 +101,20 @@
         },
         {
           "image": "/img/000071680022 2.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-cee5b5bd",
+      "title": "Spikes",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/fdc4dbec-8a6b-4738-9492-d0b4549e6fab.jpg",
           "alt": "",
           "caption": ""
         }
@@ -75,40 +156,6 @@
       ]
     },
     {
-      "title": "Juice WRLD",
-      "slug": "legends-never-die",
-      "published": true,
-      "description": "Legends Never Die. Album cover photography.",
-      "cover": "",
-      "cover_alt": "",
-      "images": [
-        {
-          "image": "/img/818a46bfed.jpg",
-          "alt": "Juice WRLD portrait on film by Matt Adam",
-          "caption": ""
-        },
-        {
-          "image": "/img/c461fa69f1.jpg",
-          "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "slug": "project-1ceb12fd",
-      "title": "Blue lagoon",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/2424736e-6626-4f3e-bc2f-84378c31baba.jpg",
-          "alt": "",
-          "caption": ""
-        }
-      ]
-    },
-    {
       "title": "Street takeover",
       "slug": "street-takeover",
       "published": true,
@@ -119,6 +166,34 @@
         {
           "image": "/img/377274d1e2.jpg",
           "alt": "Street takeover photographed by Matt Adam",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-680e0f10",
+      "title": "Young Thug",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/0aaa50c2-b3a8-416c-8773-87ef207e674e.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-d87277fd",
+      "title": "Eye",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/4576171c-7ab3-4bef-9779-426cc214ddbf.jpg",
+          "alt": "",
           "caption": ""
         }
       ]
