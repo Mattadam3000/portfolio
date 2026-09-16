@@ -20,6 +20,26 @@
       ]
     },
     {
+      "title": "The End",
+      "slug": "the-end",
+      "published": true,
+      "description": "",
+      "cover": "",
+      "cover_alt": "",
+      "images": [
+        {
+          "image": "/img/000071650004-the-end2.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/000071680022 2.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "title": "Punk shows",
       "slug": "punk-shows",
       "published": true,
@@ -55,41 +75,6 @@
       ]
     },
     {
-      "title": "Street takeover",
-      "slug": "street-takeover",
-      "published": true,
-      "description": "Los Angeles. Shot on film.",
-      "cover": "",
-      "cover_alt": "",
-      "images": [
-        {
-          "image": "/img/377274d1e2.jpg",
-          "alt": "Street takeover photographed by Matt Adam",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "title": "The End",
-      "slug": "the-end",
-      "published": true,
-      "description": "",
-      "cover": "",
-      "cover_alt": "",
-      "images": [
-        {
-          "image": "/img/000071650004-the-end2.jpg",
-          "alt": "",
-          "caption": ""
-        },
-        {
-          "image": "/img/000071680022 2.jpg",
-          "alt": "",
-          "caption": ""
-        }
-      ]
-    },
-    {
       "title": "Juice WRLD",
       "slug": "legends-never-die",
       "published": true,
@@ -105,6 +90,35 @@
         {
           "image": "/img/c461fa69f1.jpg",
           "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-1ceb12fd",
+      "title": "Blue lagoon",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/2424736e-6626-4f3e-bc2f-84378c31baba.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "title": "Street takeover",
+      "slug": "street-takeover",
+      "published": true,
+      "description": "Los Angeles. Shot on film.",
+      "cover": "",
+      "cover_alt": "",
+      "images": [
+        {
+          "image": "/img/377274d1e2.jpg",
+          "alt": "Street takeover photographed by Matt Adam",
           "caption": ""
         }
       ]
@@ -165,21 +179,6 @@
         {
           "image": "/img/551b369868.jpg",
           "alt": "Benny Blanco and Selena Gomez photographed by Matt Adam",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "title": "Ye & Kim Kardashian",
-      "slug": "ye-kim",
-      "published": true,
-      "description": "Shot on film.",
-      "cover": "",
-      "cover_alt": "",
-      "images": [
-        {
-          "image": "/img/614a480a5b.jpg",
-          "alt": "Ye, formerly Kanye West, and Kim Kardashian photographed by Matt Adam",
           "caption": ""
         }
       ]
