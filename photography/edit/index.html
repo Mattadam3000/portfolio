@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Studio · Matt Adam</title>
+    <link rel="stylesheet" href="editor.css" />
+  </head>
+  <body>
+    <section id="login">
+      <span>Matt Adam</span>
+      <h1>Your photography studio.</h1>
+      <p>Arrange the work. See it as you go.</p>
+      <button id="signin">Sign in with GitHub ↗</button>
+      <p id="login-status" role="status"></p>
+    </section>
+    <main id="app" hidden>
+      <header>
+        <a href="/photography/" target="_blank" rel="noopener">Matt Adam ↗</a
+        ><span id="status" role="status">Private draft</span>
+        <nav>
+          <button id="undo">Undo</button><button id="preview">Preview</button
+          ><button id="publish" class="primary">Publish</button
+          ><button id="logout">Sign out</button>
+        </nav>
+      </header>
+      <div class="toolbar">
+        <button id="back" hidden>← All work</button>
+        <h1 id="heading">Your work</h1>
+        <button id="add">+ Add project</button
+        ><button id="discard">Reset to published</button>
+      </div>
+      <p class="hint" id="hint">
+        Drag to arrange, or use the arrow buttons. Changes stay private until
+        you publish.
+      </p>
+      <section id="workspace"></section>
+      <input
+        id="files"
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        multiple
+        hidden
+      />
+      <dialog id="viewer">
+        <div class="preview-bar">
+          <button id="device">Mobile view</button
+          ><button id="close-preview">Close preview ✕</button>
+        </div>
+        <iframe
+          title="Photography preview"
+          id="preview-frame"
+          sandbox="allow-scripts"
+        ></iframe>
+      </dialog>
+    </main>
+    <script src="editor.js" defer></script>
+  </body>
+</html>

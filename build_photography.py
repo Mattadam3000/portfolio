@@ -30,7 +30,7 @@ def render_all(data=None):
     slugs = set()
     for p in projects:
         slug = p['slug']
-        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug) or slug in slugs:
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug) or slug in slugs or slug == 'edit':
             raise ValueError(f'Use a unique lowercase project URL with hyphens: {slug}')
         slugs.add(slug)
         if not p.get('title') or not p.get('images'):
@@ -76,7 +76,7 @@ def render_all(data=None):
 
 if __name__ == '__main__':
     pages = render_all()
-    stale = [p for p in OUT.glob('*/index.html') if p.relative_to(OUT).as_posix() not in pages]
+    stale = [p for p in OUT.glob('*/index.html') if p.parent.name != 'edit' and p.relative_to(OUT).as_posix() not in pages]
     if '--check' in sys.argv:
         if stale or any(not (OUT / p).exists() or (OUT / p).read_text() != s for p,s in pages.items()):
             raise SystemExit('Photography pages are stale. Run python3 build_photography.py')

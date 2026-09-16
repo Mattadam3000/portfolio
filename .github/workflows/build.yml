@@ -16,6 +16,7 @@ on:
       - content.json
       - work.json
       - photography.json
+      - 'photography/edit/**'
       - photography-template.html
       - build_photography.py
       - parts.html
