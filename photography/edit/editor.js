@@ -378,9 +378,7 @@ function setBusy(value) {
 // Always render the current in-memory draft, including unpublished object URLs.
 function preview(projectSlug = selected) {
   const p = data.projects.find((project) => project.slug === projectSlug);
-  const projects = p
-    ? [p]
-    : data.projects.filter((project) => project.published !== false);
+  const projects = data.projects.filter((project) => project.published !== false || project === p);
   const slides = projects
     .flatMap((project) =>
       (p
@@ -389,16 +387,17 @@ function preview(projectSlug = selected) {
       ).map((photo, i) => {
         const path = src(photo.image);
         const image = path
-          ? `<img src="${esc(new URL(path, location.origin).href)}" alt="${esc(photo.alt || project.title)}" decoding="async">`
+          ? `<img src="${esc(new URL(path, location.origin).href)}" alt="${esc(photo.alt || project.title)}" decoding="async" loading="lazy">`
           : "<span>Add a photograph</span>";
         const stage = p
           ? `<div class="image-stage">${image}</div>`
           : `<a class="image-stage" href="#" data-preview-project="${esc(project.slug)}">${image}</a>`;
-        return `<section class="slide">${stage}<footer class="caption"><div class="project-label"><span>${esc(project.title)}</span><span class="description">${esc(photo.caption || project.description)}</span></div>${p ? "" : `<a class="view-link" href="#" data-preview-project="${esc(project.slug)}">View ↗</a>`}</footer></section>`;
+        return `<section class="slide" data-project="${esc(project.slug)}">${stage}<footer class="caption"><div class="project-label"><span>${esc(project.title)}</span><span class="description">${esc(photo.caption || project.description)}</span></div>${p || project.images.length < 2 ? "" : `<a class="view-link" href="#" data-preview-project="${esc(project.slug)}">View collection ↗</a>`}</footer></section>`;
       }),
     )
     .join("");
   const values = {
+    START: p?.slug || "",
     MODE: p ? "gallery" : "portfolio",
     TITLE: "Private preview · Matt Adam",
     DESCRIPTION: "Private preview",
