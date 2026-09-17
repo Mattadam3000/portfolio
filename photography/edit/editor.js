@@ -373,33 +373,71 @@ function setBusy(value) {
     .forEach((b) => (b.disabled = value));
   if (!value) $("#undo").disabled = !history.length;
 }
-// A fresh frame avoids hidden-dialog scroll restoration and stale scroll-snap layout.
+// Rebuild a same-origin preview document from the current private draft.
+// This avoids srcdoc/sandbox loading issues and hidden-dialog scroll restoration.
 // Always render the current in-memory draft, including unpublished object URLs.
 function preview(projectSlug = selected) {
-  const p = data.projects.find(project => project.slug === projectSlug);
-  const projects = p ? [p] : data.projects.filter(project => project.published !== false);
-  const slides = projects.flatMap(project => (p ? project.images : [{image: project.cover || project.images[0]?.image}]).map((photo, i) => {
-    const path = src(photo.image);
-    const image = path ? `<img src="${esc(new URL(path, location.origin).href)}" alt="${esc(photo.alt || project.title)}" decoding="async">` : '<span>Add a photograph</span>';
-    const stage = p ? `<div class="image-stage">${image}</div>` : `<a class="image-stage" href="#" data-preview-project="${esc(project.slug)}">${image}</a>`;
-    return `<section class="slide">${stage}<footer class="caption"><div class="project-label"><span>${esc(project.title)}</span><span class="description">${esc(photo.caption || project.description)}</span></div>${p ? '' : `<a class="view-link" href="#" data-preview-project="${esc(project.slug)}">View ↗</a>`}</footer></section>`;
-  })).join('');
-  const values = { MODE:p ? 'gallery' : 'portfolio', TITLE:'Private preview · Matt Adam', DESCRIPTION:'Private preview', CANONICAL:'', SLIDES:slides || '<section class="slide empty">No photographs yet.</section>', BACK:p ? '<a href="#" data-preview-back>Back ↗</a>' : '', CONTACT_URL:'#', CONTACT_LABEL:esc(data.contact_label || 'Contact') };
+  const p = data.projects.find((project) => project.slug === projectSlug);
+  const projects = p
+    ? [p]
+    : data.projects.filter((project) => project.published !== false);
+  const slides = projects
+    .flatMap((project) =>
+      (p
+        ? project.images
+        : [{ image: project.cover || project.images[0]?.image }]
+      ).map((photo, i) => {
+        const path = src(photo.image);
+        const image = path
+          ? `<img src="${esc(new URL(path, location.origin).href)}" alt="${esc(photo.alt || project.title)}" decoding="async">`
+          : "<span>Add a photograph</span>";
+        const stage = p
+          ? `<div class="image-stage">${image}</div>`
+          : `<a class="image-stage" href="#" data-preview-project="${esc(project.slug)}">${image}</a>`;
+        return `<section class="slide">${stage}<footer class="caption"><div class="project-label"><span>${esc(project.title)}</span><span class="description">${esc(photo.caption || project.description)}</span></div>${p ? "" : `<a class="view-link" href="#" data-preview-project="${esc(project.slug)}">View ↗</a>`}</footer></section>`;
+      }),
+    )
+    .join("");
+  const values = {
+    MODE: p ? "gallery" : "portfolio",
+    TITLE: "Private preview · Matt Adam",
+    DESCRIPTION: "Private preview",
+    CANONICAL: "",
+    SLIDES:
+      slides || '<section class="slide empty">No photographs yet.</section>',
+    BACK: p ? '<a href="#" data-preview-back>Back ↗</a>' : "",
+    CONTACT_URL: "#",
+    CONTACT_LABEL: esc(data.contact_label || "Contact"),
+  };
   const bridge = `<script>document.addEventListener('click', e => { const link=e.target.closest('a'); if(!link)return; e.preventDefault(); if(link.hasAttribute('data-preview-project'))parent.postMessage({type:'photography-preview-project',slug:link.dataset.previewProject},'*'); if(link.hasAttribute('data-preview-back'))parent.postMessage({type:'photography-preview-back'},'*'); });<\/script>`;
-  const oldFrame = $('#preview-frame');
-  const frame = document.createElement('iframe');
-  frame.id = 'preview-frame'; frame.title = 'Photography preview';
-  frame.setAttribute('sandbox', 'allow-scripts');
+  const oldFrame = $("#preview-frame");
+  const frame = document.createElement("iframe");
+  frame.id = "preview-frame";
+  frame.title = "Photography preview";
+  // Only our own template and escaped draft text are written here. Keeping the
+  // same origin lets local upload URLs render reliably in desktop and mobile browsers.
   frame.className = oldFrame.className;
-  const viewer = $('#viewer');
+  const viewer = $("#viewer");
   if (!viewer.open) viewer.showModal();
   oldFrame.replaceWith(frame);
-  frame.srcdoc = publicTemplate.replace(/{{(\w+)}}/g, (_, key) => values[key] || '').replace('</body>', bridge + '</body>');
+  const doc = frame.contentDocument;
+  doc.open();
+  doc.write(
+    publicTemplate
+      .replace(/{{(\w+)}}/g, (_, key) => values[key] || "")
+      .replace("</body>", bridge + "</body>"),
+  );
+  doc.close();
 }
-window.addEventListener('message', event => {
-  if (!$('#viewer').open || event.source !== $('#preview-frame').contentWindow) return;
-  if (event.data?.type === 'photography-preview-back') preview(null);
-  if (event.data?.type === 'photography-preview-project' && data.projects.some(p => p.slug === event.data.slug)) preview(event.data.slug);
+window.addEventListener("message", (event) => {
+  if (!$("#viewer").open || event.source !== $("#preview-frame").contentWindow)
+    return;
+  if (event.data?.type === "photography-preview-back") preview(null);
+  if (
+    event.data?.type === "photography-preview-project" &&
+    data.projects.some((p) => p.slug === event.data.slug)
+  )
+    preview(event.data.slug);
 });
 function validate() {
   const slugs = new Set();
@@ -532,9 +570,13 @@ async function watchPublish(sha, attempt = 0) {
         (r) => r.path === ".github/workflows/build.yml",
       );
     if (run?.status === "completed") {
+      if (run.conclusion === "success")
+        document.querySelector("header > a").href = "/photography/?v=" + sha;
       status(
         run.conclusion === "success"
-          ? (JSON.stringify(data) === publishedData ? "Published · public site updated" : "Last publish complete · newer draft is private")
+          ? JSON.stringify(data) === publishedData
+            ? "Published · public site updated"
+            : "Last publish complete · newer draft is private"
           : "Saved to GitHub, but publishing failed. Check GitHub Actions.",
       );
       return;
@@ -557,10 +599,14 @@ async function start() {
   const permissions = await repo("");
   if (!permissions.permissions?.push)
     throw Error("This account does not have publishing access.");
-  publicTemplate = await fetch("/photography-template.html", {cache:"no-store"}).then((r) => {
+  publicTemplate = await fetch(
+    "/photography-template.html?fresh=" + Date.now(),
+    { cache: "no-store" },
+  ).then((r) => {
     if (!r.ok) throw Error("Could not load the page preview.");
     return r.text();
   });
+  document.querySelector("header > a").href = "/photography/?v=" + Date.now();
   db = await database();
   const remote = await repo("/contents/photography.json?ref=main");
   const live = JSON.parse(
@@ -685,7 +731,14 @@ $("#undo").onclick = () => {
     render();
   }
 };
-$("#preview").onclick = () => preview();
+$("#preview").onclick = () => {
+  try {
+    preview();
+  } catch (error) {
+    $("#viewer").close();
+    status("Preview could not open: " + error.message);
+  }
+};
 $("#close-preview").onclick = () => $("#viewer").close();
 $("#device").onclick = () => {
   const mobile = $("#preview-frame").classList.toggle("mobile");

@@ -51,10 +51,17 @@
         <iframe
           title="Photography preview"
           id="preview-frame"
-          sandbox="allow-scripts"
         ></iframe>
       </dialog>
     </main>
-    <script src="editor.js?v=20260917" defer></script>
+    <script>
+      // Fresh assets on every normal visit, even if the host cached this shell.
+      const revision = Date.now();
+      document.querySelector('link[rel="stylesheet"]').href = 'editor.css?v=' + revision;
+      const script = document.createElement('script');
+      script.src = 'editor.js?v=' + revision;
+      script.onerror = () => { document.getElementById('login-status').textContent = 'Editor could not load. Please check your connection and reload.'; };
+      document.body.append(script);
+    </script>
   </body>
 </html>

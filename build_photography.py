@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the photography index and project galleries from their isolated CMS file."""
 import html
+import hashlib
 import json
 import re
 import sys
@@ -26,6 +27,7 @@ def image_source(src):
 def render_all(data=None):
     data = data if data is not None else json.loads((ROOT / 'photography.json').read_text())
     shell = (ROOT / 'photography-template.html').read_text()
+    version = hashlib.sha256((json.dumps(data, sort_keys=True) + shell).encode()).hexdigest()[:16]
     projects = [p for p in data.get('projects', []) if p.get('published', True)]
     slugs = set()
     for p in projects:
@@ -42,7 +44,7 @@ def render_all(data=None):
         src = image_source(photo['image'])
         alt = photo.get('alt') or p['title']
         image = f'<img src="{esc(src)}" alt="{esc(html.unescape(alt))}" loading="{"eager" if number == 1 else "lazy"}" decoding="async" {"fetchpriority=high" if number == 1 else ""}>'
-        link = '/photography/' + p['slug'] + '/'
+        link = '/photography/' + p['slug'] + '/?v=' + version
         if cover:
             picture = f'<a class="image-stage" href="{link}" aria-label="View {esc(p["title"])}">{image}</a>'
             label = f'<a class="project-label" href="{link}"><span>{esc(p["title"])}</span><span class="description">{esc(p.get("description"))}</span></a>'
@@ -53,7 +55,7 @@ def render_all(data=None):
             count = f'<span class="counter" aria-label="Image {number} of {total}">{number:02d} / {total:02d}</span>'
         return f'<section class="slide" id="{p["slug"] if cover else "image-"+str(number)}" aria-label="{esc(p["title"])}{ "" if cover else ", image "+str(number)}">{picture}<footer class="caption">{label}{count}</footer></section>'
     def page(title, description, path, slides, back):
-        values = dict(MODE='gallery' if back else 'portfolio', TITLE=esc(title), DESCRIPTION=esc(description), CANONICAL=esc('https://mattadam.art'+path), SLIDES=slides,
+        values = dict(VERSION=version, MODE='gallery' if back else 'portfolio', TITLE=esc(title), DESCRIPTION=esc(description), CANONICAL=esc('https://mattadam.art'+path), SLIDES=slides,
                       BACK=back, CONTACT_URL=esc(contact), CONTACT_LABEL=esc(data.get('contact_label') or 'Contact'))
         result = shell
         for key,value in values.items(): result = result.replace('{{'+key+'}}',value)
@@ -68,10 +70,11 @@ def render_all(data=None):
             photo['alt'] = p.get('cover_alt') or p['title']
         covers.append(slide(p,photo,n,len(projects),True))
         gallery = ''.join(slide(p,photo,i,len(p['images'])) for i,photo in enumerate(p['images'],1))
-        back = f'<a href="/photography/#{p["slug"]}">Back <span aria-hidden="true">↗</span></a>'
+        back = f'<a href="/photography/?v={version}#{p["slug"]}">Back <span aria-hidden="true">↗</span></a>'
         results[f'{p["slug"]}/index.html'] = page(p['title']+' · Matt Adam',p.get('description') or data['description'],'/photography/'+p['slug']+'/',gallery,back)
     index_slides = ''.join(covers) or '<section class="slide empty"><p>No projects on view.</p></section>'
     results['index.html'] = page(data['title'],data['description'],'/photography/',index_slides,'')
+    results['version.json'] = json.dumps({'version': version}) + '\n'
     return results
 
 if __name__ == '__main__':
