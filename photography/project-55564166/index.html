@@ -2,7 +2,7 @@
 <html lang="en" class="gallery">
 <head>
 <meta charset="utf-8">
-<meta name="photography-version" content="c895f7a7ecde2ab6">
+<meta name="photography-version" content="bb34fba4aefbebc7">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Travis Scott · Matt Adam</title>
 <meta name="description" content="Photography by Matt Adam. Shot on film. Portraits, music, and life in the street.">
@@ -40,7 +40,7 @@ html.gallery, .gallery body{height:100%;overflow:hidden;scroll-snap-type:none}
 </head>
 <body>
 <a class="skip" href="#projects">Skip to images</a>
-<header class="topbar"><a class="mark" href="/">MATT ADAM</a><nav aria-label="Portfolio navigation"><a href="/photography/?v=c895f7a7ecde2ab6#project-55564166">Back <span aria-hidden="true">↗</span></a><a href="/#contact">Contact</a></nav></header>
+<header class="topbar"><a class="mark" href="/">MATT ADAM</a><nav aria-label="Portfolio navigation"><a href="/photography/?v=bb34fba4aefbebc7#project-55564166">Back <span aria-hidden="true">↗</span></a><a href="/#contact">Contact</a></nav></header>
 <main id="projects" tabindex="-1" aria-label="Selected photographs"><section class="slide" id="image-1" aria-label="Travis Scott, image 1"><div class="image-stage"><img src="/img/photography/48124c6b-cadd-463e-acc5-e76a24e1ba67.jpg" alt="Travis Scott" loading="eager" decoding="async" fetchpriority=high></div><footer class="caption"><div class="project-label"><span>Travis Scott</span><span class="description"></span></div><span class="counter" aria-label="Image 1 of 2">01 / 02</span></footer></section><section class="slide" id="image-2" aria-label="Travis Scott, image 2"><div class="image-stage"><img src="/img/photography/2456574f-fcf2-41e4-809b-907f609cb0a9.jpg" alt="Travis Scott" loading="lazy" decoding="async" ></div><footer class="caption"><div class="project-label"><span>Travis Scott</span><span class="description"></span></div><span class="counter" aria-label="Image 2 of 2">02 / 02</span></footer></section></main>
 <nav class="gallery-controls" aria-label="Photograph navigation" hidden><button type="button" class="gallery-prev" aria-label="Previous photograph">‹</button><div class="gallery-dots" aria-label="Choose photograph"></div><button type="button" class="gallery-next" aria-label="Next photograph">›</button><span class="gallery-status" aria-live="polite"></span></nav>
 <script>
@@ -108,6 +108,12 @@ document.addEventListener('keydown',event=>{
 // so an open or restored portfolio moves to the latest published version.
 (() => {
  if (window.parent !== window) return;
+ const address = new URL(location.href);
+ const requestedVersion = address.searchParams.get('v');
+ if (requestedVersion !== null) {
+  address.searchParams.delete('v');
+  history.replaceState(history.state, '', address.pathname + address.search + address.hash);
+ }
  const current = document.querySelector('meta[name="photography-version"]').content;
  let checking = false;
  async function checkVersion() {
@@ -119,7 +125,7 @@ document.addEventListener('keydown',event=>{
    const {version} = await response.json();
    if (!/^[a-f0-9]{16}$/.test(version) || version === current) return;
    const next = new URL(location.href);
-   if (next.searchParams.get('v') === version) return;
+   if (requestedVersion === version) return;
    next.searchParams.set('v', version);
    location.replace(next.href);
   } catch (_) { /* An offline portfolio remains usable. */ }
