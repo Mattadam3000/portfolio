@@ -53,7 +53,7 @@ def render_all(data=None):
             count = f'<span class="counter" aria-label="Image {number} of {total}">{number:02d} / {total:02d}</span>'
         return f'<section class="slide" id="{p["slug"] if cover else "image-"+str(number)}" aria-label="{esc(p["title"])}{ "" if cover else ", image "+str(number)}">{picture}<footer class="caption">{label}{count}</footer></section>'
     def page(title, description, path, slides, back):
-        values = dict(TITLE=esc(title), DESCRIPTION=esc(description), CANONICAL=esc('https://mattadam.art'+path), SLIDES=slides,
+        values = dict(MODE='gallery' if back else 'portfolio', TITLE=esc(title), DESCRIPTION=esc(description), CANONICAL=esc('https://mattadam.art'+path), SLIDES=slides,
                       BACK=back, CONTACT_URL=esc(contact), CONTACT_LABEL=esc(data.get('contact_label') or 'Contact'))
         result = shell
         for key,value in values.items(): result = result.replace('{{'+key+'}}',value)
