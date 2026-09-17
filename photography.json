@@ -18,8 +18,38 @@
           "caption": ""
         },
         {
+          "image": "/img/photography/bd057541-c8dc-4ee3-a5ac-7dde68386883.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
           "image": "/img/photography/8a7bc138-c5b5-4495-abbc-65e560540d1b.jpg",
           "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/b6683c18-f5b9-4a34-b670-25df46d925f5.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "title": "Juice WRLD",
+      "slug": "legends-never-die",
+      "published": true,
+      "description": "Legends Never Die. Album cover photography.",
+      "cover": "",
+      "cover_alt": "",
+      "images": [
+        {
+          "image": "/img/818a46bfed.jpg",
+          "alt": "Juice WRLD portrait on film by Matt Adam",
+          "caption": ""
+        },
+        {
+          "image": "/img/c461fa69f1.jpg",
+          "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
           "caption": ""
         }
       ]
@@ -44,21 +74,15 @@
       ]
     },
     {
-      "title": "Juice WRLD",
-      "slug": "legends-never-die",
+      "slug": "project-cebb1ee0",
+      "title": "Angel",
+      "description": "",
       "published": true,
-      "description": "Legends Never Die. Album cover photography.",
       "cover": "",
-      "cover_alt": "",
       "images": [
         {
-          "image": "/img/818a46bfed.jpg",
-          "alt": "Juice WRLD portrait on film by Matt Adam",
-          "caption": ""
-        },
-        {
-          "image": "/img/c461fa69f1.jpg",
-          "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
+          "image": "/img/photography/01446907-4d0e-43c3-8304-4cb43ff0a2d5.jpg",
+          "alt": "",
           "caption": ""
         }
       ]
