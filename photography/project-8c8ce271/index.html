@@ -2,6 +2,7 @@
 <html lang="en" class="gallery">
 <head>
 <meta charset="utf-8">
+<meta name="photography-version" content="4455444bc8e62085">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Diptych · Matt Adam</title>
 <meta name="description" content="Photography by Matt Adam. Shot on film. Portraits, music, and life in the street.">
@@ -39,7 +40,7 @@ html.gallery, .gallery body{height:100%;overflow:hidden;scroll-snap-type:none}
 </head>
 <body>
 <a class="skip" href="#projects">Skip to images</a>
-<header class="topbar"><a class="mark" href="/">MATT ADAM</a><nav aria-label="Portfolio navigation"><a href="/photography/#project-8c8ce271">Back <span aria-hidden="true">↗</span></a><a href="/#contact">Contact</a></nav></header>
+<header class="topbar"><a class="mark" href="/">MATT ADAM</a><nav aria-label="Portfolio navigation"><a href="/photography/?v=4455444bc8e62085#project-8c8ce271">Back <span aria-hidden="true">↗</span></a><a href="/#contact">Contact</a></nav></header>
 <main id="projects" tabindex="-1" aria-label="Selected photographs"><section class="slide" id="image-1" aria-label="Diptych, image 1"><div class="image-stage"><img src="/img/photography/794f9c8e-5380-4dc2-95b8-a324606742ee.jpg" alt="Diptych" loading="eager" decoding="async" fetchpriority=high></div><footer class="caption"><div class="project-label"><span>Diptych</span><span class="description"></span></div><span class="counter" aria-label="Image 1 of 2">01 / 02</span></footer></section><section class="slide" id="image-2" aria-label="Diptych, image 2"><div class="image-stage"><img src="/img/photography/af8cd1c2-ba20-4665-9914-497f63cba60e.jpg" alt="Diptych" loading="lazy" decoding="async" ></div><footer class="caption"><div class="project-label"><span>Diptych</span><span class="description"></span></div><span class="counter" aria-label="Image 2 of 2">02 / 02</span></footer></section></main>
 <nav class="gallery-controls" aria-label="Photograph navigation" hidden><button type="button" class="gallery-prev" aria-label="Previous photograph">‹</button><div class="gallery-dots" aria-label="Choose photograph"></div><button type="button" class="gallery-next" aria-label="Next photograph">›</button><span class="gallery-status" aria-live="polite"></span></nav>
 <script>
@@ -54,9 +55,9 @@ html.gallery, .gallery body{height:100%;overflow:hidden;scroll-snap-type:none}
  const dots = document.querySelector('.gallery-dots');
  const prev = document.querySelector('.gallery-prev');
  const next = document.querySelector('.gallery-next');
- let active = 0, ticking = false;
+ let active = 0, target = 0, ticking = false, scrollTimer;
  const go = (index, smooth = true) => {
-  active = Math.max(0, Math.min(slides.length - 1, index));
+  target = active = Math.max(0, Math.min(slides.length - 1, index));
   track.scrollTo({left: active * track.clientWidth, behavior: smooth && !matchMedia('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'instant'});
   update();
  };
@@ -69,23 +70,26 @@ html.gallery, .gallery body{height:100%;overflow:hidden;scroll-snap-type:none}
   dot.onclick = () => go(i); dots.append(dot);
  });
  function update() {
+  slides.forEach((slide, i) => {if (Math.abs(i - active) <= 1) {const image = slide.querySelector('img'); if (image) image.loading = 'eager';}});
   prev.disabled = active === 0; next.disabled = active === slides.length - 1;
   [...dots.children].forEach((dot, i) => dot.setAttribute('aria-current', String(i === active)));
   const dot = dots.children[active];
   dots.scrollTo({left:dot.offsetLeft - dots.offsetLeft - dots.clientWidth / 2 + dot.clientWidth / 2,behavior:'instant'});
   document.querySelector('.gallery-status').textContent = `Photograph ${active + 1} of ${slides.length}`;
  }
- prev.onclick = () => go(active - 1); next.onclick = () => go(active + 1);
+ prev.onclick = () => go(target - 1); next.onclick = () => go(target + 1);
+ track.addEventListener('pointerdown', () => {target = active;});
  track.addEventListener('scroll', () => {
+  clearTimeout(scrollTimer); scrollTimer = setTimeout(() => {target = active;}, 180);
   if (ticking) return; ticking = true;
   requestAnimationFrame(() => {active = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / track.clientWidth))); update(); ticking = false;});
  }, {passive:true});
  document.addEventListener('keydown', e => {
   if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
   if (!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
-  e.preventDefault(); go(e.key === 'Home' ? 0 : e.key === 'End' ? slides.length - 1 : active + (e.key === 'ArrowRight' ? 1 : -1));
+  e.preventDefault(); go(e.key === 'Home' ? 0 : e.key === 'End' ? slides.length - 1 : target + (e.key === 'ArrowRight' ? 1 : -1));
  });
- new ResizeObserver(() => go(active, false)).observe(track);
+ new ResizeObserver(() => go(target, false)).observe(track);
  update();
 })();
 // Native scrolling and links work without JavaScript; keyboard paging is optional.
@@ -98,6 +102,34 @@ document.addEventListener('keydown',event=>{
  const next=Math.max(0,Math.min(slides.length-1,current+direction));
  event.preventDefault();slides[next]?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
 });
+</script>
+<script>
+// GitHub Pages caches HTML for ten minutes. Check a tiny uncached build marker
+// so an open or restored portfolio moves to the latest published version.
+(() => {
+ if (window.parent !== window) return;
+ const current = document.querySelector('meta[name="photography-version"]').content;
+ let checking = false;
+ async function checkVersion() {
+  if (checking || document.hidden || !navigator.onLine) return;
+  checking = true;
+  try {
+   const response = await fetch('/photography/version.json?fresh=' + Date.now(), {cache:'no-store'});
+   if (!response.ok) return;
+   const {version} = await response.json();
+   if (!/^[a-f0-9]{16}$/.test(version) || version === current) return;
+   const next = new URL(location.href);
+   if (next.searchParams.get('v') === version) return;
+   next.searchParams.set('v', version);
+   location.replace(next.href);
+  } catch (_) { /* An offline portfolio remains usable. */ }
+  finally { checking = false; }
+ }
+ window.addEventListener('pageshow', checkVersion);
+ window.addEventListener('focus', checkVersion);
+ document.addEventListener('visibilitychange', checkVersion);
+ setInterval(checkVersion, 30000);
+})();
 </script>
 </body>
 </html>
