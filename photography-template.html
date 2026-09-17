@@ -108,6 +108,12 @@ document.addEventListener('keydown',event=>{
 // so an open or restored portfolio moves to the latest published version.
 (() => {
  if (window.parent !== window) return;
+ const address = new URL(location.href);
+ const requestedVersion = address.searchParams.get('v');
+ if (requestedVersion !== null) {
+  address.searchParams.delete('v');
+  history.replaceState(history.state, '', address.pathname + address.search + address.hash);
+ }
  const current = document.querySelector('meta[name="photography-version"]').content;
  let checking = false;
  async function checkVersion() {
@@ -119,7 +125,7 @@ document.addEventListener('keydown',event=>{
    const {version} = await response.json();
    if (!/^[a-f0-9]{16}$/.test(version) || version === current) return;
    const next = new URL(location.href);
-   if (next.searchParams.get('v') === version) return;
+   if (requestedVersion === version) return;
    next.searchParams.set('v', version);
    location.replace(next.href);
   } catch (_) { /* An offline portfolio remains usable. */ }

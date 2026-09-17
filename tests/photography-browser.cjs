@@ -324,9 +324,15 @@ const fs = require("fs"),
     await page.route("**/photography/version.json?*", (route) =>
       route.fulfill({ json: { version: "abcdef0123456789" } }),
     );
+    const refreshed = page.waitForRequest(request => request.isNavigationRequest() && request.url().includes('v=abcdef0123456789'));
     await page.goto("http://localhost:8765/photography/" + project.slug + "/");
-    await page.waitForURL("**/?v=abcdef0123456789");
-    assert.equal(new URL(page.url()).searchParams.get("v"), "abcdef0123456789");
+    await refreshed;
+    await page.waitForLoadState('load');
+    await page.waitForFunction(() => !new URL(location.href).searchParams.has('v'));
+    assert.equal(new URL(page.url()).searchParams.has('v'), false);
+    await page.goto("http://localhost:8765/photography/?v=abcdef0123456789#pink-bath");
+    await page.waitForFunction(() => !new URL(location.href).searchParams.has('v'));
+    assert.equal(new URL(page.url()).hash, '#pink-bath');
     assert.deepEqual(errors, []);
     console.log(
       "PASS: repeated previews, reorder, upload, mobile resize, nested draft galleries, public carousel navigation and mobile layout",
