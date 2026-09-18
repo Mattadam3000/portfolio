@@ -62,7 +62,7 @@
       "title": "Juice WRLD for Legends Never Die",
       "slug": "legends-never-die",
       "published": true,
-      "description": "Legends Never Die. Album cover photography.",
+      "description": "",
       "cover": "",
       "cover_alt": "",
       "images": [
@@ -154,7 +154,7 @@
       "title": "The Weeknd",
       "slug": "the-weeknd",
       "published": true,
-      "description": "Hurry Up Tomorrow. Photography.",
+      "description": "",
       "cover": "",
       "cover_alt": "",
       "images": [
@@ -313,7 +313,7 @@
       "title": "Punk Shows in LA",
       "slug": "punk-shows",
       "published": true,
-      "description": "Los Angeles. Shot on film.",
+      "description": "",
       "cover": "",
       "cover_alt": "",
       "images": [
@@ -333,7 +333,7 @@
       "title": "Future for Mixtape Pluto",
       "slug": "future-motel",
       "published": true,
-      "description": "Portrait on film.",
+      "description": "",
       "cover": "",
       "cover_alt": "",
       "images": [
@@ -402,10 +402,10 @@
       ]
     },
     {
-      "title": "Street Takeover",
+      "title": "Street Takeovers",
       "slug": "street-takeover",
       "published": true,
-      "description": "Los Angeles. Shot on film.",
+      "description": "",
       "cover": "",
       "cover_alt": "",
       "images": [
