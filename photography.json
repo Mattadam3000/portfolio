@@ -151,14 +151,14 @@
       ]
     },
     {
-      "slug": "project-cee5b5bd",
-      "title": "Spikes",
+      "slug": "project-82d4de75",
+      "title": "Paris",
       "description": "",
       "published": true,
       "cover": "",
       "images": [
         {
-          "image": "/img/photography/fdc4dbec-8a6b-4738-9492-d0b4549e6fab.jpg",
+          "image": "/img/photography/ac7d8bbe-f9b0-4446-bd2d-f078cbe3d657.jpg",
           "alt": "",
           "caption": ""
         }
@@ -243,6 +243,20 @@
       ]
     },
     {
+      "slug": "project-cee5b5bd",
+      "title": "Spikes",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/fdc4dbec-8a6b-4738-9492-d0b4549e6fab.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "title": "Future",
       "slug": "future-motel",
       "published": true,
@@ -253,25 +267,6 @@
         {
           "image": "/img/156e429394.jpg",
           "alt": "Future in a motel photographed by Matt Adam",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "slug": "project-cebb1ee0",
-      "title": "Angel",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/01446907-4d0e-43c3-8304-4cb43ff0a2d5.jpg",
-          "alt": "",
-          "caption": ""
-        },
-        {
-          "image": "/img/photography/05a491f4-aec4-4dd7-853a-8896003f71e0.jpg",
-          "alt": "",
           "caption": ""
         }
       ]
@@ -297,6 +292,25 @@
       ]
     },
     {
+      "slug": "project-cebb1ee0",
+      "title": "Angel",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/01446907-4d0e-43c3-8304-4cb43ff0a2d5.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/05a491f4-aec4-4dd7-853a-8896003f71e0.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "slug": "project-2039d1fd",
       "title": "Love",
       "description": "",
@@ -311,20 +325,6 @@
       ]
     },
     {
-      "slug": "project-680e0f10",
-      "title": "Young Thug",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/0aaa50c2-b3a8-416c-8773-87ef207e674e.jpg",
-          "alt": "",
-          "caption": ""
-        }
-      ]
-    },
-    {
       "slug": "project-02ad14af",
       "title": "Razor Blade Hair Cut",
       "description": "",
@@ -333,6 +333,20 @@
       "images": [
         {
           "image": "/img/photography/8056ac84-301a-4f93-b84b-1140de28d9a8.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-680e0f10",
+      "title": "Young Thug",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/0aaa50c2-b3a8-416c-8773-87ef207e674e.jpg",
           "alt": "",
           "caption": ""
         }
