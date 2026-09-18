@@ -1,53 +1,114 @@
-/* Photography-specific Sveltia preview. getAsset includes unsaved image uploads. */
+/* Use the public template for both saved photographs and unsaved CMS assets. */
 (() => {
   const h = window.h;
-  const PhotographyPreview = window.createClass({
-    getInitialState() { return { projectIndex: null }; },
-    render() {
-      const raw = this.props.entry.getIn(['data']);
-      const data = raw && typeof raw.toJS === 'function' ? raw.toJS() : raw || {};
-      const projects = (data.projects || []).filter(p => p.published !== false);
-      const active = projects[this.state.projectIndex];
-      const resolve = path => {
-        if (!path) return '';
-        const asset = this.props.getAsset(path);
-        if (asset && asset.url) return asset.url;
-        if (typeof asset === 'string') return asset;
-        if (/^(blob:|data:image\/|https:\/\/)/.test(path)) return path;
-        return new URL(path, 'https://mattadam.art/').href;
-      };
-      const slides = active
-        ? (active.images || []).map((photo, index) => ({ project: active, photo, index }))
-        : projects.map((project, index) => ({ project, index, photo: project.cover
-            ? { image: project.cover, alt: project.cover_alt || project.title }
-            : (project.images || [])[0] || {} }));
-      return h('div', { className: 'photo-preview' },
-        h('style', {}, `
-          body{margin:0!important;background:#fff!important;color:#0a0a0a!important}
-          .photo-preview{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:#fff;color:#0a0a0a}
-          .pp-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;font-size:14px;position:sticky;top:0;background:#fff;z-index:2}
-          .pp-header strong{letter-spacing:-.03em}.pp-header button,.pp-view{border:0;background:none;color:inherit;font:inherit;cursor:pointer;padding:8px}
-          .pp-slide{height:calc(100vh - 64px);min-height:360px;display:flex;flex-direction:column;gap:16px;padding:8px 20px 18px;box-sizing:border-box}
-          .pp-stage{display:flex;align-items:center;justify-content:center;flex:1;min-height:0;border:0;padding:0;background:#fff;width:100%;color:#555;cursor:pointer}
-          .pp-stage img{width:100%;height:100%;object-fit:contain;display:block;margin:0}
-          .pp-caption{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;font-size:13px;line-height:1.4;flex-shrink:0}
-          .pp-caption small{display:block;font-size:12px;color:#555;margin-top:4px}.pp-caption>div{overflow-wrap:anywhere}
-          .pp-view{white-space:nowrap;font-size:12px}.pp-empty{padding:32px;font-size:14px}
-        `),
-        h('header', { className: 'pp-header' }, h('strong', {}, 'MATT ADAM'),
-          active ? h('button', { type: 'button', onClick: () => this.setState({ projectIndex: null }) }, 'Back ↗') : h('span', {}, data.contact_label || 'Contact')),
-        !slides.length && h('p', { className: 'pp-empty' }, 'Add a project and photograph to see the preview.'),
-        slides.map(({ project, photo, index }) => {
-          const src = resolve(photo.image);
-          const open = () => { if (!active) this.setState({ projectIndex: index }); };
-          return h('section', { className: 'pp-slide', key: `${active ? 'image' : 'cover'}-${index}` },
-            h(active ? 'div' : 'button', { className: 'pp-stage', type: active ? undefined : 'button', onClick: open, 'aria-label': project.title || 'Project' },
-              src ? h('img', { src, alt: photo.alt || project.title || 'Photograph' }) : h('span', {}, 'Choose a photograph')),
-            h('footer', { className: 'pp-caption' },
-              h('div', {}, project.title || 'Untitled project', h('small', {}, active ? photo.caption || project.description : project.description)),
-              active ? h('span', { className: 'pp-view' }, `${index + 1} / ${slides.length}`) : h('button', { className: 'pp-view', type: 'button', onClick: open }, 'View ↗')));
-        }));
-    }
+  const escape = (value) =>
+    String(value || "").replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
+  const template = fetch("/photography-template.html?fresh=" + Date.now(), {
+    cache: "no-store",
+  }).then((r) => {
+    if (!r.ok) throw Error("Preview could not load");
+    return r.text();
   });
-  window.CMS.registerPreviewTemplate('photography', PhotographyPreview);
+  const PhotographyPreview = window.createClass({
+    componentDidMount() {
+      template
+        .then((text) => {
+          this.template = text;
+          this.draw();
+        })
+        .catch((error) => {
+          if (this.frame) this.frame.title = error.message;
+        });
+    },
+    componentDidUpdate() {
+      this.draw();
+    },
+    draw() {
+      if (!this.template || !this.frame) return;
+      const raw = this.props.entry.getIn(["data"]);
+      const data =
+        raw && typeof raw.toJS === "function" ? raw.toJS() : raw || {};
+      const resolve = (path) => {
+        if (!path) return "";
+        const asset = this.props.getAsset(path);
+        if (asset?.url) return asset.url;
+        if (typeof asset === "string") return asset;
+        if (/^(blob:|data:image\/|https:\/\/)/.test(path)) return path;
+        return new URL(path, "https://mattadam.art/").href;
+      };
+      const slides = (data.projects || [])
+        .filter((p) => p.published !== false)
+        .map((project) => {
+          let photos = [...(project.images || [])];
+          if (project.cover) {
+            const cover = photos.find((p) => p.image === project.cover) || {
+              image: project.cover,
+              alt: project.cover_alt || project.title,
+            };
+            photos = [
+              cover,
+              ...photos.filter((p) => p.image !== project.cover),
+            ];
+          }
+          if (!photos.length) photos = [{}];
+          return `<section class="slide" id="${escape(project.slug)}" data-project="${escape(project.slug)}"><div class="collection-track">${photos
+            .map((photo, i) => {
+              const path = resolve(photo.image);
+              return `<div class="photo-slide" role="group" aria-label="Photograph ${i + 1} of ${photos.length}">${path ? `<img src="${escape(path)}" alt="${escape(photo.alt || project.title)}" loading="lazy">` : "<span>Choose a photograph</span>"}<div class="caption"><div class="project-label"><span>${escape(project.title)}</span><span class="description">${escape(photo.caption || project.description)}</span></div></div></div>`;
+            })
+            .join("")}</div></section>`;
+        })
+        .join("");
+      const values = {
+        MODE: "portfolio",
+        START: "",
+        TITLE: "Photography preview",
+        DESCRIPTION: "",
+        CANONICAL: "",
+        BACK: "",
+        CONTACT_URL: "#",
+        CONTACT_LABEL: escape(data.contact_label || "Contact"),
+        SLIDES:
+          slides ||
+          '<section class="slide empty">Add photographs to preview.</section>',
+      };
+      const doc = this.frame.contentDocument;
+      doc.open();
+      doc.write(
+        this.template
+          .replace(/{{(\w+)}}/g, (_, key) => values[key] || "")
+          .replace(
+            "</body>",
+            '<script>document.addEventListener("click",e=>{if(e.target.closest("a"))e.preventDefault()})<\/script></body>',
+          ),
+      );
+      doc.close();
+    },
+    render() {
+      return h("iframe", {
+        title: "Photography preview",
+        ref: (node) => {
+          this.frame = node;
+        },
+        style: {
+          width: "100%",
+          height: "100vh",
+          border: 0,
+          display: "block",
+          background: "#fff",
+        },
+      });
+    },
+  });
+  window.CMS.registerPreviewTemplate("photography", PhotographyPreview);
 })();

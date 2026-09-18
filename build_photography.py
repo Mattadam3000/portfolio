@@ -40,41 +40,25 @@ def render_all(data=None):
     contact = data.get('contact_url') or '/#contact'
     if not ((contact.startswith('/') and not contact.startswith('//')) or contact.startswith(('https://','mailto:'))):
         raise ValueError('Contact link must be a site path, HTTPS link, or email link.')
-    def slide(p, photo, number, total, cover=False):
-        src = image_source(photo['image'])
-        alt = photo.get('alt') or p['title']
-        image = f'<img src="{esc(src)}" alt="{esc(html.unescape(alt))}" loading="{"eager" if cover and number == 1 else "lazy"}" decoding="async" {"fetchpriority=high" if cover and number == 1 else ""}>'
-        link = '/photography/' + p['slug'] + '/?v=' + version
-        if cover:
-            picture = f'<a class="image-stage" href="{link}" aria-label="View {esc(p["title"])}">{image}</a>'
-            label = f'<a class="project-label" href="{link}"><span>{esc(p["title"])}</span><span class="description">{esc(p.get("description"))}</span></a>'
-            count = f'<a class="view-link" href="{link}" aria-label="View {esc(p["title"])} gallery">View collection <span aria-hidden="true">↗</span></a>' if len(p["images"]) > 1 else ''
-        else:
-            picture = f'<div class="image-stage">{image}</div>'
-            label = f'<div class="project-label"><span>{esc(p["title"])}</span><span class="description">{esc(photo.get("caption") or p.get("description"))}</span></div>'
-            count = f'<span class="counter" aria-label="Image {number} of {total}">{number:02d} / {total:02d}</span>'
-        return f'<section class="slide" data-project="{p["slug"]}" id="{p["slug"] if cover else p["slug"]+"-image-"+str(number)}" aria-label="{esc(p["title"])}{ "" if cover else ", image "+str(number)}">{picture}<footer class="caption">{label}{count}</footer></section>'
-    def page(title, description, path, slides, back, start=''):
-        values = dict(START=esc(start), VERSION=version, MODE='gallery' if back else 'portfolio', TITLE=esc(title), DESCRIPTION=esc(description), CANONICAL=esc('https://mattadam.art'+path), SLIDES=slides,
-                      BACK=back, CONTACT_URL=esc(contact), CONTACT_LABEL=esc(data.get('contact_label') or 'Contact'))
-        result = shell
-        for key,value in values.items(): result = result.replace('{{'+key+'}}',value)
-        assert not re.search(r'{{\w+}}', result)
-        return result
-    results = {}
-    covers = []
-    gallery = ''.join(slide(p, photo, i, len(p['images'])) for p in projects for i,photo in enumerate(p['images'],1))
-    for n,p in enumerate(projects,1):
-        photo = dict(p['images'][0])
+    def collection(p, first=False):
+        photos = list(p['images'])
         if p.get('cover'):
-            photo['image'] = p['cover']
-            photo['alt'] = p.get('cover_alt') or p['title']
-        covers.append(slide(p,photo,n,len(projects),True))
-        back = f'<a href="/photography/?v={version}#{p["slug"]}">Back <span aria-hidden="true">↗</span></a>'
-        results[f'{p["slug"]}/index.html'] = page(p['title']+' · Matt Adam',p.get('description') or data['description'],'/photography/'+p['slug']+'/',gallery,back,p['slug'])
-    index_slides = ''.join(covers) or '<section class="slide empty"><p>No projects on view.</p></section>'
-    results['index.html'] = page(data['title'],data['description'],'/photography/',index_slides,'')
-    results['version.json'] = json.dumps({'version': version}) + '\n'
+            cover = next((photo for photo in photos if photo['image'] == p['cover']), {'image':p['cover'], 'alt':p.get('cover_alt') or p['title']})
+            photos = [cover] + [photo for photo in photos if photo['image'] != p['cover']]
+        items = []
+        for i,photo in enumerate(photos):
+            src = image_source(photo['image'])
+            label = f'<div class="project-label"><span>{esc(p["title"])}</span><span class="description">{esc(photo.get("caption") or p.get("description"))}</span></div>'
+            items.append(f'<div class="photo-slide" role="group" aria-label="Photograph {i+1} of {len(photos)}"><img src="{esc(src)}" alt="{esc(photo.get("alt") or p["title"])}" loading="{"eager" if first and i == 0 else "lazy"}" decoding="async"><div class="caption">{label}</div></div>')
+        return f'<section class="slide" id="{p["slug"]}" data-project="{p["slug"]}" aria-label="{esc(p["title"])}"><div class="collection-track" aria-label="{esc(p["title"])} photographs">{"".join(items)}</div></section>'
+    slides = ''.join(collection(p, i == 0) for i,p in enumerate(projects)) or '<section class="slide empty">No photographs on view.</section>'
+    values = dict(VERSION=version, TITLE=esc(data['title']), DESCRIPTION=esc(data['description']), CANONICAL='https://mattadam.art/photography/', SLIDES=slides, START='', MODE='portfolio', BACK='', CONTACT_URL=esc(contact), CONTACT_LABEL=esc(data.get('contact_label') or 'Contact'))
+    result = re.sub(r'{{(\w+)}}', lambda m:values[m[1]], shell)
+    results = {'index.html':result, 'version.json':json.dumps({'version':version})+'\n'}
+    # Preserve old collection links while keeping browsing on the main page.
+    for p in projects:
+        target = '/photography/#' + p['slug']
+        results[p['slug']+'/index.html'] = f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url={target}"><link rel="canonical" href="https://mattadam.art/photography/"><title>{esc(p["title"])} · Matt Adam</title></head><body><a href="{target}">View photographs</a></body></html>'
     return results
 
 if __name__ == '__main__':

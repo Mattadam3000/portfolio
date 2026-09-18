@@ -378,37 +378,48 @@ function setBusy(value) {
 // Always render the current in-memory draft, including unpublished object URLs.
 function preview(projectSlug = selected) {
   const p = data.projects.find((project) => project.slug === projectSlug);
-  const projects = data.projects.filter((project) => project.published !== false || project === p);
+  const projects = data.projects.filter(
+    (project) => project.published !== false || project === p,
+  );
   const slides = projects
-    .flatMap((project) =>
-      (p
-        ? project.images
-        : [{ image: project.cover || project.images[0]?.image }]
-      ).map((photo, i) => {
-        const path = src(photo.image);
-        const image = path
-          ? `<img src="${esc(new URL(path, location.origin).href)}" alt="${esc(photo.alt || project.title)}" decoding="async" loading="lazy">`
-          : "<span>Add a photograph</span>";
-        const stage = p
-          ? `<div class="image-stage">${image}</div>`
-          : `<a class="image-stage" href="#" data-preview-project="${esc(project.slug)}">${image}</a>`;
-        return `<section class="slide" data-project="${esc(project.slug)}">${stage}<footer class="caption"><div class="project-label"><span>${esc(project.title)}</span><span class="description">${esc(photo.caption || project.description)}</span></div>${p || project.images.length < 2 ? "" : `<a class="view-link" href="#" data-preview-project="${esc(project.slug)}">View collection ↗</a>`}</footer></section>`;
-      }),
-    )
+    .map((project) => {
+      let photos = [...project.images];
+      if (project.cover) {
+        const cover = photos.find((photo) => photo.image === project.cover) || {
+          image: project.cover,
+          alt: project.cover_alt || project.title,
+        };
+        photos = [
+          cover,
+          ...photos.filter((photo) => photo.image !== project.cover),
+        ];
+      }
+      if (!photos.length) photos = [{}];
+      return `<section class="slide" id="${esc(project.slug)}" data-project="${esc(project.slug)}" aria-label="${esc(project.title)}"><div class="collection-track">${photos
+        .map((photo, i) => {
+          const path = src(photo.image);
+          const image = path
+            ? `<img src="${esc(new URL(path, location.origin).href)}" alt="${esc(photo.alt || project.title)}" loading="lazy" decoding="async">`
+            : "<span>Add a photograph</span>";
+          return `<div class="photo-slide" role="group" aria-label="Photograph ${i + 1} of ${photos.length}">${image}<div class="caption"><div class="project-label"><span>${esc(project.title)}</span><span class="description">${esc(photo.caption || project.description)}</span></div></div></div>`;
+        })
+        .join("")}</div></section>`;
+    })
     .join("");
   const values = {
     START: p?.slug || "",
-    MODE: p ? "gallery" : "portfolio",
+    MODE: "portfolio",
     TITLE: "Private preview · Matt Adam",
     DESCRIPTION: "Private preview",
     CANONICAL: "",
     SLIDES:
       slides || '<section class="slide empty">No photographs yet.</section>',
-    BACK: p ? '<a href="#" data-preview-back>Back ↗</a>' : "",
+    BACK: "",
     CONTACT_URL: "#",
     CONTACT_LABEL: esc(data.contact_label || "Contact"),
   };
-  const bridge = `<script>document.addEventListener('click', e => { const link=e.target.closest('a'); if(!link)return; e.preventDefault(); if(link.hasAttribute('data-preview-project'))parent.postMessage({type:'photography-preview-project',slug:link.dataset.previewProject},'*'); if(link.hasAttribute('data-preview-back'))parent.postMessage({type:'photography-preview-back'},'*'); });<\/script>`;
+  const bridge =
+    '<script>document.addEventListener("click",e=>{if(e.target.closest("a"))e.preventDefault();});<\/script>';
   const oldFrame = $("#preview-frame");
   const frame = document.createElement("iframe");
   frame.id = "preview-frame";
@@ -428,16 +439,6 @@ function preview(projectSlug = selected) {
   );
   doc.close();
 }
-window.addEventListener("message", (event) => {
-  if (!$("#viewer").open || event.source !== $("#preview-frame").contentWindow)
-    return;
-  if (event.data?.type === "photography-preview-back") preview(null);
-  if (
-    event.data?.type === "photography-preview-project" &&
-    data.projects.some((p) => p.slug === event.data.slug)
-  )
-    preview(event.data.slug);
-});
 function validate() {
   const slugs = new Set();
   for (const p of data.projects) {
