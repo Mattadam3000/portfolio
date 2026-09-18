@@ -180,6 +180,45 @@
       ]
     },
     {
+      "slug": "project-54979115",
+      "title": "Future for The Real Me",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/6052f474-8db6-43ca-9efa-de5d41fbff7e.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/f32dc94a-c8a2-473f-9887-f0216067cae5.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/a528c11b-5f1c-4562-b385-53f266ceeda2.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/5a4a09c5-64a0-49c3-92ba-ffec7ebcf9b7.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/75f87eb8-dc0d-47f9-93f1-f4e15658a177.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/aa49486c-f6c1-4fcc-9588-c9c1de7ba6c2.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "slug": "project-dd57c155",
       "title": "Lykke Li for V Magazine",
       "description": "",
@@ -271,21 +310,6 @@
       ]
     },
     {
-      "title": "Future for Mixtape Pluto",
-      "slug": "future-motel",
-      "published": true,
-      "description": "Portrait on film.",
-      "cover": "",
-      "cover_alt": "",
-      "images": [
-        {
-          "image": "/img/156e429394.jpg",
-          "alt": "Future in a motel photographed by Matt Adam",
-          "caption": ""
-        }
-      ]
-    },
-    {
       "title": "Punk Shows in LA",
       "slug": "punk-shows",
       "published": true,
@@ -306,20 +330,31 @@
       ]
     },
     {
-      "slug": "project-cebb1ee0",
-      "title": "Angel",
-      "description": "",
+      "title": "Future for Mixtape Pluto",
+      "slug": "future-motel",
       "published": true,
+      "description": "Portrait on film.",
       "cover": "",
+      "cover_alt": "",
       "images": [
         {
-          "image": "/img/photography/01446907-4d0e-43c3-8304-4cb43ff0a2d5.jpg",
+          "image": "/img/photography/45fbe0da-5393-4868-be3e-c9f9d94f1b12.jpg",
           "alt": "",
           "caption": ""
         },
         {
-          "image": "/img/photography/05a491f4-aec4-4dd7-853a-8896003f71e0.jpg",
+          "image": "/img/photography/d09ed99e-1757-47a1-afd0-d8fa6ed5ed9d.jpg",
           "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/17064d13-ac1b-47f1-a33a-904759b61dfb.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/156e429394.jpg",
+          "alt": "Future in a motel photographed by Matt Adam",
           "caption": ""
         }
       ]
@@ -390,6 +425,25 @@
       "images": [
         {
           "image": "/img/photography/02318934-f60d-4b6f-a3ea-163be3298161.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-cebb1ee0",
+      "title": "Angel",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/01446907-4d0e-43c3-8304-4cb43ff0a2d5.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/05a491f4-aec4-4dd7-853a-8896003f71e0.jpg",
           "alt": "",
           "caption": ""
         }
