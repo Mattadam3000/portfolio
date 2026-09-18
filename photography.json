@@ -402,6 +402,20 @@
       ]
     },
     {
+      "slug": "project-dbc8f97e",
+      "title": "Gangs in LA",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/02318934-f60d-4b6f-a3ea-163be3298161.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "title": "Street Takeovers",
       "slug": "street-takeover",
       "published": true,
@@ -412,20 +426,6 @@
         {
           "image": "/img/377274d1e2.jpg",
           "alt": "Street takeover photographed by Matt Adam",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "slug": "project-dbc8f97e",
-      "title": "Gangs in LA",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/02318934-f60d-4b6f-a3ea-163be3298161.jpg",
-          "alt": "",
           "caption": ""
         }
       ]
