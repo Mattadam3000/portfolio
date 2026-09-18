@@ -59,7 +59,7 @@
       ]
     },
     {
-      "title": "Juice WRLD",
+      "title": "Juice WRLD for Legends Never Die",
       "slug": "legends-never-die",
       "published": true,
       "description": "Legends Never Die. Album cover photography.",
@@ -80,7 +80,7 @@
     },
     {
       "slug": "project-7102d010",
-      "title": "We Don't Trust You",
+      "title": "Future & Metro Boomin for We Don't Trust You",
       "description": "",
       "published": true,
       "cover": "",
@@ -99,7 +99,7 @@
     },
     {
       "slug": "project-3916e709",
-      "title": "Young Thug",
+      "title": "Young Thug for Take It To Trial",
       "description": "",
       "published": true,
       "cover": "",
@@ -180,6 +180,20 @@
       ]
     },
     {
+      "slug": "project-29de01b9",
+      "title": "Heel in Mouth",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/1e397869-a51b-4e2b-ad55-fddf249dc8ab.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "slug": "project-dd57c155",
       "title": "Lykke Li for V Magazine",
       "description": "",
@@ -230,7 +244,7 @@
     },
     {
       "slug": "project-158bed1b",
-      "title": "Broken Heart Bruise",
+      "title": "Broken Heart Bruise with Rubber Bullet",
       "description": "",
       "published": true,
       "cover": "",
@@ -257,7 +271,7 @@
       ]
     },
     {
-      "title": "Future",
+      "title": "Future for Mixtape Pluto",
       "slug": "future-motel",
       "published": true,
       "description": "Portrait on film.",
@@ -272,7 +286,7 @@
       ]
     },
     {
-      "title": "Punk shows",
+      "title": "Punk Shows in LA",
       "slug": "punk-shows",
       "published": true,
       "description": "Los Angeles. Shot on film.",
@@ -312,7 +326,7 @@
     },
     {
       "slug": "project-2039d1fd",
-      "title": "Love",
+      "title": "Love of My Life",
       "description": "",
       "published": true,
       "cover": "",
@@ -340,7 +354,7 @@
     },
     {
       "slug": "project-680e0f10",
-      "title": "Young Thug",
+      "title": "Young Thug for So Much Fun",
       "description": "",
       "published": true,
       "cover": "",
@@ -353,7 +367,7 @@
       ]
     },
     {
-      "title": "Street takeover",
+      "title": "Street Takeover",
       "slug": "street-takeover",
       "published": true,
       "description": "Los Angeles. Shot on film.",
@@ -369,7 +383,7 @@
     },
     {
       "slug": "project-dbc8f97e",
-      "title": "Look",
+      "title": "Gangs in LA",
       "description": "",
       "published": true,
       "cover": "",
@@ -383,7 +397,7 @@
     },
     {
       "slug": "project-5bee1e5d",
-      "title": "Future Metro",
+      "title": "Future & Metro Boomin for We Still Don't Trust You",
       "description": "",
       "published": true,
       "cover": "",
@@ -397,7 +411,7 @@
     },
     {
       "slug": "project-128d0ed5",
-      "title": "Grammy in Atlanta",
+      "title": "Kids with Grammy in Atlanta",
       "description": "",
       "published": true,
       "cover": "",
