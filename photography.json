@@ -277,6 +277,20 @@
       ]
     },
     {
+      "slug": "project-2039d1fd",
+      "title": "Love",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/3b84b4b1-b739-4bb1-a780-ce35dbcdde13.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "title": "Punk shows",
       "slug": "punk-shows",
       "published": true,
@@ -292,6 +306,34 @@
         {
           "image": "/img/b31a763279.jpg",
           "alt": "Punk show photographed by Matt Adam",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-02ad14af",
+      "title": "Razor Blade Hair Cut",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/8056ac84-301a-4f93-b84b-1140de28d9a8.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-680e0f10",
+      "title": "Young Thug",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/0aaa50c2-b3a8-416c-8773-87ef207e674e.jpg",
+          "alt": "",
           "caption": ""
         }
       ]
@@ -320,34 +362,6 @@
       "images": [
         {
           "image": "/img/photography/34773dd7-495d-421c-bb07-f417aec24d75.jpg",
-          "alt": "",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "slug": "project-680e0f10",
-      "title": "Young Thug",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/0aaa50c2-b3a8-416c-8773-87ef207e674e.jpg",
-          "alt": "",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "slug": "project-02ad14af",
-      "title": "Razor Blade Hair Cut",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/8056ac84-301a-4f93-b84b-1140de28d9a8.jpg",
           "alt": "",
           "caption": ""
         }
