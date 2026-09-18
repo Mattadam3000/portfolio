@@ -277,20 +277,6 @@
       ]
     },
     {
-      "slug": "project-2039d1fd",
-      "title": "Love",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/3b84b4b1-b739-4bb1-a780-ce35dbcdde13.jpg",
-          "alt": "",
-          "caption": ""
-        }
-      ]
-    },
-    {
       "title": "Punk shows",
       "slug": "punk-shows",
       "published": true,
@@ -311,14 +297,14 @@
       ]
     },
     {
-      "slug": "project-02ad14af",
-      "title": "Razor Blade Hair Cut",
+      "slug": "project-2039d1fd",
+      "title": "Love",
       "description": "",
       "published": true,
       "cover": "",
       "images": [
         {
-          "image": "/img/photography/8056ac84-301a-4f93-b84b-1140de28d9a8.jpg",
+          "image": "/img/photography/3b84b4b1-b739-4bb1-a780-ce35dbcdde13.jpg",
           "alt": "",
           "caption": ""
         }
@@ -339,6 +325,20 @@
       ]
     },
     {
+      "slug": "project-02ad14af",
+      "title": "Razor Blade Hair Cut",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/8056ac84-301a-4f93-b84b-1140de28d9a8.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "title": "Street takeover",
       "slug": "street-takeover",
       "published": true,
@@ -349,6 +349,20 @@
         {
           "image": "/img/377274d1e2.jpg",
           "alt": "Street takeover photographed by Matt Adam",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-dbc8f97e",
+      "title": "Look",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/02318934-f60d-4b6f-a3ea-163be3298161.jpg",
+          "alt": "",
           "caption": ""
         }
       ]
@@ -376,20 +390,6 @@
       "images": [
         {
           "image": "/img/photography/520aac1e-46ce-45ae-b066-14e5d4477ec6.jpg",
-          "alt": "",
-          "caption": ""
-        }
-      ]
-    },
-    {
-      "slug": "project-dbc8f97e",
-      "title": "Look",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/02318934-f60d-4b6f-a3ea-163be3298161.jpg",
           "alt": "",
           "caption": ""
         }
