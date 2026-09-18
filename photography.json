@@ -180,45 +180,6 @@
       ]
     },
     {
-      "slug": "project-54979115",
-      "title": "Future for The Real Me",
-      "description": "",
-      "published": true,
-      "cover": "",
-      "images": [
-        {
-          "image": "/img/photography/6052f474-8db6-43ca-9efa-de5d41fbff7e.jpg",
-          "alt": "",
-          "caption": ""
-        },
-        {
-          "image": "/img/photography/f32dc94a-c8a2-473f-9887-f0216067cae5.jpg",
-          "alt": "",
-          "caption": ""
-        },
-        {
-          "image": "/img/photography/a528c11b-5f1c-4562-b385-53f266ceeda2.jpg",
-          "alt": "",
-          "caption": ""
-        },
-        {
-          "image": "/img/photography/5a4a09c5-64a0-49c3-92ba-ffec7ebcf9b7.jpg",
-          "alt": "",
-          "caption": ""
-        },
-        {
-          "image": "/img/photography/75f87eb8-dc0d-47f9-93f1-f4e15658a177.jpg",
-          "alt": "",
-          "caption": ""
-        },
-        {
-          "image": "/img/photography/aa49486c-f6c1-4fcc-9588-c9c1de7ba6c2.jpg",
-          "alt": "",
-          "caption": ""
-        }
-      ]
-    },
-    {
       "slug": "project-dd57c155",
       "title": "Lykke Li for V Magazine",
       "description": "",
@@ -262,6 +223,45 @@
         },
         {
           "image": "/img/photography/7f7c68bf-dd58-4261-923e-35f8b435dac2.jpg",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "slug": "project-54979115",
+      "title": "Future for The Real Me",
+      "description": "",
+      "published": true,
+      "cover": "",
+      "images": [
+        {
+          "image": "/img/photography/6052f474-8db6-43ca-9efa-de5d41fbff7e.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/f32dc94a-c8a2-473f-9887-f0216067cae5.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/a528c11b-5f1c-4562-b385-53f266ceeda2.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/5a4a09c5-64a0-49c3-92ba-ffec7ebcf9b7.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/75f87eb8-dc0d-47f9-93f1-f4e15658a177.jpg",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "image": "/img/photography/aa49486c-f6c1-4fcc-9588-c9c1de7ba6c2.jpg",
           "alt": "",
           "caption": ""
         }
