@@ -1,0 +1,93 @@
+name: Reposition homepage once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/reposition-homepage-once.yml
+
+permissions:
+  contents: write
+  pages: write
+
+auto-cancel: false
+
+jobs:
+  reposition:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reposition opening work and copy
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path('content.json')
+          data = json.loads(p.read_text())
+          blocks = data['blocks']
+          by = {b.get('id'): b for b in blocks}
+
+          # Only the requested positioning/copy changes.
+          chapter = by['legends'].get('chapter')
+          by['wdty']['chapter'] = chapter
+          by['legends']['chapter'] = None
+
+          copy = 'Creative direction, visual identity and cover photography on film for Future and Metro Boomin’s two-album project. One visual world across covers, vinyl, billboards, and rollout imagery. Two consecutive #1 albums.'
+          for bid in ('wdty', 'wsdty'):
+              beat = by[bid]['body'][0]
+              beat['role'] = 'CREATIVE DIRECTION + VISUAL IDENTITY'
+              beat['fact'] = copy
+
+          # Preserve the desktop left/right rhythm after moving the projects.
+          by['wdty']['body'][0]['layout'] = 'beat'
+          by['wsdty']['body'][0]['layout'] = 'beat flip'
+          by['legends']['body'][0]['layout'] = 'beat'
+
+          opening = {'wdty', 'wsdty', 'roster', 'legends'}
+          rest = [b for b in blocks if b.get('id') not in opening]
+          data['blocks'] = [by['wdty'], by['wsdty'], by['roster'], by['legends']] + rest
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+          PY
+
+      - name: Build homepage
+        run: |
+          python3 clean_template_jsonld.py
+          python3 build.py
+          python3 structured_data.py
+          python3 structured_data.py --check
+
+      - name: Commit requested homepage changes and remove one-off workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/reposition-homepage-once.yml
+          git add content.json template.html index.html
+          git commit -m "Lead homepage with creative direction [skip ci]"
+          git push
+
+      - name: Publish and verify Pages
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const { data: head } = await github.rest.git.getRef({ owner, repo, ref: 'heads/main' });
+            const expected = head.object.sha;
+            await github.request('POST /repos/{owner}/{repo}/pages/builds', { owner, repo });
+            for (let attempt = 0; attempt < 60; attempt++) {
+              await new Promise(resolve => setTimeout(resolve, 5000));
+              const { data: build } = await github.request('GET /repos/{owner}/{repo}/pages/builds/latest', { owner, repo });
+              if (build.commit !== expected) continue;
+              if (build.status === 'errored') throw new Error(build.error?.message || 'Pages build failed');
+              if (build.status === 'built') return;
+            }
+            throw new Error(`Timed out waiting for Pages to publish ${expected}`);
