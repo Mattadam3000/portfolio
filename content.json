@@ -2,10 +2,10 @@
   "blocks": [
     {
       "type": "content",
-      "id": "legends",
-      "label": "Legends Never Die.",
+      "id": "wdty",
+      "label": "We Don't Trust You.",
       "classes": "sortable",
-      "aria": "Juice WRLD, Legends Never Die",
+      "aria": "Future and Metro Boomin, We Don't Trust You",
       "chapter": {
         "vlabel": "音楽 · THE FLAGSHIP",
         "index": [
@@ -17,37 +17,69 @@
       "body": [
         {
           "kind": "beat",
-          "id": "juice-portrait",
+          "id": "wdty",
           "layout": "beat",
-          "heading": "Legends<br>Never Die",
+          "heading": "We Don't<br>Trust You",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "ALBUM COVER PHOTOGRAPHY",
-          "fact": "The portrait photographed by Matt Adam and chosen by Juice WRLD’s family for <i>Legends Never Die</i>. The album debuted at #1 with 497,000 first-week units, the biggest posthumous debut since Tupac and Biggie.",
+          "role": "CREATIVE DIRECTION + VISUAL IDENTITY",
+          "fact": "Creative direction, visual identity and cover photography on film for Future and Metro Boomin’s two-album project. One visual world across covers, vinyl, billboards, and rollout imagery. Two consecutive #1 albums.",
           "style": "",
           "media": {
-            "type": "stack",
+            "type": "single",
             "class": "stack r",
             "images": [
               {
-                "src": "/img/818a46bfed.jpg",
-                "alt": "Juice WRLD portrait on film by Matt Adam",
-                "frame": "fr",
-                "key": "juice-portrait",
-                "aspect": "1170/1738",
-                "position": "center 28%",
-                "w": 1170,
-                "h": 1738
-              },
-              {
-                "src": "/img/c461fa69f1.jpg",
-                "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
-                "frame": "fr",
-                "key": "juice-cover",
+                "src": "/img/cade447acb.jpg",
+                "alt": "Future and Metro Boomin We Don't Trust You album cover, visual identity by Matt Adam",
+                "frame": "fr r",
+                "key": "wdty",
                 "aspect": "",
                 "position": "",
-                "w": 1200,
-                "h": 1200
+                "w": 1400,
+                "h": 1400
+              }
+            ],
+            "id": "",
+            "aria": "",
+            "src": "",
+            "poster": "",
+            "label": ""
+          }
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "id": "wsdty",
+      "label": "We Still Don't Trust You.",
+      "classes": "sortable",
+      "aria": "Future and Metro Boomin, We Still Don't Trust You",
+      "chapter": null,
+      "body": [
+        {
+          "kind": "beat",
+          "id": "wsdty",
+          "layout": "beat flip",
+          "heading": "We Still<br>Don't Trust You",
+          "heading_tag": "h2",
+          "heading_class": "big r",
+          "role": "CREATIVE DIRECTION + VISUAL IDENTITY",
+          "fact": "Creative direction, visual identity and cover photography on film for Future and Metro Boomin’s two-album project. One visual world across covers, vinyl, billboards, and rollout imagery. Two consecutive #1 albums.",
+          "style": "",
+          "media": {
+            "type": "single",
+            "class": "stack r",
+            "images": [
+              {
+                "src": "/img/755ee4b88f.jpg",
+                "alt": "Future and Metro Boomin We Still Don't Trust You album cover, shot by Matt Adam",
+                "frame": "fr r",
+                "key": "wsdty",
+                "aspect": "",
+                "position": "",
+                "w": 1400,
+                "h": 1400
               }
             ],
             "id": "",
@@ -110,77 +142,45 @@
     },
     {
       "type": "content",
-      "id": "wdty",
-      "label": "We Don't Trust You.",
+      "id": "legends",
+      "label": "Legends Never Die.",
       "classes": "sortable",
-      "aria": "Future and Metro Boomin, We Don't Trust You",
+      "aria": "Juice WRLD, Legends Never Die",
       "chapter": null,
       "body": [
         {
           "kind": "beat",
-          "id": "wdty",
-          "layout": "beat flip",
-          "heading": "We Don't<br>Trust You",
-          "heading_tag": "h2",
-          "heading_class": "big r",
-          "role": "VISUAL IDENTITY + COVER PHOTOGRAPHY",
-          "fact": "Visual identity and cover photography on film for Future and Metro Boomin’s two-album project. One visual world across covers, vinyl, billboards, and rollout imagery. Two consecutive #1 albums.",
-          "style": "",
-          "media": {
-            "type": "single",
-            "class": "stack r",
-            "images": [
-              {
-                "src": "/img/cade447acb.jpg",
-                "alt": "Future and Metro Boomin We Don't Trust You album cover, visual identity by Matt Adam",
-                "frame": "fr r",
-                "key": "wdty",
-                "aspect": "",
-                "position": "",
-                "w": 1400,
-                "h": 1400
-              }
-            ],
-            "id": "",
-            "aria": "",
-            "src": "",
-            "poster": "",
-            "label": ""
-          }
-        }
-      ]
-    },
-    {
-      "type": "content",
-      "id": "wsdty",
-      "label": "We Still Don't Trust You.",
-      "classes": "sortable",
-      "aria": "Future and Metro Boomin, We Still Don't Trust You",
-      "chapter": null,
-      "body": [
-        {
-          "kind": "beat",
-          "id": "wsdty",
+          "id": "juice-portrait",
           "layout": "beat",
-          "heading": "We Still<br>Don't Trust You",
+          "heading": "Legends<br>Never Die",
           "heading_tag": "h2",
           "heading_class": "big r",
-          "role": "VISUAL IDENTITY + COVER PHOTOGRAPHY",
-          "fact": "A second #1 album, released weeks later. Cover photography on film and a connected visual identity carried through new covers, packaging, and rollout imagery.",
+          "role": "ALBUM COVER PHOTOGRAPHY",
+          "fact": "The portrait photographed by Matt Adam and chosen by Juice WRLD’s family for <i>Legends Never Die</i>. The album debuted at #1 with 497,000 first-week units, the biggest posthumous debut since Tupac and Biggie.",
           "style": "",
           "media": {
-            "type": "single",
+            "type": "stack",
             "class": "stack r",
             "images": [
               {
-                "src": "/img/755ee4b88f.jpg",
-                "alt": "Future and Metro Boomin We Still Don't Trust You album cover, shot by Matt Adam",
-                "frame": "fr r",
-                "key": "wsdty",
+                "src": "/img/818a46bfed.jpg",
+                "alt": "Juice WRLD portrait on film by Matt Adam",
+                "frame": "fr",
+                "key": "juice-portrait",
+                "aspect": "1170/1738",
+                "position": "center 28%",
+                "w": 1170,
+                "h": 1738
+              },
+              {
+                "src": "/img/c461fa69f1.jpg",
+                "alt": "Juice WRLD Legends Never Die album cover, shot by Matt Adam",
+                "frame": "fr",
+                "key": "juice-cover",
                 "aspect": "",
                 "position": "",
-                "w": 1400,
-                "h": 1400
+                "w": 1200,
+                "h": 1200
               }
             ],
             "id": "",
