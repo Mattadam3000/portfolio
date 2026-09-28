@@ -317,6 +317,7 @@
   .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
   .bar{position:fixed;z-index:100;top:0;left:0;right:0;padding:18px clamp(18px,3vw,48px);color:#fff;mix-blend-mode:difference;pointer-events:none}
   .bar .mark,.bar span{pointer-events:auto;opacity:1;color:inherit;text-decoration:none}
+  .bar span a{color:inherit;text-decoration:none}
   .bar .mark{font-weight:700;letter-spacing:-.03em}
   .hero{min-height:100svh;padding:0 clamp(18px,3vw,48px);max-width:none}
   .hero .claim{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:clamp(48px,11.8vw,154px);line-height:.88;letter-spacing:-.067em;font-weight:500;text-transform:uppercase}
@@ -624,7 +625,7 @@
 </head>
 <body>
 
-<div class="bar"><a href="/" class="mark">MATT ADAM</a><span class="mono">LOS ANGELES</span></div>
+<div class="bar"><a href="/" class="mark">MATT ADAM</a><span class="mono"><a href="#contact">CONTACT</a>&nbsp;&nbsp;<a href="https://www.instagram.com/mattadam___/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a></span></div>
 
 <!-- 00 CLAIM -->
 <header class="hero" id="hero">
@@ -1108,7 +1109,6 @@ document.querySelectorAll(".play").forEach(p=>{const v=p.querySelector("video");
   <a class="navItem" href="#" data-target="objects">Art</a>
   <a class="navItem" href="#" data-target="photography">Photography</a>
   <a class="navItem" href="#" data-target="contact">Contact</a>
-  <a class="navItem" href="https://www.instagram.com/mattadam___/" target="_blank" rel="noopener noreferrer" data-external="1">Instagram ↗</a>
   <a class="navItem" href="/work/" target="_blank" rel="noopener" data-external="1">Art / Work ↗</a>
   <a class="navItem" href="https://unwrapandsteal.com" target="_blank" rel="noopener" data-external="1">Shop</a>
 </nav>
